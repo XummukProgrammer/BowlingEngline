@@ -2,6 +2,7 @@ using BowlingEngine.Gameplay.AssetsLoader;
 using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.Services.StatesMachine.Interfaces;
 using BowlingEngine.StaticData.Gameplay;
+using BowlingEngine.UI.Windows.Load;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace BowlingEngine.CommonStates
 {
     public abstract class CommonStatesMachineLoadGameplayState : IStatesMachineExitableState, IStatesMachineEnterableState
     {
+        private LoadWindowView _loadWindowView;
+
         private readonly AssetsLoaderService _assetsLoaderService;
         private readonly GameplayContainerStaticData _gameplayContainerStaticData;
 
@@ -22,6 +25,8 @@ namespace BowlingEngine.CommonStates
 
         public void Enter()
         {
+            _loadWindowView = GameObject.FindFirstObjectByType<LoadWindowView>();
+
             _ = Load();
         }
 
@@ -32,8 +37,14 @@ namespace BowlingEngine.CommonStates
 
         private async Task Load()
         {
+            _loadWindowView.IsEnabled = true;
+
             await LoadPackage();
             await LoadAssets();
+
+            await Task.Delay(3000);
+
+            _loadWindowView.IsEnabled = false;
         }
 
         private async Task LoadPackage()

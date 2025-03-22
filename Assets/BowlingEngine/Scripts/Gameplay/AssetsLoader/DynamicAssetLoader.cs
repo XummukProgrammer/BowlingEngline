@@ -1,5 +1,6 @@
 using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.StaticData.AssetsLoader;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -18,13 +19,13 @@ namespace BowlingEngine.Gameplay.AssetsLoader
             _assetsLoaderService = assetsLoaderService;
         }
 
-        private void Start()
+        public async Task Load()
         {
             if (_data == null)
                 return;
 
-            var obj = _assetsLoaderService.Get(_data.name);
-            if (obj != null && obj is AssetLoaderObjectDynamic<T> castedObject)
+            var @object = _assetsLoaderService.Get(_data.name);
+            if (@object != null && @object is AssetLoaderObjectDynamic<T> castedObject)
                 LoadObject(castedObject.Result);
         }
 

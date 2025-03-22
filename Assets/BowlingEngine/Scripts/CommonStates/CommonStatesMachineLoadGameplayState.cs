@@ -1,7 +1,9 @@
+using BowlingEngine.Gameplay.AssetsLoader;
 using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.Services.StatesMachine.Interfaces;
 using BowlingEngine.StaticData.Gameplay;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace BowlingEngine.CommonStates
 {
@@ -20,12 +22,18 @@ namespace BowlingEngine.CommonStates
 
         public void Enter()
         {
-            _ = LoadPackage();
+            _ = Load();
         }
 
         public void Exit()
         {
             _ = UnloadPackage();
+        }
+
+        private async Task Load()
+        {
+            await LoadPackage();
+            await LoadAssets();
         }
 
         private async Task LoadPackage()
@@ -38,6 +46,13 @@ namespace BowlingEngine.CommonStates
                 foreach (var element in gameplayData.Package.Elements)
                     await _assetsLoaderService.Load(element.name, element.Path, element.Type);
             }
+        }
+
+        private async Task LoadAssets()
+        {
+            var objects =  Resources.FindObjectsOfTypeAll<MaterialAssetLoader>();
+            foreach (var @object in objects)
+                await @object.Load();
         }
 
         private async Task UnloadPackage()

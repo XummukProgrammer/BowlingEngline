@@ -1,24 +1,20 @@
 using BowlingEngine.Services.AssetsLoader;
-using BowlingEngine.Services.StatesMachine.Interfaces;
+using BowlingEngine.StaticData.Gameplay;
 
 namespace BowlingEngine.CommonStates
 {
-    public class CommonStatesMachineLoadCoreGameplayState : IStatesMachineExitableState, IStatesMachineEnterableState
+    public class CommonStatesMachineLoadCoreGameplayState : CommonStatesMachineLoadGameplayState
     {
-        private readonly AssetsLoaderPackageService _assetsLoaderPackageService;
-
-        public CommonStatesMachineLoadCoreGameplayState(AssetsLoaderPackageService assetsLoaderPackageService)
+        public CommonStatesMachineLoadCoreGameplayState(
+            AssetsLoaderService assetsLoaderService, 
+            GameplayContainerStaticData gameplayContainerStaticData) 
+            : base(assetsLoaderService, gameplayContainerStaticData)
         {
-            _assetsLoaderPackageService = assetsLoaderPackageService;
         }
 
-        public void Enter()
+        protected override GameplayTypeStaticData GetGameplayType()
         {
-            _ = _assetsLoaderPackageService.Load();
-        }
-
-        public void Exit()
-        {
+            return GameplayTypeStaticData.Core;
         }
     }
 }

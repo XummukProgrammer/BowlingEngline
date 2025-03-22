@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e18841ef2f4535a4cb3c44f758ccfd67, type: 3}
-  m_Name: Static Data Installer
+  m_Script: {fileID: 11500000, guid: 1d3fa4aebab959145b0217d46c8b68da, type: 3}
+  m_Name: Core Gameplay
   m_EditorClassIdentifier: 
-  _gameplayContainer: {fileID: 11400000, guid: 77d728386226c2b47acd3747d41a6fcb, type: 2}
+  _type: 1
+  _package: {fileID: 11400000, guid: 05db46b9216c9b74c82d5cc5a11b412e, type: 2}

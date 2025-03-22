@@ -1,6 +1,7 @@
+using BowlingEngine.Services.AssetsLoader;
 using UnityEngine;
 
-namespace BowlingEngine.Services.AssetsLoader
+namespace BowlingEngine.StaticData.AssetsLoader
 {
     [CreateAssetMenu(fileName = "Package Element", menuName = "Bowling Engine/Static Data/Package Element")]
     public class AssetsLoaderPackageElementStaticData : ScriptableObject

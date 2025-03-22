@@ -1,4 +1,4 @@
-using BowlingEngine.Services.AssetsLoader;
+using BowlingEngine.StaticData.Gameplay;
 using UnityEngine;
 using Zenject;
 
@@ -8,11 +8,11 @@ namespace BowlingEngine.Infrastructure.Installers
     public class StaticDataInstaller : ScriptableObjectInstaller<StaticDataInstaller>
     {
         [SerializeField]
-        private AssetsLoaderPackageStaticData _package;
+        private GameplayContainerStaticData _gameplayContainer;
 
         public override void InstallBindings()
         {
-            Container.BindInstance(_package);
+            Container.BindInstance(_gameplayContainer);
         }
     }
 }

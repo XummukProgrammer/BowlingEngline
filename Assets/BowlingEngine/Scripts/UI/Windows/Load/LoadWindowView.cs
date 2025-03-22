@@ -11,25 +11,39 @@ namespace BowlingEngine.UI.Windows.Load
             set => gameObject.SetActive(value);
         }
 
-        public float CurrentPercent
+        public int MaxValue { get; set; }
+
+        public int CurrentValue
         {
-            get => _progressBar.currentPercent;
-            set => _progressBar.currentPercent = value;
+            get => _currentValue;
+            set
+            {
+                _currentValue = value;
+
+                _progressBar.currentPercent = ((float)_currentValue / (float)MaxValue) * 100f;
+                _progressBar.UpdateUI();
+            }
         }
 
-        public float MinValue
+        public string StatusText
         {
-            get => _progressBar.minValue;
-            set => _progressBar.minValue = value;
-        }
-
-        public float MaxValue
-        {
-            get => _progressBar.maxValue;
-            set => _progressBar.maxValue = value;
+            get => _statusText.text;
+            set => _statusText.text = value;
         }
 
         [SerializeField]
         private ProgressBar _progressBar;
+
+        [SerializeField]
+        private TMPro.TMP_Text _statusText;
+
+        private int _currentValue;
+
+        public void ChangeStatus(string newStatus, int maxValue)
+        {
+            StatusText = newStatus;
+            MaxValue = maxValue;
+            CurrentValue = 0;
+        }
     }
 }

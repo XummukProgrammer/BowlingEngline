@@ -3,6 +3,7 @@ using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.Services.StatesMachine.Interfaces;
 using BowlingEngine.StaticData.Gameplay;
 using BowlingEngine.UI.Windows.Load;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -42,8 +43,6 @@ namespace BowlingEngine.CommonStates
             await LoadPackage();
             await LoadAssets();
 
-            await Task.Delay(3000);
-
             _loadWindowView.IsEnabled = false;
         }
 
@@ -54,20 +53,31 @@ namespace BowlingEngine.CommonStates
 
             if (gameplayData != null)
             {
-                foreach (var element in gameplayData.Package.Elements)
+                var elements = gameplayData.Package.Elements;
+
+                _loadWindowView.ChangeStatus("Загружаем пакет... (1/2)", elements.Count());
+
+                foreach (var element in elements)
+                {
                     await _assetsLoaderService.Load(element.name, element.Path, element.Type);
+                    _loadWindowView.CurrentValue++;
+                    await Task.Delay(1000);
+                }
             }
         }
 
         private async Task LoadAssets()
         {
-            var materialObjects =  Resources.FindObjectsOfTypeAll<MaterialAssetLoader>();
-            foreach (var @object in materialObjects)
-                await @object.Load();
-
             var prefabObjects = Resources.FindObjectsOfTypeAll<PrefabAssetLoader>();
+
+            _loadWindowView.ChangeStatus("Создаём объекты... (2/2)", prefabObjects.Length);
+
             foreach (var @object in prefabObjects)
+            {
                 await @object.Load();
+                _loadWindowView.CurrentValue++;
+                await Task.Delay(1000);
+            }
         }
 
         private async Task UnloadPackage()

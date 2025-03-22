@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: e586faf17f8a4574a9e86cffc5a4e126
   m_SerializeEntries:
-  - m_GUID: 131e710895c8d324b8eb986c314148ed
-    m_Address: Assets/BowlingEngine/Materials/Test Material.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d10b82d813c98f41b3a1c7fa480d59f
     m_Address: Assets/BowlingEngine/Scenes/MetaGameplayScene.unity
     m_ReadOnly: 0

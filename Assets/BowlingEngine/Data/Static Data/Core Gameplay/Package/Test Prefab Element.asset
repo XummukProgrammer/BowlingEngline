@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Test Prefab Element
   m_EditorClassIdentifier: 
   _path: Assets/BowlingEngine/Prefabs/Test Prefab.prefab
-  _type: 2
+  _type: 1

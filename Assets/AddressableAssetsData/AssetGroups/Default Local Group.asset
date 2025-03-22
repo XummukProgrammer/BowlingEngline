@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_Data:
-    m_SerializedData: []
   m_GUID: e586faf17f8a4574a9e86cffc5a4e126
   m_SerializeEntries:
-  - m_GUID: a0ee311ada7659a4ea8eac0f6185b82f
-    m_Address: Assets/BowlingEngine/Scenes/CoreGameplayScene.unity
+  - m_GUID: 131e710895c8d324b8eb986c314148ed
+    m_Address: Assets/BowlingEngine/Materials/Test Material.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -27,8 +25,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 131e710895c8d324b8eb986c314148ed
-    m_Address: Assets/BowlingEngine/Materials/Test Material.mat
+  - m_GUID: a0ee311ada7659a4ea8eac0f6185b82f
+    m_Address: Assets/BowlingEngine/Scenes/CoreGameplayScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c870fd20a5540d34e80d343683a9d54e
+    m_Address: Assets/BowlingEngine/Prefabs/Test Prefab.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -36,5 +39,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: b8ed7db6d4dc4bd49b60888e2a66ebf5, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: b249c69507a4ea44496256f6ba8460b3, type: 2}
     - {fileID: 11400000, guid: 25623bda2ee7c604d9886a993bfa6131, type: 2}
+    - {fileID: 11400000, guid: b249c69507a4ea44496256f6ba8460b3, type: 2}

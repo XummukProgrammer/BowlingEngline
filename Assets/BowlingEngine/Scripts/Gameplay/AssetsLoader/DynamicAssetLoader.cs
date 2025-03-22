@@ -26,9 +26,9 @@ namespace BowlingEngine.Gameplay.AssetsLoader
 
             var @object = _assetsLoaderService.Get(_data.name);
             if (@object != null && @object is AssetLoaderObjectDynamic<T> castedObject)
-                LoadObject(castedObject.Result);
+                await LoadObject(castedObject.Result);
         }
 
-        protected abstract void LoadObject(T result);
+        protected abstract Task LoadObject(T result);
     }
 }

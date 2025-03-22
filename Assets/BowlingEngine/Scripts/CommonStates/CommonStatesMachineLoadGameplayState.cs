@@ -50,8 +50,12 @@ namespace BowlingEngine.CommonStates
 
         private async Task LoadAssets()
         {
-            var objects =  Resources.FindObjectsOfTypeAll<MaterialAssetLoader>();
-            foreach (var @object in objects)
+            var materialObjects =  Resources.FindObjectsOfTypeAll<MaterialAssetLoader>();
+            foreach (var @object in materialObjects)
+                await @object.Load();
+
+            var prefabObjects = Resources.FindObjectsOfTypeAll<PrefabAssetLoader>();
+            foreach (var @object in prefabObjects)
                 await @object.Load();
         }
 

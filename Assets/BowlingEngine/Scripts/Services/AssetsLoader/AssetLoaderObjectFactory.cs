@@ -12,6 +12,8 @@ namespace BowlingEngine.Services.AssetsLoader
                     return new AssetLoaderObjectScene();
                 case AssetLoaderObjectType.Material:
                     return new AssetLoaderObjectDynamic<Material>();
+                case AssetLoaderObjectType.Prefab:
+                    return new AssetLoaderObjectDynamic<GameObject>();
                 default:
                     break;
             }

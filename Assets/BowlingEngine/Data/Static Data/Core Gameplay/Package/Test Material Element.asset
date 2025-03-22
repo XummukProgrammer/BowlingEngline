@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ccd55ab98deb74abfb9eaecdd9c173, type: 3}
-  m_Name: Package
+  m_Script: {fileID: 11500000, guid: 977272e04cd1a6b48bf2e28fbb48e1d0, type: 3}
+  m_Name: Test Material Element
   m_EditorClassIdentifier: 
-  _elements:
-  - {fileID: 11400000, guid: d4d0f0ce7ab9a294bb76b892823fc690, type: 2}
-  - {fileID: 11400000, guid: 905e5df28787e02448bc6b6f11a67332, type: 2}
+  _path: Assets/BowlingEngine/Materials/Test Material.mat
+  _type: 1

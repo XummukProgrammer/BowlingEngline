@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace BowlingEngine.Services.AssetsLoader
 {
     public static class AssetLoaderObjectFactory
@@ -8,6 +10,8 @@ namespace BowlingEngine.Services.AssetsLoader
             {
                 case AssetLoaderObjectType.Scene:
                     return new AssetLoaderObjectScene();
+                case AssetLoaderObjectType.Material:
+                    return new AssetLoaderObjectDynamic<Material>();
                 default:
                     break;
             }

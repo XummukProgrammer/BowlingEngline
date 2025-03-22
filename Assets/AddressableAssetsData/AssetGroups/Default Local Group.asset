@@ -27,6 +27,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 131e710895c8d324b8eb986c314148ed
+    m_Address: Assets/BowlingEngine/Materials/Test Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b8ed7db6d4dc4bd49b60888e2a66ebf5, type: 2}
   m_SchemaSet:

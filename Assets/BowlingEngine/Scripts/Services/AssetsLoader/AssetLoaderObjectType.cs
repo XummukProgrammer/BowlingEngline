@@ -2,6 +2,7 @@ namespace BowlingEngine.Services.AssetsLoader
 {
     public enum AssetLoaderObjectType
     {
-        Scene
+        Scene,
+        Material
     }
 }

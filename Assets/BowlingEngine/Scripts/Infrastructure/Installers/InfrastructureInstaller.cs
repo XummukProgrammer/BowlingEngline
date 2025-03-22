@@ -15,6 +15,7 @@ namespace BowlingEngine.Infrastructure.Installers
         private void InstallServices()
         {
             Container.BindInterfacesAndSelfTo<AssetsLoaderService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<AssetsLoaderPackageService>().AsSingle().NonLazy();
         }
 
         private void InstallFactories()

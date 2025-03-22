@@ -1,42 +1,30 @@
 using System.Threading.Tasks;
-using UnityEngine;
-using Zenject;
 
 namespace BowlingEngine.Services.AssetsLoader
 {
-    public class AssetsLoaderPackageService : MonoBehaviour
+    public class AssetsLoaderPackageService
     {
-        [SerializeField]
-        private AssetsLoaderPackageData[] _objects;
+        private readonly AssetsLoaderPackageStaticData _packageStaticData;
+        private readonly AssetsLoaderService _assetLoaderService;
 
-        private AssetsLoaderService _assetsLoaderService;
-
-        [Inject]
-        public void Construct(AssetsLoaderService assetsLoaderService)
+        public AssetsLoaderPackageService(
+            AssetsLoaderPackageStaticData packageStaticData, 
+            AssetsLoaderService assetsLoaderService)
         {
-            _assetsLoaderService = assetsLoaderService;
+            _packageStaticData = packageStaticData;
+            _assetLoaderService = assetsLoaderService;
         }
 
         public async Task Load()
         {
-            foreach (var @object in _objects)
-                await _assetsLoaderService.Load(@object.Id, @object.Path, @object.Type);
+            foreach (var element in _packageStaticData.Elements)
+                await _assetLoaderService.Load(element.name, element.Path, element.Type);
         }
 
         public async Task Unload()
         {
-            foreach (var @object in _objects)
-                await _assetsLoaderService.Unload(@object.Id);
-        }
-
-        private void Start()
-        {
-            _ = Load();
-        }
-
-        private void OnDestroy()
-        {
-            _ = Unload();
+            foreach (var element in _packageStaticData.Elements)
+                await _assetLoaderService.Unload(element.name);
         }
     }
 }

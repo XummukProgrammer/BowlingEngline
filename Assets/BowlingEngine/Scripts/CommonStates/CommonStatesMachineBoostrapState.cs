@@ -1,13 +1,19 @@
 using BowlingEngine.Services.StatesMachine.Interfaces;
-using UnityEngine;
 
 namespace BowlingEngine.CommonStates
 {
     public class CommonStatesMachineBoostrapState : IStatesMachineExitableState, IStatesMachineEnterableState
     {
+        private readonly CommonStatesMachineService _statesMachineService;
+
+        public CommonStatesMachineBoostrapState(CommonStatesMachineService statesMachineService)
+        {
+            _statesMachineService = statesMachineService;
+        }
+
         public void Enter()
         {
-            Debug.Log("CommonStatesMachineBoostrapState:Enter");
+            _statesMachineService.ChangeState<CommonStatesMachineLoadCoreGameplayState>();
         }
 
         public void Exit()

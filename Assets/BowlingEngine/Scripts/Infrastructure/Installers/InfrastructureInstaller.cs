@@ -1,3 +1,4 @@
+using BowlingEngine.Infrastructure.Factories;
 using BowlingEngine.Services.AssetsLoader;
 using Zenject;
 
@@ -18,6 +19,7 @@ namespace BowlingEngine.Infrastructure.Installers
 
         private void InstallFactories()
         {
+            Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
         }
     }
 }

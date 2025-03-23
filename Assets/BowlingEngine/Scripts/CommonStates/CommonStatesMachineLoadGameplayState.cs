@@ -1,22 +1,13 @@
-using BowlingEngine.Gameplay.AssetsLoader;
 using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.Services.ObjectsLoader;
-using BowlingEngine.Services.StatesMachine.Interfaces;
+using BowlingEngine.StaticData.AssetsLoader;
 using BowlingEngine.StaticData.Gameplay;
-using BowlingEngine.UI.Windows.Load;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace BowlingEngine.CommonStates
 {
-    public abstract class CommonStatesMachineLoadGameplayState : IStatesMachineExitableState, IStatesMachineEnterableState
+    public abstract class CommonStatesMachineLoadGameplayState : CommonStatesMachineLoadState
     {
-        private LoadWindowView _loadWindowView;
-
-        private readonly AssetsLoaderService _assetsLoaderService;
         private readonly GameplayContainerStaticData _gameplayContainerStaticData;
-        private readonly ObjectsLoaderService _objectsLoaderService;
         private readonly CommonStatesMachineService _commonStatesMachineService;
 
         public CommonStatesMachineLoadGameplayState(
@@ -24,32 +15,22 @@ namespace BowlingEngine.CommonStates
             GameplayContainerStaticData gameplayContainerStaticData,
             ObjectsLoaderService objectsLoaderService,
             CommonStatesMachineService commonStatesMachineService)
+            : base(assetsLoaderService,
+                  objectsLoaderService)
         {
-            _assetsLoaderService = assetsLoaderService;
             _gameplayContainerStaticData = gameplayContainerStaticData;
-            _objectsLoaderService = objectsLoaderService;
             _commonStatesMachineService = commonStatesMachineService;
         }
 
-        public void Enter()
+        protected override AssetsLoaderPackageStaticData GetPackageStaticData()
         {
-            _loadWindowView = GameObject.FindFirstObjectByType<LoadWindowView>(FindObjectsInactive.Include);
-
-            _ = Load();
+            var gameplayType = GetGameplayType();
+            return _gameplayContainerStaticData.Get(gameplayType).Package;
         }
 
-        public void Exit()
+        protected override void OnLoadFinished()
         {
-        }
-
-        private async Task Load()
-        {
-            _loadWindowView.IsEnabled = true;
-
-            await LoadPackage();
-            await LoadObjects();
-
-            _loadWindowView.IsEnabled = false;
+            base.OnLoadFinished();
 
             switch (GetGameplayType())
             {
@@ -61,34 +42,6 @@ namespace BowlingEngine.CommonStates
                     _commonStatesMachineService.ChangeState<CommonStatesMachineCoreGameplayState>();
                     break;
             }
-        }
-
-        private async Task LoadPackage()
-        {
-            var gameplayType = GetGameplayType();
-            var gameplayData = _gameplayContainerStaticData.Get(gameplayType);
-
-            if (gameplayData != null)
-                await _assetsLoaderService.LoadPackage(gameplayData.Package);
-        }
-
-        private async Task LoadObjects()
-        {
-            var prefabObjects = Resources.FindObjectsOfTypeAll<PrefabAssetLoader>();
-            var objects = new List<ObjectsLoaderElement>();
-
-            foreach (var prefabObject in prefabObjects)
-            {
-                await prefabObject.Load();
-
-                objects.Add(new(
-                    prefabObject.Prefab, 
-                    prefabObject.Placeholder, 
-                    prefabObject.Position, 
-                    prefabObject.Rotation));
-            }
-
-            await _objectsLoaderService.LoadElements(objects);
         }
 
         protected abstract GameplayTypeStaticData GetGameplayType();

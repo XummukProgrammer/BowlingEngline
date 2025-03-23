@@ -1,4 +1,5 @@
 using BowlingEngine.Services.AssetsLoader;
+using BowlingEngine.Services.ObjectsLoader;
 using Michsky.MUIP;
 using UnityEngine;
 using Zenject;
@@ -42,30 +43,40 @@ namespace BowlingEngine.UI.Windows.Load
         private int _currentValue;
 
         private AssetsLoaderService _assetsLoaderService;
+        private ObjectsLoaderService _objectsLoaderService;
 
         [Inject]
-        public void Construct(AssetsLoaderService assetsLoaderService)
+        public void Construct(
+            AssetsLoaderService assetsLoaderService, 
+            ObjectsLoaderService objectsLoaderService)
         {
             _assetsLoaderService = assetsLoaderService;
+            _objectsLoaderService = objectsLoaderService;
         }
 
         private void Start()
         {
             _assetsLoaderService.PackageStartedLoading += OnPackageStartedLoading;
             _assetsLoaderService.PackageFinishedLoading += OnPackageFinishedLoading;
-
             _assetsLoaderService.PackageUploadedResource += OnPackageUploadedResource;
+
+            _objectsLoaderService.DownloadStarted += OnObjectsDownloadStarted;
+            _objectsLoaderService.DownloadFinished += OnObjectsDownloadFinished;
+            _objectsLoaderService.ItemLoaded += OnObjectsItemLoaded;
         }
 
         private void OnDestroy()
         {
             _assetsLoaderService.PackageStartedLoading -= OnPackageStartedLoading;
             _assetsLoaderService.PackageFinishedLoading -= OnPackageFinishedLoading;
-
             _assetsLoaderService.PackageUploadedResource -= OnPackageUploadedResource;
+
+            _objectsLoaderService.DownloadStarted -= OnObjectsDownloadStarted;
+            _objectsLoaderService.DownloadFinished -= OnObjectsDownloadFinished;
+            _objectsLoaderService.ItemLoaded -= OnObjectsItemLoaded;
         }
 
-        public void ChangeStatus(string newStatus, int maxValue)
+        private void ChangeStatus(string newStatus, int maxValue)
         {
             StatusText = newStatus;
             MaxValue = maxValue;
@@ -82,6 +93,20 @@ namespace BowlingEngine.UI.Windows.Load
         }
 
         private void OnPackageUploadedResource(int index)
+        {
+            CurrentValue = index;
+        }
+
+        private void OnObjectsDownloadStarted(int count)
+        {
+            ChangeStatus("Загружаем объекты...", count);
+        }
+
+        private void OnObjectsDownloadFinished()
+        {
+        }
+
+        private void OnObjectsItemLoaded(int index)
         {
             CurrentValue = index;
         }

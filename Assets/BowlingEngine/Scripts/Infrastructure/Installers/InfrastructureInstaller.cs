@@ -1,5 +1,6 @@
 using BowlingEngine.Infrastructure.Factories;
 using BowlingEngine.Services.AssetsLoader;
+using BowlingEngine.Services.ObjectsLoader;
 using Zenject;
 
 namespace BowlingEngine.Infrastructure.Installers
@@ -15,6 +16,7 @@ namespace BowlingEngine.Infrastructure.Installers
         private void InstallServices()
         {
             Container.BindInterfacesAndSelfTo<AssetsLoaderService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ObjectsLoaderService>().AsSingle().NonLazy();
         }
 
         private void InstallFactories()

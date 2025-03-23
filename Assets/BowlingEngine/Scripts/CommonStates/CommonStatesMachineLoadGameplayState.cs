@@ -1,8 +1,10 @@
 using BowlingEngine.Gameplay.AssetsLoader;
 using BowlingEngine.Services.AssetsLoader;
+using BowlingEngine.Services.ObjectsLoader;
 using BowlingEngine.Services.StatesMachine.Interfaces;
 using BowlingEngine.StaticData.Gameplay;
 using BowlingEngine.UI.Windows.Load;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -14,13 +16,16 @@ namespace BowlingEngine.CommonStates
 
         private readonly AssetsLoaderService _assetsLoaderService;
         private readonly GameplayContainerStaticData _gameplayContainerStaticData;
+        private readonly ObjectsLoaderService _objectsLoaderService;
 
         public CommonStatesMachineLoadGameplayState(
             AssetsLoaderService assetsLoaderService,
-            GameplayContainerStaticData gameplayContainerStaticData)
+            GameplayContainerStaticData gameplayContainerStaticData,
+            ObjectsLoaderService objectsLoaderService)
         {
             _assetsLoaderService = assetsLoaderService;
             _gameplayContainerStaticData = gameplayContainerStaticData;
+            _objectsLoaderService = objectsLoaderService;
         }
 
         public void Enter()
@@ -40,7 +45,7 @@ namespace BowlingEngine.CommonStates
             _loadWindowView.IsEnabled = true;
 
             await LoadPackage();
-            await LoadAssets();
+            await LoadObjects();
 
             _loadWindowView.IsEnabled = false;
         }
@@ -54,18 +59,23 @@ namespace BowlingEngine.CommonStates
                 await _assetsLoaderService.LoadPackage(gameplayData.Package);
         }
 
-        private async Task LoadAssets()
+        private async Task LoadObjects()
         {
             var prefabObjects = Resources.FindObjectsOfTypeAll<PrefabAssetLoader>();
+            var objects = new List<ObjectsLoaderElement>();
 
-            _loadWindowView.ChangeStatus("Создаём объекты... (2/2)", prefabObjects.Length);
-
-            foreach (var @object in prefabObjects)
+            foreach (var prefabObject in prefabObjects)
             {
-                await @object.Load();
-                _loadWindowView.CurrentValue++;
-                await Task.Delay(1000);
+                await prefabObject.Load();
+
+                objects.Add(new(
+                    prefabObject.Prefab, 
+                    prefabObject.Placeholder, 
+                    prefabObject.Position, 
+                    prefabObject.Rotation));
             }
+
+            await _objectsLoaderService.LoadElements(objects);
         }
 
         private async Task UnloadPackage()

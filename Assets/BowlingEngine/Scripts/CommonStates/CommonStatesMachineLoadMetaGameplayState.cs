@@ -1,4 +1,5 @@
 using BowlingEngine.Services.AssetsLoader;
+using BowlingEngine.Services.ObjectsLoader;
 using BowlingEngine.StaticData.Gameplay;
 
 namespace BowlingEngine.CommonStates
@@ -6,9 +7,12 @@ namespace BowlingEngine.CommonStates
     public class CommonStatesMachineLoadMetaGameplayState : CommonStatesMachineLoadGameplayState
     {
         public CommonStatesMachineLoadMetaGameplayState(
-            AssetsLoaderService assetsLoaderService,
-            GameplayContainerStaticData gameplayContainerStaticData)
-            : base(assetsLoaderService, gameplayContainerStaticData)
+            AssetsLoaderService assetsLoaderService, 
+            GameplayContainerStaticData gameplayContainerStaticData, 
+            ObjectsLoaderService objectsLoaderService) 
+            : base(assetsLoaderService, 
+                  gameplayContainerStaticData, 
+                  objectsLoaderService)
         {
         }
 

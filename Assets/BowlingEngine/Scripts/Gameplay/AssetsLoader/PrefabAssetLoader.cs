@@ -14,9 +14,14 @@ namespace BowlingEngine.Gameplay.AssetsLoader
         [SerializeField]
         private Quaternion _rotation = Quaternion.identity;
 
+        public GameObject Prefab {  get; private set; }
+        public Transform Placeholder => _placeholder;
+        public Vector3 Position => _position;
+        public Quaternion Rotation => _rotation;
+
         protected override async Task LoadObject(GameObject result)
         {
-            await InstantiateAsync(result, _placeholder, _position, _rotation);
+            Prefab = result;
         }
     }
 }

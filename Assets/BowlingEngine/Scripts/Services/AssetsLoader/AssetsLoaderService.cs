@@ -42,7 +42,6 @@ namespace BowlingEngine.Services.AssetsLoader
                 await Load(element.name, element.Path, element.Type);
                 PackageUploadedResource?.Invoke(index);
                 index++;
-                await Task.Delay(1000);
             }
 
             PackageFinishedLoading?.Invoke();

@@ -1,19 +1,16 @@
 using BowlingEngine.Services.AssetsLoader;
-using BowlingEngine.Services.ObjectsLoader;
 using BowlingEngine.StaticData.Gameplay;
 
 namespace BowlingEngine.CommonStates
 {
-    public class CommonStatesMachineLoadMetaGameplayState : CommonStatesMachineLoadGameplayState
+    public class CommonStatesMachineMetaGameplayState : CommonStatesMachineGameplayState
     {
-        public CommonStatesMachineLoadMetaGameplayState(
+        public CommonStatesMachineMetaGameplayState(
             AssetsLoaderService assetsLoaderService, 
             GameplayContainerStaticData gameplayContainerStaticData, 
-            ObjectsLoaderService objectsLoaderService, 
             CommonStatesMachineService commonStatesMachineService) 
             : base(assetsLoaderService, 
                   gameplayContainerStaticData, 
-                  objectsLoaderService, 
                   commonStatesMachineService)
         {
         }

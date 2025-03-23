@@ -20,7 +20,9 @@ namespace BowlingEngine.CommonStates
             {
                 _stateFactory.Create<CommonStatesMachineBoostrapState>(),
                 _stateFactory.Create<CommonStatesMachineLoadMetaGameplayState>(),
-                _stateFactory.Create<CommonStatesMachineLoadCoreGameplayState>()
+                _stateFactory.Create<CommonStatesMachineLoadCoreGameplayState>(),
+                _stateFactory.Create<CommonStatesMachineMetaGameplayState>(),
+                _stateFactory.Create<CommonStatesMachineCoreGameplayState>()
             };
         }
 

@@ -13,7 +13,7 @@ namespace BowlingEngine.CommonStates
 
         public void Enter()
         {
-            _statesMachineService.ChangeState<CommonStatesMachineLoadCoreGameplayState>();
+            _statesMachineService.ChangeState<CommonStatesMachineLoadMetaGameplayState>();
         }
 
         public void Exit()

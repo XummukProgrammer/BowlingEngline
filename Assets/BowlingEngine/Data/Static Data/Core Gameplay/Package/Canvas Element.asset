@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ccd55ab98deb74abfb9eaecdd9c173, type: 3}
-  m_Name: Package
+  m_Script: {fileID: 11500000, guid: 977272e04cd1a6b48bf2e28fbb48e1d0, type: 3}
+  m_Name: Canvas Element
   m_EditorClassIdentifier: 
-  _elements:
-  - {fileID: 11400000, guid: 6ea3d1c820fe5d849ab36e235c669b9b, type: 2}
-  - {fileID: 11400000, guid: 3cd21152bec3a754385c4a390ede1907, type: 2}
+  _path: Assets/BowlingEngine/Scenes/CoreGameplayCanvasScene.unity
+  _type: 0

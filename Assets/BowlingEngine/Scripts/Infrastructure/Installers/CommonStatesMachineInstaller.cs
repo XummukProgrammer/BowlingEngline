@@ -10,6 +10,8 @@ namespace BowlingEngine.Infrastructure.Installers
             Container.Bind<CommonStatesMachineBoostrapState>().AsSingle();
             Container.Bind<CommonStatesMachineLoadMetaGameplayState>().AsSingle();
             Container.Bind<CommonStatesMachineLoadCoreGameplayState>().AsSingle();
+            Container.Bind<CommonStatesMachineMetaGameplayState>().AsSingle();
+            Container.Bind<CommonStatesMachineCoreGameplayState>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<CommonStatesMachineService>().AsSingle().NonLazy();
         }

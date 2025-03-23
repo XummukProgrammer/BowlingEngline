@@ -17,27 +17,29 @@ namespace BowlingEngine.CommonStates
         private readonly AssetsLoaderService _assetsLoaderService;
         private readonly GameplayContainerStaticData _gameplayContainerStaticData;
         private readonly ObjectsLoaderService _objectsLoaderService;
+        private readonly CommonStatesMachineService _commonStatesMachineService;
 
         public CommonStatesMachineLoadGameplayState(
             AssetsLoaderService assetsLoaderService,
             GameplayContainerStaticData gameplayContainerStaticData,
-            ObjectsLoaderService objectsLoaderService)
+            ObjectsLoaderService objectsLoaderService,
+            CommonStatesMachineService commonStatesMachineService)
         {
             _assetsLoaderService = assetsLoaderService;
             _gameplayContainerStaticData = gameplayContainerStaticData;
             _objectsLoaderService = objectsLoaderService;
+            _commonStatesMachineService = commonStatesMachineService;
         }
 
         public void Enter()
         {
-            _loadWindowView = GameObject.FindFirstObjectByType<LoadWindowView>();
+            _loadWindowView = GameObject.FindFirstObjectByType<LoadWindowView>(FindObjectsInactive.Include);
 
             _ = Load();
         }
 
         public void Exit()
         {
-            _ = UnloadPackage();
         }
 
         private async Task Load()
@@ -48,6 +50,17 @@ namespace BowlingEngine.CommonStates
             await LoadObjects();
 
             _loadWindowView.IsEnabled = false;
+
+            switch (GetGameplayType())
+            {
+                case GameplayTypeStaticData.Meta:
+                    _commonStatesMachineService.ChangeState<CommonStatesMachineMetaGameplayState>();
+                    break;
+
+                case GameplayTypeStaticData.Core:
+                    _commonStatesMachineService.ChangeState<CommonStatesMachineCoreGameplayState>();
+                    break;
+            }
         }
 
         private async Task LoadPackage()
@@ -76,18 +89,6 @@ namespace BowlingEngine.CommonStates
             }
 
             await _objectsLoaderService.LoadElements(objects);
-        }
-
-        private async Task UnloadPackage()
-        {
-            var gameplayType = GetGameplayType();
-            var gameplayData = _gameplayContainerStaticData.Get(gameplayType);
-
-            if (gameplayData != null)
-            {
-                foreach (var element in gameplayData.Package.Elements)
-                    await _assetsLoaderService.Unload(element.name);
-            }
         }
 
         protected abstract GameplayTypeStaticData GetGameplayType();

@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: e586faf17f8a4574a9e86cffc5a4e126
   m_SerializeEntries:
+  - m_GUID: 0a26cc8865075e741b7f7484157443d4
+    m_Address: Assets/BowlingEngine/Scenes/MetaGameplayCanvasScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d10b82d813c98f41b3a1c7fa480d59f
     m_Address: Assets/BowlingEngine/Scenes/MetaGameplayScene.unity
     m_ReadOnly: 0
@@ -27,6 +32,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c870fd20a5540d34e80d343683a9d54e
     m_Address: Assets/BowlingEngine/Prefabs/Test Prefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e60b848a97e7fb1419bab0e597d864d8
+    m_Address: Assets/BowlingEngine/Scenes/CoreGameplayCanvasScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

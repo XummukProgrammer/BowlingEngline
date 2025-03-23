@@ -9,10 +9,12 @@ namespace BowlingEngine.CommonStates
         public CommonStatesMachineLoadCoreGameplayState(
             AssetsLoaderService assetsLoaderService, 
             GameplayContainerStaticData gameplayContainerStaticData, 
-            ObjectsLoaderService objectsLoaderService) 
+            ObjectsLoaderService objectsLoaderService, 
+            CommonStatesMachineService commonStatesMachineService) 
             : base(assetsLoaderService, 
                   gameplayContainerStaticData, 
-                  objectsLoaderService)
+                  objectsLoaderService, 
+                  commonStatesMachineService)
         {
         }
 

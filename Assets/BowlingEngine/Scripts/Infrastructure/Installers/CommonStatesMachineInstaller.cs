@@ -8,6 +8,7 @@ namespace BowlingEngine.Infrastructure.Installers
         public override void InstallBindings()
         {
             Container.Bind<CommonStatesMachineBoostrapState>().AsSingle();
+            Container.Bind<CommonStatesMachineDefaultLoadState>().AsSingle();
             Container.Bind<CommonStatesMachineLoadMetaGameplayState>().AsSingle();
             Container.Bind<CommonStatesMachineLoadCoreGameplayState>().AsSingle();
             Container.Bind<CommonStatesMachineMetaGameplayState>().AsSingle();

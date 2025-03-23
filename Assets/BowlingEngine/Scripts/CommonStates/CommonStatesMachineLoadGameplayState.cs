@@ -3,7 +3,6 @@ using BowlingEngine.Services.AssetsLoader;
 using BowlingEngine.Services.StatesMachine.Interfaces;
 using BowlingEngine.StaticData.Gameplay;
 using BowlingEngine.UI.Windows.Load;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -52,18 +51,7 @@ namespace BowlingEngine.CommonStates
             var gameplayData = _gameplayContainerStaticData.Get(gameplayType);
 
             if (gameplayData != null)
-            {
-                var elements = gameplayData.Package.Elements;
-
-                _loadWindowView.ChangeStatus("Загружаем пакет... (1/2)", elements.Count());
-
-                foreach (var element in elements)
-                {
-                    await _assetsLoaderService.Load(element.name, element.Path, element.Type);
-                    _loadWindowView.CurrentValue++;
-                    await Task.Delay(1000);
-                }
-            }
+                await _assetsLoaderService.LoadPackage(gameplayData.Package);
         }
 
         private async Task LoadAssets()

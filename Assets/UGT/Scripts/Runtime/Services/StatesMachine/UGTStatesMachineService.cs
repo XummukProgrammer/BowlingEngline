@@ -44,6 +44,9 @@ namespace UGT.Services.StatesMachine
 
                 TryEnterCurrentState();
             }
+
+            TryTickCurrentState();
+            TryFixedTickCurrentState();
         }
 
         public void EnterState<T>() where T : UGTIExitableState
@@ -67,6 +70,18 @@ namespace UGT.Services.StatesMachine
         {
             if (_currentState != null && _currentState is UGTIEnterableState enterableState)
                 enterableState.Enter();
+        }
+
+        private void TryTickCurrentState()
+        {
+            if (_currentState != null && _currentState is ITickable tickableState)
+                tickableState.Tick();
+        }
+
+        private void TryFixedTickCurrentState()
+        {
+            if (_currentState != null && _currentState is IFixedTickable fixedTickable)
+                fixedTickable.FixedTick();
         }
     }
 }

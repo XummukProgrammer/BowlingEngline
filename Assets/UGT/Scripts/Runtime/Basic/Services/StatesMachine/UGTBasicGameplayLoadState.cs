@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using UGT.Basic.Data;
 using UGT.Basic.Models;
 using UGT.Services.Resources;
 using UGT.Services.StatesMachine.Interfaces;
@@ -11,15 +12,18 @@ namespace UGT.Basic.Services.StatesMachine
         , UGTIEnterableState
     {
         private readonly UGTBasicModel _basicModel;
+        private readonly UGTBasicData _basicData;
         private readonly UGTResourcesService _resourcesService;
         private readonly UGTBasicStatesMachineService _statesMachineService;
 
         public UGTBasicGameplayLoadState(
             UGTBasicModel basicModel, 
+            UGTBasicData basicData,
             UGTResourcesService resourcesService,
             UGTBasicStatesMachineService statesMachineService)
         {
             _basicModel = basicModel;
+            _basicData = basicData;
             _resourcesService = resourcesService;
             _statesMachineService = statesMachineService;
         }
@@ -38,7 +42,7 @@ namespace UGT.Basic.Services.StatesMachine
 
         private async Task Load()
         {
-            await _resourcesService.Load(_basicModel.DefaultResources);
+            await _resourcesService.Load(_basicModel.GetResources(_basicData.GameplayType));
 
             _statesMachineService.EnterState<UGTBasicGameplayInProgressState>();
         }

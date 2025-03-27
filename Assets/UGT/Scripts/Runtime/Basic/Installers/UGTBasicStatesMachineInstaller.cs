@@ -11,6 +11,7 @@ namespace UGT.Basic.Installers
             Container.Bind<UGTBasicGameplayLoadState>().AsSingle();
             Container.Bind<UGTBasicGameplayUnloadState>().AsSingle();
             Container.Bind<UGTBasicGameplayInProgressState>().AsSingle();
+            Container.Bind<UGTBasicGameplayChangeState>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<UGTBasicStatesMachineService>().AsSingle();
         }

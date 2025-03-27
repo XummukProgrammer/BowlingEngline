@@ -20,21 +20,18 @@ namespace UGT.Basic.Models
         public UGTResourcesModel CoreResources => _coreResources;
         public UGTGameplayType DefaultGameplayType => _defaultGameplayType;
 
-        public UGTResourcesModel DefaultResources
+        public UGTResourcesModel GetResources(UGTGameplayType gameplayType)
         {
-            get
+            switch (gameplayType)
             {
-                switch (_defaultGameplayType)
-                {
-                    case UGTGameplayType.Meta:
-                        return _metaResources;
-                    case UGTGameplayType.Core:
-                        return _coreResources;
-                    default:
-                        break;
-                }
-                return null;
+                case UGTGameplayType.Meta:
+                    return _metaResources;
+                case UGTGameplayType.Core:
+                    return _coreResources;
+                default:
+                    break;
             }
+            return null;
         }
     }
 }

@@ -1,3 +1,4 @@
+using UGT.Basic.Data;
 using UGT.Common.Factories;
 using UGT.Services.Resources;
 using Zenject;
@@ -10,6 +11,7 @@ namespace UGT.Infrastructure.Installers
         {
             InstallFactories();
             InstallServices();
+            InstallData();
         }
 
         private void InstallFactories()
@@ -20,6 +22,11 @@ namespace UGT.Infrastructure.Installers
         private void InstallServices()
         {
             Container.Bind<UGTResourcesService>().AsSingle();
+        }
+
+        private void InstallData()
+        {
+            Container.Bind<UGTBasicData>().AsSingle();
         }
     }
 }

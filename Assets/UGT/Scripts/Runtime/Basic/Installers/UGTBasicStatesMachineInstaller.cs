@@ -1,7 +1,7 @@
-using UGT.StatesMachine;
+using UGT.Basic.Services.StatesMachine;
 using Zenject;
 
-namespace UGT.Infrastructure.Installers
+namespace UGT.Basic.Installers
 {
     public class UGTBasicStatesMachineInstaller : MonoInstaller<UGTBasicStatesMachineInstaller>
     {

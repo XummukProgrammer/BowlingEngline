@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using UGT.Infrastructure.Models;
+using UGT.Basic.Models;
 using UGT.Services.Resources;
 using UGT.Services.StatesMachine.Interfaces;
 using UnityEngine;
 
-namespace UGT.StatesMachine
+namespace UGT.Basic.Services.StatesMachine
 {
-    public class UGTBasicGameplayLoadState 
+    public class UGTBasicGameplayUnloadState 
         : UGTIExitableState
         , UGTIEnterableState
     {
@@ -14,8 +14,8 @@ namespace UGT.StatesMachine
         private readonly UGTResourcesService _resourcesService;
         private readonly UGTBasicStatesMachineService _statesMachineService;
 
-        public UGTBasicGameplayLoadState(
-            UGTBasicModel basicModel, 
+        public UGTBasicGameplayUnloadState(
+            UGTBasicModel basicModel,
             UGTResourcesService resourcesService,
             UGTBasicStatesMachineService statesMachineService)
         {
@@ -26,21 +26,19 @@ namespace UGT.StatesMachine
 
         public void Enter()
         {
-            Debug.Log("UGTBasicGameplayLoadState.Enter");
+            Debug.Log("UGTBasicGameplayUnloadState.Enter");
 
-            _ = Load();
+            _ = Unload();
         }
 
         public void Exit()
         {
-            Debug.Log("UGTBasicGameplayLoadState.Exit");
+            Debug.Log("UGTBasicGameplayUnloadState.Exit");
         }
 
-        private async Task Load()
+        private async Task Unload()
         {
-            await _resourcesService.Load(_basicModel.DefaultResources);
-
-            _statesMachineService.EnterState<UGTBasicGameplayInProgressState>();
+            await _resourcesService.Unload(_basicModel.DefaultResources);
         }
     }
 }

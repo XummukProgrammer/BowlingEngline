@@ -3,7 +3,7 @@ using UGT.Infrastructure.Factories;
 using UGT.Services.StatesMachine;
 using UGT.Services.StatesMachine.Interfaces;
 
-namespace UGT.StatesMachine
+namespace UGT.Basic.Services.StatesMachine
 {
     public class UGTBasicStatesMachineService : UGTStatesMachineService
     {

@@ -1,7 +1,7 @@
 using UGT.Services.StatesMachine.Interfaces;
 using UnityEngine;
 
-namespace UGT.StatesMachine
+namespace UGT.Basic.Services.StatesMachine
 {
     public class UGTBasicBoostrapState 
         : UGTIExitableState

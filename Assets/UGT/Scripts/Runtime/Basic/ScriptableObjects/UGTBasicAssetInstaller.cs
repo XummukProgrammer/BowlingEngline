@@ -1,8 +1,8 @@
-using UGT.Infrastructure.Models;
+using UGT.Basic.Models;
 using UnityEngine;
 using Zenject;
 
-namespace UGT.Infrastructure.Installers
+namespace UGT.Basic.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "Basic Asset", menuName = "UGT/Assets/Basic/Asset")]
     public class UGTBasicAssetInstaller : ScriptableObjectInstaller<UGTBasicAssetInstaller>

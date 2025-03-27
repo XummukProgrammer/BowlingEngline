@@ -2,7 +2,7 @@ using UGT.Common.Gameplay;
 using UGT.Services.Resources.Models;
 using UnityEngine;
 
-namespace UGT.Infrastructure.Models
+namespace UGT.Basic.Models
 {
     [System.Serializable]
     public class UGTBasicModel

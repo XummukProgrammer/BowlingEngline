@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 291b00da924b78f49aaf846424d815d2
+    m_Address: Assets/UGT/Scenes/CoreUIScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c0abbb1292ab9f49b2c9530d1b13097
     m_Address: Assets/UGT/Scenes/MetaScene.unity
     m_ReadOnly: 0

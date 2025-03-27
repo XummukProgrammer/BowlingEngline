@@ -15,7 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: b8204c158e52e4d4092d79d0d1f93411
   m_SerializeEntries:
-  - m_GUID: 7e547bb3e7eb6d54bb7031a745f261f6
+  - m_GUID: 7c0abbb1292ab9f49b2c9530d1b13097
+    m_Address: Assets/UGT/Scenes/MetaScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e99142e3cb7de364487ad17eb408195e
     m_Address: Assets/UGT/Scenes/TestScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []

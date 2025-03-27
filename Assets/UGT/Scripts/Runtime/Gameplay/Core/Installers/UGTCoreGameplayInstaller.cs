@@ -1,5 +1,5 @@
+using UGT.Common.Factories;
 using UGT.Common.Gameplay.Services.StatesMachine;
-using UGT.Infrastructure.Factories;
 using UGT.Services.Resources;
 using Zenject;
 

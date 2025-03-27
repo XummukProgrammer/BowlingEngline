@@ -1,7 +1,7 @@
 using UGT.Services.StatesMachine.Interfaces;
 using Zenject;
 
-namespace UGT.Infrastructure.Factories
+namespace UGT.Common.Factories
 {
     public class UGTStateFactory
     {

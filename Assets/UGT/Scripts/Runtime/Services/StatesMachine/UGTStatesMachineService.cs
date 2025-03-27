@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UGT.Infrastructure.Factories;
+using UGT.Common.Factories;
 using UGT.Services.StatesMachine.Interfaces;
 using Zenject;
 

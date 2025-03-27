@@ -1,4 +1,4 @@
-using UGT.Infrastructure.Factories;
+using UGT.Common.Factories;
 using UGT.Services.Resources;
 using Zenject;
 

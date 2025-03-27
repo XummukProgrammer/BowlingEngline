@@ -8,8 +8,9 @@ namespace UGT.Infrastructure.Installers
         public override void InstallBindings()
         {
             Container.Bind<UGTBasicBoostrapState>().AsSingle();
-            Container.Bind<UGTBasicLoadState>().AsSingle();
-            Container.Bind<UGTBasicUnloadState>().AsSingle();
+            Container.Bind<UGTBasicGameplayLoadState>().AsSingle();
+            Container.Bind<UGTBasicGameplayUnloadState>().AsSingle();
+            Container.Bind<UGTBasicGameplayInProgressState>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<UGTBasicStatesMachineService>().AsSingle();
         }

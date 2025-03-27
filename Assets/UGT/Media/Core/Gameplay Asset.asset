@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eede476e4b72c04396d0ff47cd36e1b, type: 3}
-  m_Name: Scene Asset
+  m_Script: {fileID: 11500000, guid: 57b24bf23569bda458052df07a3d20c3, type: 3}
+  m_Name: Gameplay Asset
   m_EditorClassIdentifier: 
-  _path: Assets/UGT/Scenes/TestScene.unity
+  _type: 1

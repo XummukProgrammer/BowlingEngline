@@ -20,7 +20,6 @@ namespace UGT.Infrastructure.Installers
         private void InstallServices()
         {
             Container.Bind<UGTResourcesService>().AsSingle();
-            Container.Bind<UGTResourcesLoaderService>().AsSingle();
         }
     }
 }

@@ -17,6 +17,8 @@ namespace UGT.StatesMachine
         public void Enter()
         {
             Debug.Log("UGTBasicBoostrapState.Enter");
+
+            _statesMachineService.EnterState<UGTBasicLoadState>();
         }
 
         public void Exit()

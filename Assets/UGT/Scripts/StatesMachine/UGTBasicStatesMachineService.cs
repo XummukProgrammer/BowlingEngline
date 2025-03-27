@@ -18,7 +18,9 @@ namespace UGT.StatesMachine
             {
                 return new List<UGTIExitableState>
                 {
-                    Factory.Create<UGTBasicBoostrapState>()
+                    Factory.Create<UGTBasicBoostrapState>(),
+                    Factory.Create<UGTBasicLoadState>(),
+                    Factory.Create<UGTBasicUnloadState>()
                 };
             }
         }

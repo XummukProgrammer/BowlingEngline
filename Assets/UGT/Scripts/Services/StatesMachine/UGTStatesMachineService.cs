@@ -46,6 +46,23 @@ namespace UGT.Services.StatesMachine
             }
         }
 
+        public void EnterState<T>() where T : UGTIExitableState
+        {
+            _nextState = GetState<T>();
+        }
+
+        private T GetState<T>() where T : UGTIExitableState
+        {
+            if (_states.TryGetValue(typeof(T).Name, out var state))
+            {
+                if (state is T castedState)
+                {
+                    return castedState;
+                }
+            }
+            return default;
+        }
+
         private void TryEnterCurrentState()
         {
             if (_currentState != null && _currentState is UGTIEnterableState enterableState)

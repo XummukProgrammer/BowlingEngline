@@ -1,4 +1,5 @@
 using UGT.Infrastructure.Factories;
+using UGT.Services.Resources;
 using Zenject;
 
 namespace UGT.Infrastructure.Installers
@@ -13,11 +14,13 @@ namespace UGT.Infrastructure.Installers
 
         private void InstallFactories()
         {
-            Container.BindInterfacesAndSelfTo<UGTStateFactory>().AsSingle();
+            Container.Bind<UGTStateFactory>().AsSingle();
         }
 
         private void InstallServices()
         {
+            Container.Bind<UGTResourcesService>().AsSingle();
+            Container.Bind<UGTResourcesLoaderService>().AsSingle();
         }
     }
 }

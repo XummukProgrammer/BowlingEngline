@@ -3,7 +3,7 @@ using UGT.Infrastructure.Factories;
 using UGT.Services.Resources;
 using Zenject;
 
-namespace UGT.Infrastructure.Installers
+namespace UGT.Gameplay.Core.Installers
 {
     public class UGTCoreGameplayInstaller : MonoInstaller<UGTCoreGameplayInstaller>
     {

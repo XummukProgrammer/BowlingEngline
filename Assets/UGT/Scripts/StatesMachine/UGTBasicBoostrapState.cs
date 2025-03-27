@@ -1,0 +1,27 @@
+using UGT.Services.StatesMachine.Interfaces;
+using UnityEngine;
+
+namespace UGT.StatesMachine
+{
+    public class UGTBasicBoostrapState 
+        : UGTIExitableState
+        , UGTIEnterableState
+    {
+        private readonly UGTBasicStatesMachineService _statesMachineService;
+
+        public UGTBasicBoostrapState(UGTBasicStatesMachineService statesMachineService)
+        {
+            _statesMachineService = statesMachineService;
+        }
+
+        public void Enter()
+        {
+            Debug.Log("UGTBasicBoostrapState.Enter");
+        }
+
+        public void Exit()
+        {
+            Debug.Log("UGTBasicBoostrapState.Exit");
+        }
+    }
+}

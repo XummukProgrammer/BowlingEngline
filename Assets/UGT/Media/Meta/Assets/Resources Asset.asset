@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Resources Asset
   m_EditorClassIdentifier: 
   _resourcesModel:
-    _resources: []
+    _resources:
+    - {fileID: 11400000, guid: 56a81c3364a3d0c4eb64f84a38bb573e, type: 2}

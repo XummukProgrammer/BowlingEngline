@@ -1,5 +1,6 @@
 using UGT.Basic.Data;
 using UGT.Common.Factories;
+using UGT.Services.Localizations;
 using UGT.Services.Resources;
 using UGT.Services.UI.HUD;
 using Zenject;
@@ -24,6 +25,7 @@ namespace UGT.Infrastructure.Installers
         {
             Container.Bind<UGTResourcesService>().AsSingle();
             Container.BindInterfacesAndSelfTo<UGTHudContainerService>().AsSingle();
+            Container.Bind<UGTLocalizationsService>().AsSingle();
         }
 
         private void InstallData()

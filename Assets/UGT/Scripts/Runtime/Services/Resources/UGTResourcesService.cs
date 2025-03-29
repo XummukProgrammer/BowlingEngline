@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UGT.Services.Localizations;
 using UGT.Services.Resources.Interfaces;
 using UGT.Services.Resources.Models;
 using UnityEngine;
@@ -10,13 +11,20 @@ namespace UGT.Services.Resources
     {
         private Dictionary<string, UGTIResource> _resources = new();
 
+        private readonly UGTLocalizationsService _localizationsService;
+
+        public UGTResourcesService(UGTLocalizationsService localizationsService)
+        {
+            _localizationsService = localizationsService;
+        }
+
         public async Task Load(UGTResourcesModel resourcesModel)
         {
             foreach (var resource in resourcesModel.Resources)
             {
                 if (!_resources.ContainsKey(resource.Path))
                 {
-                    var instance = resource.Instance;
+                    var instance = resource.CreateInstance(CreateDependenciesModel(resource.Dependencies));
                     await instance.Load();
 
                     _resources.Add(resource.Path, instance);
@@ -46,6 +54,19 @@ namespace UGT.Services.Resources
             {
                 _resources.Remove(path);
             }
+        }
+
+        private UGTResourceDependenciesModel CreateDependenciesModel(UGTResourceDependencyType[] dependencies)
+        {
+            var dependenciesModel = new UGTResourceDependenciesModel();
+            foreach (var dependency in dependencies)
+            {
+                if (dependency == UGTResourceDependencyType.Localizations)
+                {
+                    dependenciesModel.Localizations = _localizationsService;
+                }
+            }
+            return dependenciesModel;
         }
     }
 }

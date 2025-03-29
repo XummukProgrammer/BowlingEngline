@@ -42,7 +42,7 @@ namespace UGT.Services.Localizations
                 }
             }
 
-            LocalizeDataUpdated.Invoke();
+            LocalizeDataUpdated?.Invoke();
         }
 
         public string GetLocalize(string key, string @default = null)

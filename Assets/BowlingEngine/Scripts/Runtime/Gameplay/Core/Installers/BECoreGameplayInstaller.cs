@@ -1,4 +1,7 @@
+using BowlingEngine.Gameplay.Core.Services.Input;
+using BowlingEngine.Gameplay.Core.Services.Input.Interfaces;
 using UGT.Gameplay.Core.Installers;
+using YG;
 using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Installers
@@ -8,6 +11,11 @@ namespace BowlingEngine.Gameplay.Core.Installers
         public override void InstallBindings()
         {
             Container.InstallCore();
+
+            if (YG2.envir.device == YG2.Device.Desktop)
+            {
+                Container.BindInterfacesAndSelfTo<BEDesktopInputService>().AsSingle();
+            }
         }
     }
 }

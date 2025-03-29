@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eede476e4b72c04396d0ff47cd36e1b, type: 3}
-  m_Name: Scene Asset
+  m_Script: {fileID: 11500000, guid: 5282f2ab5c4c843488185db8fc652c27, type: 3}
+  m_Name: Changer HUD
   m_EditorClassIdentifier: 
-  _path: Assets/UGT/Scenes/CoreUIScene.unity
+  _model:
+    _prefab: {fileID: 8552096193846520169, guid: ecbc62642ceaf3344aebc779b383f29d, type: 3}
+    _location: 0
+    _gameplayType: 2

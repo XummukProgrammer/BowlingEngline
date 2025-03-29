@@ -6,5 +6,7 @@ namespace UGT.Basic.Data
     {
         public UGTGameplayType GameplayType { get; set; } = UGTGameplayType.Undefined;
         public UGTGameplayType NewGameplayType { get; set; } = UGTGameplayType.Undefined;
+
+        public bool ReadyToChangeGameplay { get; set; } = false;
     }
 }

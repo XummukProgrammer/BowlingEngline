@@ -20,6 +20,7 @@ namespace UGT.Common.Gameplay.Services.StatesMachine
                 {
                     Factory.Create<UGTGameplayBoostrapState>(),
                     Factory.Create<UGTGameplayLoadState>(),
+                    Factory.Create<UGTGameplayInProgressState>(),
                     Factory.Create<UGTGameplayUnloadState>()
                 };
             }

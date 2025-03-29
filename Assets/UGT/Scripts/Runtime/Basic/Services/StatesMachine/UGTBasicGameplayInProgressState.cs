@@ -34,23 +34,9 @@ namespace UGT.Basic.Services.StatesMachine
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (_basicData.ReadyToChangeGameplay && _basicData.NewGameplayType != UGTGameplayType.Undefined)
             {
-                InverseCurrentGameplay();
-
                 _statesMachineService.EnterState<UGTBasicGameplayUnloadState>();
-            }
-        }
-
-        private void InverseCurrentGameplay()
-        {
-            if (_basicData.GameplayType == UGTGameplayType.Meta)
-            {
-                _basicData.NewGameplayType = UGTGameplayType.Core;
-            }
-            else if (_basicData.GameplayType == UGTGameplayType.Core)
-            {
-                _basicData.NewGameplayType = UGTGameplayType.Meta;
             }
         }
     }

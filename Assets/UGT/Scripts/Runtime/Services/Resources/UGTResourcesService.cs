@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UGT.Services.Resources.Interfaces;
 using UGT.Services.Resources.Models;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,16 +16,17 @@ namespace UGT.Services.Resources
         {
             foreach (var resource in resourcesModel.Resources)
             {
-                if (AssetDatabase.TryGetGUIDAndLocalFileIdentifier(resource, out var guid, out _))
+                var hashCode = resource.GetHashCode().ToString();
+                if (!string.IsNullOrEmpty(hashCode))
                 {
-                    if (!_resources.ContainsKey(guid))
+                    if (!_resources.ContainsKey(hashCode))
                     {
                         var instance = resource.Instance;
                         await instance.Load();
 
-                        _resources.Add(guid, instance);
+                        _resources.Add(hashCode, instance);
 
-                        Debug.Log($"Added a new resource (GUID: {guid}, Type: {instance.GetType().Name}, Path: {resource.Path}).");
+                        Debug.Log($"Added a new resource (HashCode: {hashCode}, Type: {instance.GetType().Name}, Path: {resource.Path}).");
                     }
                 }
             }
@@ -36,15 +38,16 @@ namespace UGT.Services.Resources
 
             foreach (var resource in resourcesModel.Resources)
             {
-                if (AssetDatabase.TryGetGUIDAndLocalFileIdentifier(resource, out var guid, out _))
+                var hashCode = resource.GetHashCode().ToString();
+                if (!string.IsNullOrEmpty(hashCode))
                 {
-                    if (_resources.TryGetValue(guid, out var instance))
+                    if (_resources.TryGetValue(hashCode, out var instance))
                     {
-                        resourcesToRemove.Add(guid);
+                        resourcesToRemove.Add(hashCode);
 
                         await instance.Unload();
 
-                        Debug.Log($"Resource deleted (GUID: {guid}).");
+                        Debug.Log($"Resource deleted (HashCode: {hashCode}).");
                     }
                 }
             }

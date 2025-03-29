@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UGT.Services.Resources.Interfaces;
 using UGT.Services.Resources.Models;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace UGT.Services.Resources
@@ -16,18 +14,14 @@ namespace UGT.Services.Resources
         {
             foreach (var resource in resourcesModel.Resources)
             {
-                var hashCode = resource.GetHashCode().ToString();
-                if (!string.IsNullOrEmpty(hashCode))
+                if (!_resources.ContainsKey(resource.Path))
                 {
-                    if (!_resources.ContainsKey(hashCode))
-                    {
-                        var instance = resource.Instance;
-                        await instance.Load();
+                    var instance = resource.Instance;
+                    await instance.Load();
 
-                        _resources.Add(hashCode, instance);
+                    _resources.Add(resource.Path, instance);
 
-                        Debug.Log($"Added a new resource (HashCode: {hashCode}, Type: {instance.GetType().Name}, Path: {resource.Path}).");
-                    }
+                    Debug.Log($"Added a new resource (Type: {instance.GetType().Name}, Path: {resource.Path}).");
                 }
             }
         }
@@ -38,23 +32,19 @@ namespace UGT.Services.Resources
 
             foreach (var resource in resourcesModel.Resources)
             {
-                var hashCode = resource.GetHashCode().ToString();
-                if (!string.IsNullOrEmpty(hashCode))
+                if (_resources.TryGetValue(resource.Path, out var instance))
                 {
-                    if (_resources.TryGetValue(hashCode, out var instance))
-                    {
-                        resourcesToRemove.Add(hashCode);
+                    resourcesToRemove.Add(resource.Path);
 
-                        await instance.Unload();
+                    await instance.Unload();
 
-                        Debug.Log($"Resource deleted (HashCode: {hashCode}).");
-                    }
+                    Debug.Log($"Resource deleted (Path: {resource.Path}).");
                 }
             }
 
-            foreach (var guid in resourcesToRemove)
+            foreach (var path in resourcesToRemove)
             {
-                _resources.Remove(guid);
+                _resources.Remove(path);
             }
         }
     }

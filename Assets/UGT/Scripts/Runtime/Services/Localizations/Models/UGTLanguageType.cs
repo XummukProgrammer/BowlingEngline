@@ -22,16 +22,17 @@ namespace UGT.Services.Localizations.Models
             return "ru";
         }
 
-        public static void FromServerString(this UGTLanguageType type, string serverString)
+        public static UGTLanguageType FromServerString(string serverString)
         {
             if (serverString == "ru")
             {
-                type = UGTLanguageType.Russian;
+                return UGTLanguageType.Russian;
             }
             else if (serverString == "en")
             {
-                type = UGTLanguageType.English;
+                return UGTLanguageType.English;
             }
+            return UGTLanguageType.Russian;
         }
     }
 }

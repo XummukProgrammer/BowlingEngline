@@ -28,11 +28,15 @@ namespace UGT.Common.States
         public void Enter()
         {
             Debug.Log("UGTGameplayChangerableState.Enter");
+
+            OnEnter();
         }
 
         public void Exit()
         {
             Debug.Log("UGTGameplayChangerableState.Exit");
+
+            OnExit();
         }
 
         public void Tick()
@@ -42,5 +46,8 @@ namespace UGT.Common.States
                 _statesMachineService.EnterState<TNextState>();
             }
         }
+
+        protected virtual void OnEnter() { }
+        protected virtual void OnExit() { }
     }
 }

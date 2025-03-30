@@ -6,14 +6,23 @@ namespace BowlingEngine.Gameplay.Core.Pin
 {
     public class BEPinFacade
         : MonoBehaviour
-        , IPoolable<IMemoryPool>
+        , IPoolable<Vector3, IMemoryPool>
         , IDisposable
     {
+        private BEPinView _view;
         private IMemoryPool _pool;
 
-        public void OnSpawned(IMemoryPool pool)
+        [Inject]
+        public void Construct(BEPinView view)
+        {
+            _view = view;
+        }
+
+        public void OnSpawned(Vector3 position, IMemoryPool pool)
         {
             _pool = pool;
+
+            _view.Position = position;
         }
 
         public void OnDespawned()
@@ -26,11 +35,11 @@ namespace BowlingEngine.Gameplay.Core.Pin
             _pool.Despawn(this);
         }
 
-        public class Factory : PlaceholderFactory<BEPinFacade>
+        public class Factory : PlaceholderFactory<Vector3, BEPinFacade>
         {
         }
 
-        public class Pool : MonoPoolableMemoryPool<IMemoryPool, BEPinFacade>
+        public class Pool : MonoPoolableMemoryPool<Vector3, IMemoryPool, BEPinFacade>
         {
         }
     }

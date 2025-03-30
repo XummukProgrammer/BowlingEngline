@@ -11,6 +11,12 @@ namespace BowlingEngine.Gameplay.Core.Pin
             set => _rigidBody.mass = value;
         }
 
+        public Vector3 Position
+        {
+            get => transform.position;
+            set => transform.position = value;
+        }
+
         private Rigidbody _rigidBody;
         private BEPinBounceHandler _bounceHandler;
 

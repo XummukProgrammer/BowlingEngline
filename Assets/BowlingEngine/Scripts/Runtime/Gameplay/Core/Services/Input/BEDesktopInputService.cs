@@ -9,9 +9,13 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
     {
         public float HorizontalDiff { get; private set; }
 
+        public bool Drop { get; private set; }
+
         public void Tick()
         {
             HorizontalDiff = UnityEngine.Input.GetAxisRaw("Horizontal");
+
+            Drop = UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Return);
         }
     }
 }

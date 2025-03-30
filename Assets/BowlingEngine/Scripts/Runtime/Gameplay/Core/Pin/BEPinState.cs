@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace BowlingEngine.Gameplay.Core.Pin
 {
     public enum BEPinStateType
@@ -8,7 +6,7 @@ namespace BowlingEngine.Gameplay.Core.Pin
         Bounce
     }
 
-    public class BEPinState : MonoBehaviour
+    public class BEPinState
     {
         public BEPinStateType StateType {  get; set; }
     }

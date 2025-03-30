@@ -1,15 +1,19 @@
-using UnityEngine;
+using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Pin
 {
-    public class BEPinPhysicsInitializer : MonoBehaviour
+    public class BEPinPhysicsInitializer : IInitializable
     {
-        private Rigidbody _rigidBody;
+        private BEPinView _view;
 
-        private void Awake()
+        public BEPinPhysicsInitializer(BEPinView view)
         {
-            _rigidBody = GetComponent<Rigidbody>();
-            _rigidBody.mass = 0.4f;
+            _view = view;
+        }
+
+        public void Initialize()
+        {
+            _view.Mass = 0.4f;
         }
     }
 }

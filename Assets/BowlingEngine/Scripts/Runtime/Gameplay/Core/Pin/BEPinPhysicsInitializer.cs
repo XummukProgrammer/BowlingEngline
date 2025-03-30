@@ -9,6 +9,7 @@ namespace BowlingEngine.Gameplay.Core.Pin
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
+            _rigidBody.mass = 0.4f;
         }
     }
 }

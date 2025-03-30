@@ -7,6 +7,7 @@ namespace UGT.Gameplay.Meta.Installers
         public override void InstallBindings()
         {
             Container.InstallMeta();
+            Container.InstallMetaStatesMachine();
         }
     }
 }

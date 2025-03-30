@@ -14,21 +14,7 @@ namespace UGT.Gameplay.Meta.Installers
             InstallServices(diContainer);
         }
 
-        private static void InstallFactories(DiContainer diContainer)
-        {
-            diContainer.Bind<UGTStateFactory>().AsSingle();
-        }
-
-        private static void InstallServices(DiContainer diContainer)
-        {
-            InstallStatesMachine(diContainer);
-
-            diContainer.Bind<UGTResourcesLoaderService>().AsSingle();
-
-            diContainer.BindInterfacesAndSelfTo<GameplayChangerHudService>().AsSingle().NonLazy();
-        }
-
-        private static void InstallStatesMachine(DiContainer diContainer)
+        public static void InstallMetaStatesMachine(this DiContainer diContainer)
         {
             diContainer.Bind<UGTGameplayBoostrapState>().AsSingle();
             diContainer.Bind<UGTGameplayLoadState>().AsSingle();
@@ -36,6 +22,18 @@ namespace UGT.Gameplay.Meta.Installers
             diContainer.Bind<UGTGameplayUnloadState>().AsSingle();
 
             diContainer.BindInterfacesAndSelfTo<UGTGameplayStatesMachineService>().AsSingle();
+        }
+
+        private static void InstallFactories(DiContainer diContainer)
+        {
+            diContainer.Bind<UGTStateFactory>().AsSingle();
+        }
+
+        private static void InstallServices(DiContainer diContainer)
+        {
+            diContainer.Bind<UGTResourcesLoaderService>().AsSingle();
+
+            diContainer.BindInterfacesAndSelfTo<GameplayChangerHudService>().AsSingle().NonLazy();
         }
     }
 }

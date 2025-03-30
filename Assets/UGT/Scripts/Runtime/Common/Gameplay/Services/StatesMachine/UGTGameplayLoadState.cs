@@ -1,19 +1,23 @@
 using System.Threading.Tasks;
 using UGT.Common.States;
 using UGT.Services.Resources;
+using UGT.Services.StatesMachine;
+using UGT.Services.StatesMachine.Interfaces;
 using UGT.Services.UI.HUD;
 
 namespace UGT.Common.Gameplay.Services.StatesMachine
 {
-    public class UGTGameplayLoadState : UGTLoadState
+    public class UGTBaseGameplayLoadState<TMachine, TNextState> : UGTLoadState
+        where TMachine : UGTStatesMachineService
+        where TNextState : UGTIExitableState
     {
         private readonly UGTHudContainerService _hudContainerService;
-        private readonly UGTGameplayStatesMachineService _statesMachineService;
+        private readonly TMachine _statesMachineService;
 
-        public UGTGameplayLoadState(
+        public UGTBaseGameplayLoadState(
             UGTResourcesLoaderService resourcesLoaderService,
             UGTHudContainerService hudContainerService,
-            UGTGameplayStatesMachineService statesMachineService) 
+            TMachine statesMachineService) 
             : base(resourcesLoaderService)
         {
             _hudContainerService = hudContainerService;
@@ -29,7 +33,20 @@ namespace UGT.Common.Gameplay.Services.StatesMachine
         {
             await _hudContainerService.CreateAll();
 
-            _statesMachineService.EnterState<UGTGameplayInProgressState>();
+            _statesMachineService.EnterState<TNextState>();
+        }
+    }
+
+    public class UGTGameplayLoadState : UGTBaseGameplayLoadState<UGTGameplayStatesMachineService, UGTGameplayInProgressState>
+    {
+        public UGTGameplayLoadState(
+            UGTResourcesLoaderService resourcesLoaderService, 
+            UGTHudContainerService hudContainerService, 
+            UGTGameplayStatesMachineService statesMachineService) 
+            : base(resourcesLoaderService, 
+                  hudContainerService, 
+                  statesMachineService)
+        {
         }
     }
 }

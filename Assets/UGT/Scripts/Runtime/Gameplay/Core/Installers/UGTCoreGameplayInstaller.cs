@@ -7,6 +7,7 @@ namespace UGT.Gameplay.Core.Installers
         public override void InstallBindings()
         {
             Container.InstallCore();
+            Container.InstallCoreStatesMachine();
         }
     }
 }

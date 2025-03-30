@@ -1,15 +1,18 @@
+using UGT.Services.StatesMachine;
 using UGT.Services.StatesMachine.Interfaces;
 using UnityEngine;
 
 namespace UGT.Common.Gameplay.Services.StatesMachine
 {
-    public class UGTGameplayBoostrapState : UGTIExitableState, UGTIEnterableState
+    public class UGTBaseGameplayBoostrapState<TMachine, TNextState> : UGTIExitableState, UGTIEnterableState
+        where TMachine : UGTStatesMachineService
+        where TNextState : UGTIExitableState
     {
-        private readonly UGTGameplayStatesMachineService _statesMachineService;
+        private readonly TMachine _statesMachineService;
         private readonly UGTGameplayType _gameplayType;
 
-        public UGTGameplayBoostrapState(
-            UGTGameplayStatesMachineService statesMachineService, 
+        public UGTBaseGameplayBoostrapState(
+            TMachine statesMachineService, 
             UGTGameplayType gameplayType)
         {
             _statesMachineService = statesMachineService;
@@ -21,12 +24,22 @@ namespace UGT.Common.Gameplay.Services.StatesMachine
             Debug.Log("UGTMetaBoostrapState.Enter");
             Debug.Log($"Gameplay type - {_gameplayType}");
 
-            _statesMachineService.EnterState<UGTGameplayLoadState>();
+            _statesMachineService.EnterState<TNextState>();
         }
 
         public void Exit()
         {
             Debug.Log("UGTMetaBoostrapState.Exit");
+        }
+    }
+
+    public class UGTGameplayBoostrapState : UGTBaseGameplayBoostrapState<UGTGameplayStatesMachineService, UGTGameplayLoadState>
+    {
+        public UGTGameplayBoostrapState(
+            UGTGameplayStatesMachineService statesMachineService, 
+            UGTGameplayType gameplayType) 
+            : base(statesMachineService, gameplayType)
+        {
         }
     }
 }

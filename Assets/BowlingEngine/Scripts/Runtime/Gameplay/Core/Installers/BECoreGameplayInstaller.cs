@@ -1,5 +1,4 @@
 using BowlingEngine.Gameplay.Core.Services.Input;
-using BowlingEngine.Gameplay.Core.Services.Input.Interfaces;
 using UGT.Gameplay.Core.Installers;
 using YG;
 using Zenject;

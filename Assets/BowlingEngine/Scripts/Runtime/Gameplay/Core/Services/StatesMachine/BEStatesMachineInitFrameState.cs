@@ -1,20 +1,17 @@
-using UGT.Services.StatesMachine.Interfaces;
-using UnityEngine;
+using UGT.Basic.Data;
+using UGT.Common.States;
 
 namespace BowlingEngine.Gameplay.Core.Services.StatesMachine
 {
     public class BEStatesMachineInitFrameState
-        : UGTIExitableState
-        , UGTIEnterableState
+        : UGTGameplayChangerableState<BEStatesMachineService, BEStatesMachineUnloadState>
     {
-        public void Enter()
+        public BEStatesMachineInitFrameState(
+            UGTBasicData basicData, 
+            BEStatesMachineService statesMachineService) 
+            : base(basicData, 
+                  statesMachineService)
         {
-            Debug.Log("BEStatesMachineInitFrameState.Enter");
-        }
-
-        public void Exit()
-        {
-            Debug.Log("BEStatesMachineInitFrameState.Exit");
         }
     }
 }

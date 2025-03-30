@@ -37,6 +37,7 @@ namespace UGT.Basic.Services.StatesMachine
             if (_basicData.ReadyToChangeGameplay && _basicData.NewGameplayType != UGTGameplayType.Undefined)
             {
                 _statesMachineService.EnterState<UGTBasicGameplayUnloadState>();
+                _basicData.ReadyToChangeGameplay = false;
             }
         }
     }

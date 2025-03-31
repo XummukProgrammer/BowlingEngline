@@ -1,20 +1,22 @@
 using System.Linq;
 using UnityEngine;
 using UnityGameTemplate.Starter.Models;
-using Zenject;
+using UnityGameTemplate.States.Interfaces;
 
-namespace UnityGameTemplate.Starter.Services
+namespace UnityGameTemplate.Starter.States
 {
-    public class UGTStarterService : IInitializable
+    public class UGTStarterStatesBoostrap
+        : UGTIExitableState
+        , UGTIEnterableState
     {
         private readonly UGTProjectModel _projectModel;
 
-        public UGTStarterService(UGTProjectModel projectModel)
+        public UGTStarterStatesBoostrap(UGTProjectModel projectModel)
         {
             _projectModel = projectModel;
         }
 
-        public void Initialize()
+        public void Enter()
         {
             Debug.Log("A project running Unity Game Template has been launched.");
             Debug.Log("The creator of the system is Xummuk97 (Fun2Games).");
@@ -23,11 +25,15 @@ namespace UnityGameTemplate.Starter.Services
             Debug.Log($"Description - {_projectModel.Description}.");
             Debug.Log($"Version - {_projectModel.FullVersion}.");
 
-            string authors = "Authors: " + _projectModel.Authors.ToList().Aggregate((a1, a2) =>
+            string authors = "Authors: " + _projectModel.Authors.Aggregate((a1, a2) =>
             {
                 return a1 + (!string.IsNullOrEmpty(a1) ? ", " : "") + a2;
             }) + ".";
             Debug.Log(authors);
+        }
+
+        public void Exit()
+        {
         }
     }
 }

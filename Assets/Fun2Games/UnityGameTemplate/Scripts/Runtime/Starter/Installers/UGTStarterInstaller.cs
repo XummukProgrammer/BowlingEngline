@@ -1,4 +1,6 @@
 using UnityGameTemplate.Starter.Services;
+using UnityGameTemplate.Starter.States;
+using UnityGameTemplate.States.Factories;
 using Zenject;
 
 namespace UnityGameTemplate.Starter.Installers
@@ -7,7 +9,20 @@ namespace UnityGameTemplate.Starter.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<UGTStarterService>().AsSingle().NonLazy();
+            InstallFactories();
+            InstallStates();
+        }
+
+        private void InstallFactories()
+        {
+            Container.Bind<UGTStateFactory>().AsSingle();
+        }
+
+        private void InstallStates()
+        {
+            Container.Bind<UGTStarterStatesBoostrap>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<UGTStarterStatesService>().AsSingle().NonLazy();
         }
     }
 }

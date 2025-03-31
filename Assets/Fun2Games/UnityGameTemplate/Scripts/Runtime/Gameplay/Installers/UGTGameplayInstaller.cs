@@ -11,6 +11,7 @@ namespace UnityGameTemplate.Gameplay.Installers
         {
             InstallFactories();
             InstallStates();
+            InstallSignalBus();
 
             Container.Bind<UGTGameplayResourcesLoaderService>().AsSingle();
         }
@@ -29,6 +30,13 @@ namespace UnityGameTemplate.Gameplay.Installers
             Container.Bind<UGTGameplayStatesDisable>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<UGTGameplayStatesService>().AsSingle();
+        }
+
+        private void InstallSignalBus()
+        {
+            SignalBusInstaller.Install(Container);
+
+            Container.DeclareSignal<UGTGameplayDisableSignal>();
         }
     }
 }

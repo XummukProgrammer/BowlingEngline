@@ -40,6 +40,7 @@ namespace UnityGameTemplate.Starter.States
         private async Task LoadScene()
         {
             _gameplayData.ReadyToBoostrap = false;
+            _gameplayData.Disable = false;
 
             var sceneResource = _gameplaySceneModel.GetSceneResource(_gameplayData.CurrentType);
             if (sceneResource != null)

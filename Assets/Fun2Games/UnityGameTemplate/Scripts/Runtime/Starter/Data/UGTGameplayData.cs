@@ -7,5 +7,6 @@ namespace UnityGameTemplate.Starter.Installers
         public UGTGameplayType CurrentType { get; set; }
 
         public bool ReadyToBoostrap { get; set; }
+        public bool Disable { get; set; }
     }
 }

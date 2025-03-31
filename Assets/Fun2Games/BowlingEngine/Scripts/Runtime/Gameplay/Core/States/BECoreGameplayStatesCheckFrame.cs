@@ -6,7 +6,7 @@ using UnityGameTemplate.States.Interfaces;
 
 namespace BowlingEngine.Gameplay.Core.States
 {
-    public class BECoreGameplayStatesStartFrame
+    public class BECoreGameplayStatesCheckFrame
         : UGTIExitableState
         , UGTIEnterableState
     {
@@ -14,7 +14,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BECoreGameplayFrameData _frameData;
         private readonly BECoreGameplayModel _gameplayModel;
 
-        public BECoreGameplayStatesStartFrame(
+        public BECoreGameplayStatesCheckFrame(
             BECoreGameplayStatesService statesService,
             BECoreGameplayFrameData frameData,
             BECoreGameplayModel gameplayModel)
@@ -26,12 +26,17 @@ namespace BowlingEngine.Gameplay.Core.States
 
         public void Enter()
         {
-            _frameData.StepsCount = _gameplayModel.MaxSteps;
+            int perfectSteps = _gameplayModel.MaxSteps - _frameData.StepsCount;
+            Debug.Log($"A step has been taken in the game frame ({perfectSteps}/{_gameplayModel.MaxSteps}).");
 
-            Debug.Log("The game frame has been launched.");
-            Debug.Log($"Steps Count - {_frameData.StepsCount}");
-
-            _statesService.EnterState<BECoreGameplayStatesStepFrame>();
+            if (_frameData.StepsCount == 0)
+            {
+                _statesService.EnterState<BECoreGameplayStatesFinishFrame>();
+            }
+            else
+            {
+                _statesService.EnterState<BECoreGameplayStatesStepFrame>();
+            }
         }
 
         public void Exit()

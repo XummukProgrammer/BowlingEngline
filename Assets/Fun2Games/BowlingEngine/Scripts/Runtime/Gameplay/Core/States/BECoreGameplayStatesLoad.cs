@@ -4,7 +4,7 @@ using UnityGameTemplate.Common.States;
 namespace BowlingEngine.Gameplay.Core.States
 {
     public class BECoreGameplayStatesLoad
-        : UGTStatesLoad<BECoreGameplayStatesService, BECoreGameplayResourcesLoaderService, BECoreGameplayStatesStartFrame>
+        : UGTStatesLoad<BECoreGameplayStatesService, BECoreGameplayResourcesLoaderService, BECoreGameplayStatesStartParty>
     {
         public BECoreGameplayStatesLoad(
             BECoreGameplayStatesService statesService, 

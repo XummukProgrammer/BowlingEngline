@@ -18,7 +18,13 @@ namespace BowlingEngine.Gameplay.Core.Services
         {
             Factory.Create<BECoreGameplayStatesBoostrap>(),
             Factory.Create<BECoreGameplayStatesLoad>(),
+            Factory.Create<BECoreGameplayStatesStartParty>(),
             Factory.Create<BECoreGameplayStatesStartFrame>(),
+            Factory.Create<BECoreGameplayStatesStepFrame>(),
+            Factory.Create<BECoreGameplayStatesCheckFrame>(),
+            Factory.Create<BECoreGameplayStatesFinishFrame>(),
+            Factory.Create<BECoreGameplayStatesCheckParty>(),
+            Factory.Create<BECoreGameplayStatesFinishParty>(),
             Factory.Create<BECoreGameplayStatesUnload>(),
             Factory.Create<UGTGameplayStatesDisable>()
         };

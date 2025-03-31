@@ -6,32 +6,37 @@ using UnityGameTemplate.States.Interfaces;
 
 namespace BowlingEngine.Gameplay.Core.States
 {
-    public class BECoreGameplayStatesStartFrame
+    public class BECoreGameplayStatesCheckParty
         : UGTIExitableState
         , UGTIEnterableState
     {
         private readonly BECoreGameplayStatesService _statesService;
-        private readonly BECoreGameplayFrameData _frameData;
+        private readonly BECoreGameplayPartyData _partyData;
         private readonly BECoreGameplayModel _gameplayModel;
 
-        public BECoreGameplayStatesStartFrame(
+        public BECoreGameplayStatesCheckParty(
             BECoreGameplayStatesService statesService,
-            BECoreGameplayFrameData frameData,
+            BECoreGameplayPartyData partyData,
             BECoreGameplayModel gameplayModel)
         {
             _statesService = statesService;
-            _frameData = frameData;
+            _partyData = partyData;
             _gameplayModel = gameplayModel;
         }
 
         public void Enter()
         {
-            _frameData.StepsCount = _gameplayModel.MaxSteps;
+            int perfectFrames = _gameplayModel.MaxFrames - _partyData.FramesCount;
+            Debug.Log($"The game frame is completed ({perfectFrames}/{_gameplayModel.MaxFrames}).");
 
-            Debug.Log("The game frame has been launched.");
-            Debug.Log($"Steps Count - {_frameData.StepsCount}");
-
-            _statesService.EnterState<BECoreGameplayStatesStepFrame>();
+            if (_partyData.FramesCount == 0)
+            {
+                _statesService.EnterState<BECoreGameplayStatesFinishParty>();
+            }
+            else
+            {
+                _statesService.EnterState<BECoreGameplayStatesStartFrame>();
+            }
         }
 
         public void Exit()

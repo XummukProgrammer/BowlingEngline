@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _resourcesModel:
     _resources:
-    - _id: TestScene
-      _path: Assets/Fun2Games/BowlingGame/Scenes/TestScene.unity
+    - _id: MetaScene
+      _path: Assets/Fun2Games/BowlingGame/Scenes/MetaScene.unity
       _type: 0

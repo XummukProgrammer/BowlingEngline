@@ -5,7 +5,7 @@ using Zenject;
 
 namespace UnityGameTemplate.Gameplay.UI
 {
-    public class GameDisableButton : MonoBehaviour
+    public class GameChangeButton : MonoBehaviour
     {
         private SignalBus _signalBus;
         private Button _button;
@@ -33,7 +33,7 @@ namespace UnityGameTemplate.Gameplay.UI
 
         private void OnButtonClicked()
         {
-            _signalBus.Fire<UGTGameplayDisableSignal>();
+            _signalBus.Fire<UGTGameplayChangeSignal>();
         }
     }
 }

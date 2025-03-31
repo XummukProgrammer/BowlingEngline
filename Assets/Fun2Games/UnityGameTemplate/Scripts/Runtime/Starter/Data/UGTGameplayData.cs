@@ -8,5 +8,6 @@ namespace UnityGameTemplate.Starter.Installers
 
         public bool ReadyToBoostrap { get; set; }
         public bool Disable { get; set; }
+        public bool Change { get; set; }
     }
 }

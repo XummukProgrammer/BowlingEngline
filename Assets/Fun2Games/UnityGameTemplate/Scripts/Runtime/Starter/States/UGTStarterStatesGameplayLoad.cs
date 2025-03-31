@@ -41,6 +41,7 @@ namespace UnityGameTemplate.Starter.States
         {
             _gameplayData.ReadyToBoostrap = false;
             _gameplayData.Disable = false;
+            _gameplayData.Change = false;
 
             var sceneResource = _gameplaySceneModel.GetSceneResource(_gameplayData.CurrentType);
             if (sceneResource != null)

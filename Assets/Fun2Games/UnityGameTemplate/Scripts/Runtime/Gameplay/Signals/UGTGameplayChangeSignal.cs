@@ -1,6 +1,6 @@
 namespace UnityGameTemplate.Gameplay.Signals
 {
-    public class UGTGameplayDisableSignal
+    public class UGTGameplayChangeSignal
     {
     }
 }

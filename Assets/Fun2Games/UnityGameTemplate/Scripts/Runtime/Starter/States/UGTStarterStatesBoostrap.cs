@@ -45,7 +45,6 @@ namespace UnityGameTemplate.Starter.States
 
             _gameplayData.CurrentType = _gameplaySceneModel.DefaultGameplayType;
             _gameplayData.ReadyToBoostrap = false;
-            _gameplayData.Disable = false;
 
             _statesService.EnterState<UGTStarterStatesLoad>();
         }

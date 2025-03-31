@@ -30,6 +30,7 @@ namespace UnityGameTemplate.Starter.Installers
             Container.Bind<UGTStarterStatesGameplayLoad>().AsSingle();
             Container.Bind<UGTStarterStatesGameplayInProgress>().AsSingle();
             Container.Bind<UGTStarterStatesGameplayUnload>().AsSingle();
+            Container.Bind<UGTStarterStatesGameplayChange>().AsSingle();
             Container.Bind<UGTStarterStatesUnload>().AsSingle();
             Container.Bind<UGTStarterStatesDisable>().AsSingle();
 

@@ -1,4 +1,5 @@
 using UnityGameTemplate.Gameplay.Services;
+using UnityGameTemplate.Gameplay.Signals;
 using UnityGameTemplate.Gameplay.States;
 using UnityGameTemplate.States.Factories;
 using Zenject;
@@ -37,6 +38,7 @@ namespace UnityGameTemplate.Gameplay.Installers
             SignalBusInstaller.Install(Container);
 
             Container.DeclareSignal<UGTGameplayDisableSignal>();
+            Container.DeclareSignal<UGTGameplayChangeSignal>();
         }
     }
 }

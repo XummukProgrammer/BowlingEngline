@@ -42,10 +42,17 @@ namespace UnityGameTemplate.Starter.States
             var sceneResource = _gameplaySceneModel.GetSceneResource(_gameplayData.CurrentType);
             if (sceneResource != null)
             {
-                await _resourcesService.Unload(sceneResource);
+                await _resourcesService.Unload(sceneResource, true);
             }
 
-            _statesService.EnterState<UGTStarterStatesUnload>();
+            if (_gameplayData.Change)
+            {
+                _statesService.EnterState<UGTStarterStatesGameplayChange>();
+            }
+            else
+            {
+                _statesService.EnterState<UGTStarterStatesUnload>();
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ namespace UnityGameTemplate.Starter.Services
             Factory.Create<UGTStarterStatesGameplayLoad>(),
             Factory.Create<UGTStarterStatesGameplayInProgress>(),
             Factory.Create<UGTStarterStatesGameplayUnload>(),
+            Factory.Create<UGTStarterStatesGameplayChange>(),
             Factory.Create<UGTStarterStatesUnload>(),
             Factory.Create<UGTStarterStatesDisable>(),
         };

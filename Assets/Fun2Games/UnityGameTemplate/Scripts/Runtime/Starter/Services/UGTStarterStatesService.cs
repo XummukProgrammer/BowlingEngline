@@ -15,7 +15,11 @@ namespace UnityGameTemplate.Starter.Services
 
         protected override IEnumerable<UGTIExitableState> States => new UGTIExitableState[]
         {
-            Factory.Create<UGTStarterStatesBoostrap>()
+            Factory.Create<UGTStarterStatesBoostrap>(),
+            Factory.Create<UGTStarterStatesLoad>(),
+            Factory.Create<UGTStarterStatesGameplayInProgress>(),
+            Factory.Create<UGTStarterStatesUnload>(),
+            Factory.Create<UGTStarterStatesDisable>(),
         };
 
         protected override UGTIExitableState DefaultState => Factory.Create<UGTStarterStatesBoostrap>();

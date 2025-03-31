@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityGameTemplate.Starter.Models;
+using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.States.Interfaces;
 
 namespace UnityGameTemplate.Starter.States
@@ -9,10 +10,14 @@ namespace UnityGameTemplate.Starter.States
         : UGTIExitableState
         , UGTIEnterableState
     {
+        private readonly UGTStarterStatesService _statesService;
         private readonly UGTProjectModel _projectModel;
 
-        public UGTStarterStatesBoostrap(UGTProjectModel projectModel)
+        public UGTStarterStatesBoostrap(
+            UGTStarterStatesService statesService, 
+            UGTProjectModel projectModel)
         {
+            _statesService = statesService;
             _projectModel = projectModel;
         }
 
@@ -30,6 +35,8 @@ namespace UnityGameTemplate.Starter.States
                 return a1 + (!string.IsNullOrEmpty(a1) ? ", " : "") + a2;
             }) + ".";
             Debug.Log(authors);
+
+            _statesService.EnterState<UGTStarterStatesLoad>();
         }
 
         public void Exit()

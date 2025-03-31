@@ -4,7 +4,7 @@ using UnityGameTemplate.Starter.Services;
 namespace UnityGameTemplate.Starter.States
 {
     public class UGTStarterStatesLoad
-        : UGTStatesLoad<UGTStarterStatesService, UGTStarterResourcesLoaderService, UGTStarterStatesGameplayInProgress>
+        : UGTStatesLoad<UGTStarterStatesService, UGTStarterResourcesLoaderService, UGTStarterStatesGameplayLoad>
     {
         public UGTStarterStatesLoad(
             UGTStarterStatesService statesService, 

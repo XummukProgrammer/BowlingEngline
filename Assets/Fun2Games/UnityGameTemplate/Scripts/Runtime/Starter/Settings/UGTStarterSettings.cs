@@ -10,9 +10,13 @@ namespace UnityGameTemplate.Starter.Settings
         [SerializeField]
         private UGTProjectModel _projectModel;
 
+        [SerializeField]
+        private UGTGameplaySceneModel _gameplaySceneModel;
+
         public override void InstallBindings()
         {
             Container.BindInstance(_projectModel);
+            Container.BindInstance(_gameplaySceneModel);
         }
     }
 }

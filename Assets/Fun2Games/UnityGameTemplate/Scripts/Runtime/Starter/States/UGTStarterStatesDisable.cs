@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 
 namespace UnityGameTemplate.Starter.States
@@ -8,6 +9,7 @@ namespace UnityGameTemplate.Starter.States
     {
         public void Enter()
         {
+            Application.Quit();
         }
 
         public void Exit()

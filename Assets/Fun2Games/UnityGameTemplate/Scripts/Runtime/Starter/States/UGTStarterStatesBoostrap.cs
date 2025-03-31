@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityGameTemplate.Starter.Installers;
 using UnityGameTemplate.Starter.Models;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.States.Interfaces;
@@ -12,13 +13,19 @@ namespace UnityGameTemplate.Starter.States
     {
         private readonly UGTStarterStatesService _statesService;
         private readonly UGTProjectModel _projectModel;
+        private readonly UGTGameplayData _gameplayData;
+        private readonly UGTGameplaySceneModel _gameplaySceneModel;
 
         public UGTStarterStatesBoostrap(
             UGTStarterStatesService statesService, 
-            UGTProjectModel projectModel)
+            UGTProjectModel projectModel,
+            UGTGameplayData gameplayData,
+            UGTGameplaySceneModel gameplaySceneModel)
         {
             _statesService = statesService;
             _projectModel = projectModel;
+            _gameplayData = gameplayData;
+            _gameplaySceneModel = gameplaySceneModel;
         }
 
         public void Enter()
@@ -35,6 +42,9 @@ namespace UnityGameTemplate.Starter.States
                 return a1 + (!string.IsNullOrEmpty(a1) ? ", " : "") + a2;
             }) + ".";
             Debug.Log(authors);
+
+            _gameplayData.CurrentType = _gameplaySceneModel.DefaultGameplayType;
+            _gameplayData.ReadyToBoostrap = false;
 
             _statesService.EnterState<UGTStarterStatesLoad>();
         }

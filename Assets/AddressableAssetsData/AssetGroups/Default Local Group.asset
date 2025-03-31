@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a238e1b80be173439499ea87d2d70d1
+    m_Address: Assets/Fun2Games/BowlingGame/Scenes/CoreScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b8ed7db6d4dc4bd49b60888e2a66ebf5, type: 2}
   m_SchemaSet:

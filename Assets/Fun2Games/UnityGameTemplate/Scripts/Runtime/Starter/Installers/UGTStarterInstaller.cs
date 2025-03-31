@@ -14,6 +14,7 @@ namespace UnityGameTemplate.Starter.Installers
             InstallFactories();
             InstallResources();
             InstallStates();
+            InstallData();
         }
 
         private void InstallFactories()
@@ -26,7 +27,9 @@ namespace UnityGameTemplate.Starter.Installers
         {
             Container.Bind<UGTStarterStatesBoostrap>().AsSingle();
             Container.Bind<UGTStarterStatesLoad>().AsSingle();
+            Container.Bind<UGTStarterStatesGameplayLoad>().AsSingle();
             Container.Bind<UGTStarterStatesGameplayInProgress>().AsSingle();
+            Container.Bind<UGTStarterStatesGameplayUnload>().AsSingle();
             Container.Bind<UGTStarterStatesUnload>().AsSingle();
             Container.Bind<UGTStarterStatesDisable>().AsSingle();
 
@@ -37,6 +40,11 @@ namespace UnityGameTemplate.Starter.Installers
         {
             Container.Bind<UGTResourcesService>().AsSingle();
             Container.Bind<UGTStarterResourcesLoaderService>().AsSingle();
+        }
+
+        private void InstallData()
+        {
+            Container.Bind<UGTGameplayData>().AsSingle();
         }
     }
 }

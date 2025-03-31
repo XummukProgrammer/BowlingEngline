@@ -21,3 +21,13 @@ MonoBehaviour:
     _authors:
     - Xummuk97
     - Test
+  _gameplaySceneModel:
+    _coreSceneResource:
+      _id: CoreGameplay
+      _path: Assets/Fun2Games/BowlingGame/Scenes/CoreScene.unity
+      _type: 0
+    _metaSceneResource:
+      _id: MetaGameplay
+      _path: Assets/Fun2Games/BowlingGame/Scenes/MetaScene.unity
+      _type: 0
+    _defaultGameplayType: 1

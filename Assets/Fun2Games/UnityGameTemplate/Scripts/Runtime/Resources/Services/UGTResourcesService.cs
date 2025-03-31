@@ -22,14 +22,19 @@ namespace UnityGameTemplate.Resources.Services
         {
             foreach (var resourceModel in resourcesModel.Resources)
             {
-                var resource = _factory.Create(resourceModel);
-                if (resource != null)
-                {
-                    await resource.Load();
-                    Debug.Log($"The {resource.ID} resource has been loaded (Path: {resource.Path}, Type: {resourceModel.Type}).");
+                await Load(resourceModel);
+            }
+        }
 
-                    _resources.Add(resource.ID, resource);
-                }
+        public async Task Load(UGTResourceModel resourceModel)
+        {
+            var resource = _factory.Create(resourceModel);
+            if (resource != null)
+            {
+                await resource.Load();
+                Debug.Log($"The {resource.ID} resource has been loaded (Path: {resource.Path}, Type: {resourceModel.Type}).");
+
+                _resources.Add(resource.ID, resource);
             }
         }
 
@@ -39,12 +44,9 @@ namespace UnityGameTemplate.Resources.Services
 
             foreach (var resourceModel in resourcesModel.Resources)
             {
-                if (_resources.TryGetValue(resourceModel.ID, out var resource))
+                if (await Unload(resourceModel))
                 {
-                    await resource.Unload();
-                    Debug.Log($"The {resource.ID} resource has been deleted (Path: {resource.Path}, Type: {resourceModel.Type}).");
-
-                    resourcesToRemove.Add(resource.ID);
+                    resourcesToRemove.Add(resourceModel.ID);
                 }
             }
 
@@ -52,6 +54,24 @@ namespace UnityGameTemplate.Resources.Services
             {
                 _resources.Remove(resourceID);
             }
+        }
+
+        public async Task<bool> Unload(UGTResourceModel resourceModel, bool removeFromDictionary = false)
+        {
+            if (_resources.TryGetValue(resourceModel.ID, out var resource))
+            {
+                await resource.Unload();
+                Debug.Log($"The {resource.ID} resource has been deleted (Path: {resource.Path}, Type: {resourceModel.Type}).");
+
+                if (removeFromDictionary)
+                {
+                    _resources.Remove(resource.ID);
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

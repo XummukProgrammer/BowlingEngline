@@ -17,7 +17,9 @@ namespace UnityGameTemplate.Starter.Services
         {
             Factory.Create<UGTStarterStatesBoostrap>(),
             Factory.Create<UGTStarterStatesLoad>(),
+            Factory.Create<UGTStarterStatesGameplayLoad>(),
             Factory.Create<UGTStarterStatesGameplayInProgress>(),
+            Factory.Create<UGTStarterStatesGameplayUnload>(),
             Factory.Create<UGTStarterStatesUnload>(),
             Factory.Create<UGTStarterStatesDisable>(),
         };

@@ -4,15 +4,20 @@ using Zenject;
 
 namespace UnityGameTemplate.Gameplay.Settings
 {
-    [CreateAssetMenu(fileName = "Gameplay Settings", menuName = "Unity Game Template/Gameplay/Settings")]
-    public class UGTGameplaySettings : ScriptableObjectInstaller<UGTGameplaySettings>
+    public class UGTBaseGameplaySettings<T> : ScriptableObjectInstaller<UGTBaseGameplaySettings<T>>
+        where T : UGTGameplayModel
     {
         [SerializeField]
-        private UGTGameplayModel _gameplayModel;
+        private T _gameplayModel;
 
         public override void InstallBindings()
         {
             Container.BindInstance(_gameplayModel);
         }
+    }
+
+    [CreateAssetMenu(fileName = "Gameplay Settings", menuName = "Unity Game Template/Gameplay/Settings")]
+    public class UGTGameplaySettings : UGTBaseGameplaySettings<UGTGameplayModel>
+    {
     }
 }

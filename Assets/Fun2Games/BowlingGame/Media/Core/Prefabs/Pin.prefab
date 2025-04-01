@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 440433812882117495}
   - component: {fileID: 2128144020489338367}
   - component: {fileID: 8628332007961389268}
+  - component: {fileID: 1818863328330222159}
   m_Layer: 0
   m_Name: Pin
   m_TagString: Untagged
@@ -78,6 +79,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36081a02cf74e8d45b273e5ce24756a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1818863328330222159
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475042476457475746}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5333950981636177938
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +135,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7632183663995530123}

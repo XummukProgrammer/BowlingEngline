@@ -5,12 +5,13 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 {
     public class BEPinView : MonoBehaviour
     {
-        public BEPinFacade Facade { get; private set; }
-
         [Inject]
-        public void Construct(BEPinFacade facade)
+        public BEPinFacade Facade { get; set; }
+
+        public Vector3 Position
         {
-            Facade = facade;
+            get => transform.position;
+            set => transform.position = value;
         }
     }
 }

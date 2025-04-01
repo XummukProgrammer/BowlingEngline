@@ -3,6 +3,8 @@ using BowlingEngine.Gameplay.Core.Objects.Aim;
 using BowlingEngine.Gameplay.Core.Objects.Aim.States;
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Ball.States;
+using BowlingEngine.Gameplay.Core.Objects.Pin;
+using BowlingEngine.Gameplay.Core.Objects.PinSpawner;
 using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
@@ -22,6 +24,8 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BEIInput _input;
         private readonly BEBallFacade _ballFacade;
         private readonly BEAimFacade _aimFacade;
+        private readonly BEPinSpawner _pinSpawner;
+        private readonly BEPinRegistry _pinRegistry;
 
         public BECoreGameplayStatesStepFrame(
             BECoreGameplayStatesService statesService, 
@@ -29,7 +33,9 @@ namespace BowlingEngine.Gameplay.Core.States
             BECoreGameplayFrameData frameData,
             BEIInput input,
             BEBallFacade ballFacade,
-            BEAimFacade aimFacade)
+            BEAimFacade aimFacade,
+            BEPinSpawner pinSpawner,
+            BEPinRegistry pinRegistry)
         {
             _statesService = statesService;
             _signalBus = signalBus;
@@ -37,6 +43,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _input = input;
             _ballFacade = ballFacade;
             _aimFacade = aimFacade;
+            _pinSpawner = pinSpawner;
+            _pinRegistry = pinRegistry;
         }
 
         public void Enter()
@@ -49,6 +57,14 @@ namespace BowlingEngine.Gameplay.Core.States
 
             _ballFacade.States.EnterState<BEBallStatesBoostrap>();
             _aimFacade.States.EnterState<BEAimStatesBoostrap>();
+
+            for (int y = 0; y < 6; y++)
+            {
+                for (int x = 0; x < 6; x++)
+                {
+                    _pinSpawner.Spawn(x, y);
+                }
+            }
         }
 
         public void Exit()
@@ -59,6 +75,11 @@ namespace BowlingEngine.Gameplay.Core.States
 
             _ballFacade.States.EnterState<BEBallStatesDisable>();
             _aimFacade.States.EnterState<BEAimStatesDisable>();
+
+            foreach (var pinFacade in _pinRegistry.Pins)
+            {
+                pinFacade.Dispose();
+            }
         }
 
         private void OnBallWorked()

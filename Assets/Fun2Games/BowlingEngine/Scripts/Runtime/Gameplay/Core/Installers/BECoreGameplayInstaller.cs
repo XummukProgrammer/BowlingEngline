@@ -6,6 +6,7 @@ using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
 using BowlingEngine.Gameplay.Core.States;
+using UnityEngine;
 using UnityGameTemplate.Gameplay.Installers;
 using UnityGameTemplate.Gameplay.States;
 using Zenject;
@@ -73,12 +74,14 @@ namespace BowlingEngine.Gameplay.Core.Installers
 
         private void InstallObjectsFactories()
         {
-            Container.BindFactory<BEPinFacade, BEPinFactory>()
-                .FromPoolableMemoryPool<BEPinFacade, BEPinPool>(poolBinder => poolBinder
+            Container.BindFactory<Vector3, BEPinFacade, BEPinFactory>()
+                .FromPoolableMemoryPool<Vector3, BEPinFacade, BEPinPool>(poolBinder => poolBinder
                     .WithInitialSize(36)
                     .FromSubContainerResolve()
                     .ByNewPrefabInstaller<BEPinInstaller>(_gameplayModel.PinPrefab)
                     .UnderTransformGroup("Pins"));
+
+            Container.Bind<BEPinRegistry>().AsSingle();
         }
     }
 }

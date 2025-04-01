@@ -33,7 +33,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
         public void Tick()
         {
-            _view.AngularVelocity = _input.Velocity;
+            _view.LinearVelocity = _input.Velocity;
         }
     }
 }

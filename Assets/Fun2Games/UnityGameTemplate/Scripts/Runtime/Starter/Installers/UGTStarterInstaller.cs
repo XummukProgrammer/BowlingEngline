@@ -1,3 +1,4 @@
+using UnityGameTemplate.Camera.Services;
 using UnityGameTemplate.Resources.Factories;
 using UnityGameTemplate.Resources.Services;
 using UnityGameTemplate.Starter.Services;
@@ -15,6 +16,8 @@ namespace UnityGameTemplate.Starter.Installers
             InstallResources();
             InstallStates();
             InstallData();
+
+            Container.BindInterfacesAndSelfTo<UGTCameraService>().AsSingle();
         }
 
         private void InstallFactories()

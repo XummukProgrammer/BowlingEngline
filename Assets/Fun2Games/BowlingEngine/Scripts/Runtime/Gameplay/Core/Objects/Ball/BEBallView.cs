@@ -7,10 +7,10 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
     {
         public BEBallFacade Facade => _facade;
 
-        public Vector3 AngularVelocity
+        public Vector3 LinearVelocity
         {
-            get => _rigidBody.angularVelocity;
-            set => _rigidBody.angularVelocity = value;
+            get => _rigidBody.linearVelocity;
+            set => _rigidBody.linearVelocity = value;
         }
 
         private BEBallFacade _facade;

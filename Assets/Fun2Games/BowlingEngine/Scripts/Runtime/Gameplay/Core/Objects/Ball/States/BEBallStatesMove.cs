@@ -1,4 +1,4 @@
-using BowlingEngine.Gameplay.Core.Signals;
+using BowlingEngine.Gameplay.Core.Services.Input;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
@@ -10,11 +10,15 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
         , UGTIEnterableState
         , ITickable
     {
-        private readonly SignalBus _signalBus;
+        private readonly BEBallView _view;
+        private readonly BEIInput _input;
 
-        public BEBallStatesMove(SignalBus signalBus)
+        public BEBallStatesMove(
+            BEBallView view,
+            BEIInput input)
         {
-            _signalBus = signalBus;
+            _view = view;
+            _input = input;
         }
 
         public void Enter()
@@ -29,10 +33,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                _signalBus.Fire<BEBallWorkedSignal>();
-            }
+            _view.AngularVelocity = _input.Velocity;
         }
     }
 }

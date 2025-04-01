@@ -1,5 +1,6 @@
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Services;
+using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
 using BowlingEngine.Gameplay.Core.States;
 using UnityGameTemplate.Gameplay.Installers;
@@ -15,6 +16,7 @@ namespace BowlingEngine.Gameplay.Core.Installers
             base.InstallBindings();
 
             InstallData();
+            InstallInput();
         }
 
         protected override void InstallStates()
@@ -50,6 +52,11 @@ namespace BowlingEngine.Gameplay.Core.Installers
         {
             Container.Bind<BECoreGameplayPartyData>().AsSingle();
             Container.Bind<BECoreGameplayFrameData>().AsSingle();
+        }
+
+        private void InstallInput()
+        {
+            Container.BindInterfacesAndSelfTo<BEDesktopInputService>().AsSingle();
         }
     }
 }

@@ -30,4 +30,4 @@ MonoBehaviour:
       _id: MetaGameplay
       _path: Assets/Fun2Games/BowlingGame/Scenes/MetaScene.unity
       _type: 0
-    _defaultGameplayType: 1
+    _defaultGameplayType: 2

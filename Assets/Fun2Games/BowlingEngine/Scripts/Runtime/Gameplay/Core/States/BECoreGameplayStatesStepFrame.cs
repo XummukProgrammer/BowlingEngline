@@ -1,4 +1,6 @@
 using BowlingEngine.Gameplay.Core.Data;
+using BowlingEngine.Gameplay.Core.Objects.Ball;
+using BowlingEngine.Gameplay.Core.Objects.Ball.States;
 using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
@@ -16,17 +18,20 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly SignalBus _signalBus;
         private readonly BECoreGameplayFrameData _frameData;
         private readonly BEIInput _input;
+        private readonly BEBallFacade _ballFacade;
 
         public BECoreGameplayStatesStepFrame(
             BECoreGameplayStatesService statesService, 
             SignalBus signalBus,
             BECoreGameplayFrameData frameData,
-            BEIInput input)
+            BEIInput input,
+            BEBallFacade ballFacade)
         {
             _statesService = statesService;
             _signalBus = signalBus;
             _frameData = frameData;
             _input = input;
+            _ballFacade = ballFacade;
         }
 
         public void Enter()
@@ -36,6 +41,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _signalBus.Subscribe<BEBallWorkedSignal>(OnBallWorked);
 
             _input.Enable = true;
+
+            _ballFacade.States.EnterState<BEBallStatesBoostrap>();
         }
 
         public void Exit()
@@ -43,6 +50,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _signalBus.Unsubscribe<BEBallWorkedSignal>(OnBallWorked);
 
             _input.Enable = false;
+
+            _ballFacade.States.EnterState<BEBallStatesDisable>();
         }
 
         private void OnBallWorked()

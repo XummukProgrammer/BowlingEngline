@@ -13,6 +13,18 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _rigidBody.linearVelocity = value;
         }
 
+        public Vector3 Position
+        {
+            get => transform.position;
+            set => transform.position = value;
+        }
+
+        public Quaternion Quaternion
+        {
+            get => transform.rotation;
+            set => transform.rotation = value;
+        }
+
         private BEBallFacade _facade;
         private Rigidbody _rigidBody;
 

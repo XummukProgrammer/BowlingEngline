@@ -15,9 +15,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
         protected override IEnumerable<UGTIExitableState> States => new UGTIExitableState[]
         {
+            Factory.Create<BEBallStatesDisable>(),
+            Factory.Create<BEBallStatesBoostrap>(),
             Factory.Create<BEBallStatesMove>()
         };
 
-        protected override UGTIExitableState DefaultState => Factory.Create<BEBallStatesMove>();
+        protected override UGTIExitableState DefaultState => Factory.Create<BEBallStatesDisable>();
     }
 }

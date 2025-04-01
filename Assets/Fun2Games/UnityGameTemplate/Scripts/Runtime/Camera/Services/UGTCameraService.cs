@@ -6,7 +6,7 @@ namespace UnityGameTemplate.Camera.Services
     public class UGTCameraService
     {
         public UGTCameraFacade CameraFacade { get; set; }
-        
+
         public Transform Target
         {
             get => CameraFacade.Target;

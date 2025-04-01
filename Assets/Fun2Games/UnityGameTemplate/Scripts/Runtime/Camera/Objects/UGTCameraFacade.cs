@@ -11,16 +11,16 @@ namespace UnityGameTemplate.Camera.Objects
         Quaternion Quaternion => Target.rotation;
         public float Speed { get; set; } = 0.1f;
 
-        private UGTCameraService _cameraService;
         private UGTCameraView _view;
+        private UGTCameraService _cameraService;
 
         [Inject]
         public void Construct(
-            UGTCameraService cameraService, 
-            UGTCameraView view)
+            UGTCameraView view, 
+            UGTCameraService cameraService)
         {
-            _cameraService = cameraService;
             _view = view;
+            _cameraService = cameraService;
         }
 
         private void Awake()

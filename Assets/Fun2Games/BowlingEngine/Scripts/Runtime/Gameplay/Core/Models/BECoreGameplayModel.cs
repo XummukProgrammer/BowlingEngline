@@ -12,7 +12,11 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private int _maxSteps = 2;
 
+        [SerializeField]
+        private GameObject _pinPrefab;
+
         public int MaxFrames => _maxFrames;
         public int MaxSteps => _maxSteps;
+        public GameObject PinPrefab => _pinPrefab;
     }
 }

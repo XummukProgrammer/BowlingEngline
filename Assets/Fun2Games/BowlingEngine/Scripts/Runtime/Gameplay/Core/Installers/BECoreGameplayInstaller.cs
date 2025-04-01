@@ -1,4 +1,7 @@
 using BowlingEngine.Gameplay.Core.Data;
+using BowlingEngine.Gameplay.Core.Installers.Objects;
+using BowlingEngine.Gameplay.Core.Models;
+using BowlingEngine.Gameplay.Core.Objects.Pin;
 using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
@@ -11,12 +14,21 @@ namespace BowlingEngine.Gameplay.Core.Installers
 {
     public class BECoreGameplayInstaller : UGTGameplayInstaller
     {
+        private BECoreGameplayModel _gameplayModel;
+
+        [Inject]
+        public void Construct(BECoreGameplayModel gameplayModel)
+        {
+            _gameplayModel = gameplayModel;
+        }
+
         public override void InstallBindings()
         {
             base.InstallBindings();
 
             InstallData();
             InstallInput();
+            InstallObjectsFactories();
         }
 
         protected override void InstallStates()
@@ -57,6 +69,16 @@ namespace BowlingEngine.Gameplay.Core.Installers
         private void InstallInput()
         {
             Container.BindInterfacesAndSelfTo<BEDesktopInputService>().AsSingle();
+        }
+
+        private void InstallObjectsFactories()
+        {
+            Container.BindFactory<BEPinFacade, BEPinFactory>()
+                .FromPoolableMemoryPool<BEPinFacade, BEPinPool>(poolBinder => poolBinder
+                    .WithInitialSize(36)
+                    .FromSubContainerResolve()
+                    .ByNewPrefabInstaller<BEPinInstaller>(_gameplayModel.PinPrefab)
+                    .UnderTransformGroup("Pins"));
         }
     }
 }

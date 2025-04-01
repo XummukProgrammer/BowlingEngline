@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayModel:
     _type: 2
+    _maxFrames: 10
+    _maxSteps: 2
+    _pinPrefab: {fileID: 3475042476457475746, guid: c6c64d43fe3fff14e83be029f1b3f293, type: 3}

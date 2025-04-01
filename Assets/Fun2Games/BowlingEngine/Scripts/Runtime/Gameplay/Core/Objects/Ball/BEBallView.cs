@@ -33,7 +33,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             {
                 _follower.spline = value;
                 _follower.follow = true;
-                _follower.followSpeed = 1;
+                _follower.followSpeed = 3;
             }
         }
 

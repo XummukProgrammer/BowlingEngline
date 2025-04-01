@@ -14,6 +14,8 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
             Container.Bind<BEPinStatesBoostrap>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEPinStates>().AsSingle();
+
+            Container.Bind<BEPinBounceHandler>().AsSingle();
         }
     }
 }

@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Objects.Ball;
 using System;
 using UnityEngine;
 using Zenject;
@@ -10,16 +11,19 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         private BEPinView _view;
         private BEPinRegistry _registry;
+        private BEPinBounceHandler _bounceHandler;
         private IMemoryPool _pool;
 
         [Inject]
         public void Construct(
             BEPinView view, 
             BEPinStates states,
-            BEPinRegistry registry)
+            BEPinRegistry registry,
+            BEPinBounceHandler bounceHandler)
         {
             _view = view;
             _registry = registry;
+            _bounceHandler = bounceHandler;
 
             States = states;
         }
@@ -43,6 +47,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public void Dispose()
         {
             _pool.Despawn(this);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.rigidbody != null && collision.rigidbody.TryGetComponent(out BEBallView _))
+            {
+                _bounceHandler.Bounce(collision.collider);
+            }
         }
     }
 }

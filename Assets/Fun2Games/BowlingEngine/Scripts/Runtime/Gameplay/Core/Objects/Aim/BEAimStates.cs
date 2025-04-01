@@ -15,10 +15,13 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim
 
         protected override IEnumerable<UGTIExitableState> States => new UGTIExitableState[]
         {
+            Factory.Create<BEAimStatesDisable>(),
             Factory.Create<BEAimStatesBoostrap>(),
-            Factory.Create<BEAimStatesIdentifyDir>()
+            Factory.Create<BEAimStatesIdentifyDir>(),
+            Factory.Create<BEAimStatesGenerate>(),
+            Factory.Create<BEAimStatesStay>()
         };
 
-        protected override UGTIExitableState DefaultState => Factory.Create<BEAimStatesBoostrap>();
+        protected override UGTIExitableState DefaultState => Factory.Create<BEAimStatesDisable>();
     }
 }

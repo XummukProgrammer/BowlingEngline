@@ -1,3 +1,4 @@
+using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
 
@@ -24,6 +25,20 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             get => transform.rotation;
             set => transform.rotation = value;
         }
+
+        public SplineComputer Follow
+        {
+            get => _follower.spline;
+            set
+            {
+                _follower.spline = value;
+                _follower.follow = true;
+                _follower.followSpeed = 1;
+            }
+        }
+
+        [SerializeField]
+        private SplineFollower _follower;
 
         private BEBallFacade _facade;
         private Rigidbody _rigidBody;

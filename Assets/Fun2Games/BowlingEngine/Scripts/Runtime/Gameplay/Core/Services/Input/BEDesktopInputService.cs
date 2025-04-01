@@ -11,6 +11,8 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
 
         public Vector3 Velocity { get; private set; }
 
+        public bool Drop { get; private set; }
+
         public void Tick()
         {
             if (!Enable)
@@ -19,6 +21,8 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
             }
 
             Velocity = new Vector3(UnityEngine.Input.GetAxisRaw("Horizontal"), 0);
+
+            Drop = UnityEngine.Input.GetKeyDown(KeyCode.Return);
         }
     }
 }

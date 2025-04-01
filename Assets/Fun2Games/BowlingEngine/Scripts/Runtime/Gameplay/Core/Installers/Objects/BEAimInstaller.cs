@@ -11,8 +11,11 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
         {
             Container.Bind<UGTStateFactory>().AsSingle();
 
+            Container.Bind<BEAimStatesDisable>().AsSingle();
             Container.Bind<BEAimStatesBoostrap>().AsSingle();
             Container.Bind<BEAimStatesIdentifyDir>().AsSingle();
+            Container.Bind<BEAimStatesGenerate>().AsSingle();
+            Container.Bind<BEAimStatesStay>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEAimStates>().AsSingle();
         }

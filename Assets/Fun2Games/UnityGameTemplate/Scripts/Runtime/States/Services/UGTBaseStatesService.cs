@@ -58,6 +58,11 @@ namespace UnityGameTemplate.States.Services
             _nextState = GetState<T>();
         }
 
+        public bool IsCurrentState<T>() where T : UGTIExitableState
+        {
+            return _currentState is T;
+        }
+
         private UGTIExitableState GetState<T>() where T : UGTIExitableState
         {
             if (_states.TryGetValue(typeof(T), out var state))

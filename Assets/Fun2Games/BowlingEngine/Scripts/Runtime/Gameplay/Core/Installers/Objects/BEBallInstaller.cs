@@ -14,6 +14,7 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
             Container.Bind<BEBallStatesDisable>().AsSingle();
             Container.Bind<BEBallStatesBoostrap>().AsSingle();
             Container.Bind<BEBallStatesMove>().AsSingle();
+            Container.Bind<BEBallStatesDrop>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEBallStates>().AsSingle();
         }

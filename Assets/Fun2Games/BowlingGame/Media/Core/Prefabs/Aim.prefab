@@ -462,3 +462,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa88f3fec964fd84b8ac1ec42ab2bcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spline: {fileID: 1136524741645386511}
+  _meshRenderer: {fileID: 7694838047340436812}

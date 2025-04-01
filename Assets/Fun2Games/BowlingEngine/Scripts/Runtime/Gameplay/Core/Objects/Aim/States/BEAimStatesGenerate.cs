@@ -2,26 +2,20 @@ using UnityGameTemplate.States.Interfaces;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
 {
-    public class BEAimStatesBoostrap
+    public class BEAimStatesGenerate
         : UGTIExitableState
         , UGTIEnterableState
     {
-        private readonly BEAimView _view;
         private readonly BEAimStates _states;
 
-        public BEAimStatesBoostrap(
-            BEAimView view, 
-            BEAimStates states)
+        public BEAimStatesGenerate(BEAimStates states)
         {
-            _view = view;
             _states = states;
         }
 
         public void Enter()
         {
-            _view.EnableRenderer = true;
-
-            _states.EnterState<BEAimStatesIdentifyDir>();
+            _states.EnterState<BEAimStatesStay>();
         }
 
         public void Exit()

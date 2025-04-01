@@ -23,16 +23,20 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
         public void Enter()
         {
-            Debug.Log("BEBallStatesMove.Enter");
         }
 
         public void Exit()
         {
-            Debug.Log("BEBallStatesMove.Exit");
         }
 
         public void Tick()
         {
+            if (_input.Drop)
+            {
+                _view.Facade.States.EnterState<BEBallStatesDrop>();
+                return;
+            }
+
             _view.LinearVelocity = _input.Velocity;
         }
     }

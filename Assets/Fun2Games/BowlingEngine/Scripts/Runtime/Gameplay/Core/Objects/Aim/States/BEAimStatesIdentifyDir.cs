@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
+using BowlingEngine.Gameplay.Core.Objects.Ball.States;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
 
@@ -9,13 +10,16 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
         , UGTIEnterableState
         , ITickable
     {
-        private BEAimView _view;
-        private BEBallView _ballView;
+        private readonly BEAimStates _states;
+        private readonly BEAimView _view;
+        private readonly BEBallView _ballView;
 
         public BEAimStatesIdentifyDir(
+            BEAimStates state,
             BEAimView view, 
             BEBallView ballView)
         {
+            _states = state;
             _view = view;
             _ballView = ballView;
         }
@@ -30,8 +34,15 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
 
         public void Tick()
         {
-            _view.Position = _ballView.Position;
-            _view.Quaternion = _ballView.Quaternion;
+            if (_ballView.Facade.States.IsCurrentState<BEBallStatesDrop>())
+            {
+                _states.EnterState<BEAimStatesGenerate>();
+            }
+            else
+            {
+                _view.Position = _ballView.Position;
+                _view.Quaternion = _ballView.Quaternion;
+            }
         }
     }
 }

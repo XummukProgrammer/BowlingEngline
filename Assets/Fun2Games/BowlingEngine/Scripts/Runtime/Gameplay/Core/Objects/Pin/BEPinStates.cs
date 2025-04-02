@@ -15,7 +15,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         protected override IEnumerable<UGTIExitableState> States => new UGTIExitableState[]
         {
-            Factory.Create<BEPinStatesBoostrap>()
+            Factory.Create<BEPinStatesBoostrap>(),
+            Factory.Create<BEPinStatesDisable>()
         };
 
         protected override UGTIExitableState DefaultState => Factory.Create<BEPinStatesBoostrap>();

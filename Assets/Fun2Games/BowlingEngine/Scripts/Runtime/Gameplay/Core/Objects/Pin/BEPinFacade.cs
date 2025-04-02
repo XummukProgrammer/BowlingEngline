@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
+using BowlingEngine.Gameplay.Core.Objects.Pin.States;
 using System;
 using UnityEngine;
 using Zenject;
@@ -12,6 +13,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         private BEPinView _view;
         private BEPinRegistry _registry;
         private BEPinBounceHandler _bounceHandler;
+        private BEBallView _ballView;
         private IMemoryPool _pool;
 
         [Inject]
@@ -19,11 +21,13 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             BEPinView view, 
             BEPinStates states,
             BEPinRegistry registry,
-            BEPinBounceHandler bounceHandler)
+            BEPinBounceHandler bounceHandler,
+            BEBallView ballView)
         {
             _view = view;
             _registry = registry;
             _bounceHandler = bounceHandler;
+            _ballView = ballView;
 
             States = states;
         }
@@ -33,7 +37,18 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _pool = pool;
 
             _view.Position = position;
-        
+            _view.Quaternion = Quaternion.identity;
+
+            _view.AngularVelocity = Vector3.zero;
+            _view.LinearVelocity = Vector3.zero;
+            _view.ResetPhysics();
+
+            _view.MaterialBounce = 0;
+
+            _view.IgnoreCollision(_ballView.Collider, false);
+
+            States.EnterState<BEPinStatesBoostrap>();
+
             _registry.AddPin(this);
         }
 

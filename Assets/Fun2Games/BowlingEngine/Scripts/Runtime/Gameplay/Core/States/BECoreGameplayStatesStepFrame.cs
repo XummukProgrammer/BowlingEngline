@@ -8,6 +8,8 @@ using BowlingEngine.Gameplay.Core.Objects.PinSpawner;
 using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
@@ -76,7 +78,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _ballFacade.States.EnterState<BEBallStatesDisable>();
             _aimFacade.States.EnterState<BEAimStatesDisable>();
 
-            foreach (var pinFacade in _pinRegistry.Pins)
+            var clonePins = new List<BEPinFacade>(_pinRegistry.Pins);
+            foreach (var pinFacade in clonePins)
             {
                 pinFacade.Dispose();
             }
@@ -85,6 +88,13 @@ namespace BowlingEngine.Gameplay.Core.States
         private void OnBallWorked()
         {
             _frameData.StepsCount--;
+
+            _ = DoChangeState();
+        }
+
+        private async Task DoChangeState()
+        {
+            await Task.Delay(1000);
 
             _statesService.EnterState<BECoreGameplayStatesCheckFrame>();
         }

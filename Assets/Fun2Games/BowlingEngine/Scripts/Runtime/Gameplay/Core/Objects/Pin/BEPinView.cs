@@ -16,6 +16,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             set => transform.position = value;
         }
 
+        public Quaternion Quaternion
+        {
+            get => transform.rotation;
+            set => transform.rotation = value;
+        }
+
         public float MaterialBounce
         {
             set
@@ -23,9 +29,27 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 foreach (var collider in _colliders)
                 {
                     collider.material.bounciness = value;
-                    collider.material.bounceCombine = PhysicsMaterialCombine.Maximum;
+                    collider.material.bounceCombine = value > 0f ? PhysicsMaterialCombine.Maximum : PhysicsMaterialCombine.Average;
                 }
             }
+        }
+
+        public Vector3 LinearVelocity
+        {
+            get => _rigidBody.linearVelocity;
+            set => _rigidBody.linearVelocity = value;
+        }
+
+        public Vector3 AngularVelocity
+        {
+            get => _rigidBody.angularVelocity;
+            set => _rigidBody.angularVelocity = value;
+        }
+
+        public bool IsKinematic
+        {
+            get => _rigidBody.isKinematic;
+            set => _rigidBody.isKinematic = value;
         }
 
         public Vector3 Forward => transform.forward;
@@ -44,17 +68,22 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _colliders = GetComponentsInChildren<Collider>().ToList();
         }
 
-        public void IgnoreCollision(Collider collider)
+        public void IgnoreCollision(Collider collider, bool ignore = true)
         {
             foreach (var col in _colliders)
             {
-                Physics.IgnoreCollision(collider, col);
+                Physics.IgnoreCollision(collider, col, ignore);
             }
         }
 
         public void AddForce(Vector3 force)
         {
             _rigidBody.AddForce(force, ForceMode.Impulse);
+        }
+
+        public void ResetPhysics()
+        {
+            _rigidBody.ResetInertiaTensor();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
             Container.Bind<UGTStateFactory>().AsSingle();
 
             Container.Bind<BEPinStatesBoostrap>().AsSingle();
+            Container.Bind<BEPinStatesDisable>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEPinStates>().AsSingle();
 

@@ -6,7 +6,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 {
     public class BEBallView : MonoBehaviour
     {
-        public BEBallFacade Facade => _facade;
+        [Inject]
+        public BEBallFacade Facade { get; set; }
 
         public Vector3 LinearVelocity
         {
@@ -26,32 +27,39 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => transform.rotation = value;
         }
 
-        public SplineComputer Follow
+        public bool IsKinematic
         {
-            get => _follower.spline;
-            set
-            {
-                _follower.spline = value;
-                _follower.follow = true;
-                _follower.followSpeed = 3;
-            }
+            get => _rigidBody.isKinematic;
+            set => _rigidBody.isKinematic = value;
         }
+
+        public Collider Collider => GetComponentInChildren<Collider>();
+
+        public SplineFollower Follower => _follower;
 
         [SerializeField]
         private SplineFollower _follower;
 
-        private BEBallFacade _facade;
         private Rigidbody _rigidBody;
-
-        [Inject]
-        public void Construct(BEBallFacade facade)
-        {
-            _facade = facade;
-        }
 
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
+        }
+
+        public void SetFollow(SplineComputer spline)
+        {
+            _follower.SetDistance(0);
+
+            _follower.spline = spline;
+            _follower.follow = true;
+            _follower.followSpeed = 3;
+        }
+
+        public void Unfollow()
+        {
+            _follower.spline = null;
+            _follower.follow = false;
         }
     }
 }

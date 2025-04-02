@@ -94,7 +94,7 @@ namespace BowlingEngine.Gameplay.Core.States
 
         private async Task DoChangeState()
         {
-            await Task.Delay(1000);
+            await Task.Delay(5000);
 
             _statesService.EnterState<BECoreGameplayStatesCheckFrame>();
         }

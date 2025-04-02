@@ -8,6 +8,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 {
     public class BEPinFacade : MonoBehaviour, IPoolable<Vector3, IMemoryPool>, IDisposable
     {
+        public BEPinView View => _view;
         public BEPinStates States { get; private set; }
 
         private BEPinView _view;
@@ -45,8 +46,6 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             _view.MaterialBounce = 0;
 
-            _view.IgnoreCollision(_ballView.Collider, false);
-
             States.EnterState<BEPinStatesBoostrap>();
 
             _registry.AddPin(this);
@@ -66,9 +65,16 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.rigidbody != null && collision.rigidbody.TryGetComponent(out BEBallView _))
+            if (collision.rigidbody != null)
             {
-                _bounceHandler.Bounce(collision.collider);
+                if (collision.rigidbody.TryGetComponent(out BEBallView _))
+                {
+                    _bounceHandler.BounceWithBall(collision.collider);
+                }
+                else if (collision.rigidbody.TryGetComponent(out BEPinView pinView))
+                {
+                    _bounceHandler.BounceWithPin(pinView, collision.collider);
+                }
             }
         }
     }

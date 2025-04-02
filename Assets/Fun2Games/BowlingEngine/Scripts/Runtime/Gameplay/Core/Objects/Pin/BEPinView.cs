@@ -22,15 +22,15 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             set => transform.rotation = value;
         }
 
+        public Collider Collider => GetComponentInChildren<Collider>();
+
         public float MaterialBounce
         {
             set
             {
-                foreach (var collider in _colliders)
-                {
-                    collider.material.bounciness = value;
-                    collider.material.bounceCombine = value > 0f ? PhysicsMaterialCombine.Maximum : PhysicsMaterialCombine.Average;
-                }
+                var collider = Collider;
+                collider.material.bounciness = value;
+                collider.material.bounceCombine = value > 0f ? PhysicsMaterialCombine.Maximum : PhysicsMaterialCombine.Average;
             }
         }
 
@@ -60,20 +60,23 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public Vector3 Down => -Up;
 
         private Rigidbody _rigidBody;
-        private List<Collider> _colliders;
+        private List<Collider> _ignoreColliders = new();
 
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
-            _colliders = GetComponentsInChildren<Collider>().ToList();
         }
 
-        public void IgnoreCollision(Collider collider, bool ignore = true)
+        public void IgnoreCollision(Collider collider)
         {
-            foreach (var col in _colliders)
+            if (_ignoreColliders.Contains(collider))
             {
-                Physics.IgnoreCollision(collider, col, ignore);
+                return;
             }
+
+            Physics.IgnoreCollision(collider, Collider, true);
+
+            _ignoreColliders.Add(collider);
         }
 
         public void AddForce(Vector3 force)
@@ -84,6 +87,13 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public void ResetPhysics()
         {
             _rigidBody.ResetInertiaTensor();
+
+            foreach (var ignoreCollider in _ignoreColliders)
+            {
+                Physics.IgnoreCollision(ignoreCollider, Collider, false);
+            }
+
+            _ignoreColliders.Clear();
         }
     }
 }

@@ -1,5 +1,6 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Ball.States;
+using BowlingEngine.Gameplay.Core.Objects.Pin;
 using UnityGameTemplate.States.Factories;
 using Zenject;
 
@@ -17,6 +18,8 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
             Container.Bind<BEBallStatesDrop>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEBallStates>().AsSingle();
+
+            Container.Bind<BEHealthData>().AsSingle();
         }
     }
 }

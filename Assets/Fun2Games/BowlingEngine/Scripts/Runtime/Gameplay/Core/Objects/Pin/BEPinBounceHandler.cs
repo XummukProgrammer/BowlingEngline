@@ -50,6 +50,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             _view.AddForce(_view.Up + _view.Forward + dir * 3);
             _view.Facade.States.EnterState<BEPinStatesBounce>();
+
+            _ballView.Facade.Health -= 1;
         }
 
         public void BounceWithPin(BEPinView pinView, Collider collider)

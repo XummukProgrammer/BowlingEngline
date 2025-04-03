@@ -16,6 +16,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin.States
         private readonly BEPinRegistry _registry;
 
         private float _dieTimer;
+        private bool _ignoreAllCollisions;
 
         public BEPinStatesBounce(
             BEPinView view,
@@ -32,6 +33,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin.States
         public void Enter()
         {
             _dieTimer = 1;
+            _ignoreAllCollisions = false;
         }
 
         public void Exit()
@@ -47,12 +49,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin.States
                 _dieHandler.Die();
             }
 
-            if (_healthData.Value <= 0)
+            if (!_ignoreAllCollisions && _healthData.Value <= 0)
             {
                 foreach (var pinFacade in _registry.Pins)
                 {
                     _view.IgnoreCollision(pinFacade.View.Collider);
                 }
+
+                _ignoreAllCollisions = true;
             }
         }
     }

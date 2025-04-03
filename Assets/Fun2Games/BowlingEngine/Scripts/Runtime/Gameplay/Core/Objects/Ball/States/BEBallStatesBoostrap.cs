@@ -20,6 +20,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
         public void Enter()
         {
+            _view.Facade.Health = 3;
+
             _view.Position = _spawn.Position;
             _view.Quaternion = _spawn.Quaternion;
 

@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Objects.Pin;
 using System;
 using UnityEngine;
 using Zenject;
@@ -11,16 +12,25 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
         public BEBallStates States => _states;
 
+        public int Health
+        {
+            get => _healthData.Value;
+            set => _healthData.Value = value;
+        }
+
         private BEBallView _view;
         private BEBallStates _states;
+        private BEHealthData _healthData;
 
         [Inject]
         public void Construct(
             BEBallView view, 
-            BEBallStates states)
+            BEBallStates states,
+            BEHealthData healthData)
         {
             _view = view;
             _states = states;
+            _healthData = healthData;
         }
 
         private void OnEnable()

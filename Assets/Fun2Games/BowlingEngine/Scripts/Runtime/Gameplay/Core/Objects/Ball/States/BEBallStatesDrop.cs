@@ -68,7 +68,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             {
                 _view.Facade.Speed = ((float)_view.Facade.Health / (float)_view.Facade.MaxHealth) * _view.Facade.MaxSpeed;
             }
-            
+
+            _view.Facade.Speed = Mathf.Clamp(_view.Facade.Speed, 0, _view.Facade.MaxSpeed);
             _view.FollowerSpeed = _view.Facade.Speed;
 
             if (Mathf.Approximately(_view.Facade.Speed, 0))

@@ -15,10 +15,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         protected override IEnumerable<UGTIExitableState> States => new UGTIExitableState[]
         {
-            Factory.Create<BEPinStatesBoostrap>(),
+            Factory.Create<BEPinStatesStay>(),
+            Factory.Create<BEPinStatesBounce>(),
             Factory.Create<BEPinStatesDisable>()
         };
 
-        protected override UGTIExitableState DefaultState => Factory.Create<BEPinStatesBoostrap>();
+        protected override UGTIExitableState DefaultState => Factory.Create<BEPinStatesDisable>();
     }
 }

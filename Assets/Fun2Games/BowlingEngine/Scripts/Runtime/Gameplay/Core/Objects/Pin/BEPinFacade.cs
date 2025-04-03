@@ -46,7 +46,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             _view.MaterialBounce = 0;
 
-            States.EnterState<BEPinStatesBoostrap>();
+            States.EnterState<BEPinStatesStay>();
 
             _registry.AddPin(this);
         }

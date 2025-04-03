@@ -11,12 +11,14 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
         {
             Container.Bind<UGTStateFactory>().AsSingle();
 
-            Container.Bind<BEPinStatesBoostrap>().AsSingle();
+            Container.Bind<BEPinStatesStay>().AsSingle();
+            Container.Bind<BEPinStatesBounce>().AsSingle();
             Container.Bind<BEPinStatesDisable>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<BEPinStates>().AsSingle();
 
             Container.Bind<BEPinBounceHandler>().AsSingle();
+            Container.Bind<BEPinDieHandler>().AsSingle();
         }
     }
 }

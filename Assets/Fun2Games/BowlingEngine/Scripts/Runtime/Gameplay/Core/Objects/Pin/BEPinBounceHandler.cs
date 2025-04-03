@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
+using BowlingEngine.Gameplay.Core.Objects.Pin.States;
 using UnityEngine;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Pin
@@ -47,7 +48,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 dir = _view.Right;
             }
 
-            _view.AddForce(_view.Up + _view.Forward + dir);
+            _view.AddForce(_view.Up + _view.Forward + dir * 3);
+            _view.Facade.States.EnterState<BEPinStatesBounce>();
         }
 
         public void BounceWithPin(BEPinView pinView, Collider collider)
@@ -74,17 +76,19 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             if (_view.Position.x < pinView.Position.x)
             {
-                viewForce = _view.Up * 0.1f + _view.Left * 0.3f;
-                pinView.AddForce(pinView.Up * 0.1f + pinView.Right * 0.3f);
+                viewForce = _view.Up * 0.1f + _view.Left * 0.6f;
+                pinView.AddForce(pinView.Up * 0.1f + pinView.Right * 0.6f);
             }
             else if (_view.Position.x > pinView.Position.x)
             {
-                viewForce = _view.Up * 0.1f + _view.Right * 0.3f;
-                pinViewForce = pinView.Up * 0.1f + pinView.Left * 0.3f;
+                viewForce = _view.Up * 0.1f + _view.Right * 0.6f;
+                pinViewForce = pinView.Up * 0.1f + pinView.Left * 0.6f;
             }
 
             _view.AddForce(viewForce);
             pinView.AddForce(pinViewForce);
+
+            _view.Facade.States.EnterState<BEPinStatesBounce>();
         }
     }
 }

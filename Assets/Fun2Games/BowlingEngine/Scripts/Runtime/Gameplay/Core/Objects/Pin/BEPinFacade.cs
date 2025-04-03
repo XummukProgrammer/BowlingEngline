@@ -7,7 +7,7 @@ using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Pin
 {
-    public class BEPinFacade : MonoBehaviour, IPoolable<Vector3, IMemoryPool>, IDisposable
+    public class BEPinFacade : MonoBehaviour, IPoolable<Vector2, Vector3, IMemoryPool>, IDisposable
     {
         public BEPinView View => _view;
         public BEPinStates States { get; private set; }
@@ -17,6 +17,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             get => _healthData.Value;
             set => _healthData.Value = value;
         }
+
+        public Vector2 Cell { get; private set; }
 
         private BEPinView _view;
         private BEPinRegistry _registry;
@@ -43,7 +45,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             States = states;
         }
 
-        public void OnSpawned(Vector3 position, IMemoryPool pool)
+        public void OnSpawned(Vector2 cell, Vector3 position, IMemoryPool pool)
         {
             _pool = pool;
 
@@ -58,6 +60,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _view.ResetPhysics();
 
             _view.MaterialBounce = 0;
+
+            Cell = cell;
 
             States.EnterState<BEPinStatesStay>();
 

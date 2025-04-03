@@ -28,6 +28,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BEAimFacade _aimFacade;
         private readonly BEPinSpawner _pinSpawner;
         private readonly BEPinRegistry _pinRegistry;
+        private readonly BECoreGameplayPartyData _partyData;
 
         public BECoreGameplayStatesStepFrame(
             BECoreGameplayStatesService statesService, 
@@ -37,7 +38,8 @@ namespace BowlingEngine.Gameplay.Core.States
             BEBallFacade ballFacade,
             BEAimFacade aimFacade,
             BEPinSpawner pinSpawner,
-            BEPinRegistry pinRegistry)
+            BEPinRegistry pinRegistry,
+            BECoreGameplayPartyData partyData)
         {
             _statesService = statesService;
             _signalBus = signalBus;
@@ -47,6 +49,7 @@ namespace BowlingEngine.Gameplay.Core.States
             _aimFacade = aimFacade;
             _pinSpawner = pinSpawner;
             _pinRegistry = pinRegistry;
+            _partyData = partyData;
         }
 
         public void Enter()
@@ -54,24 +57,23 @@ namespace BowlingEngine.Gameplay.Core.States
             Debug.Log("A step is expected...");
 
             _signalBus.Subscribe<BEBallWorkedSignal>(OnBallWorked);
+            _signalBus.Subscribe<BEPinBounceSignal>(OnPinBounce);
 
             _input.Enable = true;
 
             _ballFacade.States.EnterState<BEBallStatesBoostrap>();
             _aimFacade.States.EnterState<BEAimStatesBoostrap>();
 
-            for (int y = 0; y < 6; y++)
+            foreach (var pin in _partyData.Pins)
             {
-                for (int x = 0; x < 6; x++)
-                {
-                    _pinSpawner.Spawn(x, y);
-                }
+                _pinSpawner.Spawn(pin.Item1, pin.Item2);
             }
         }
 
         public void Exit()
         {
             _signalBus.Unsubscribe<BEBallWorkedSignal>(OnBallWorked);
+            _signalBus.Unsubscribe<BEPinBounceSignal>(OnPinBounce);
 
             _input.Enable = false;
 
@@ -90,6 +92,12 @@ namespace BowlingEngine.Gameplay.Core.States
             _frameData.StepsCount--;
 
             _ = DoChangeState();
+        }
+
+        private void OnPinBounce(BEPinBounceSignal signal)
+        {
+            Debug.Log($"The pin with coordinates ({signal.X}, {signal.Y}) has been removed.");
+            _partyData.Pins.Remove((signal.X, signal.Y));
         }
 
         private async Task DoChangeState()

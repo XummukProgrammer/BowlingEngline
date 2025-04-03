@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Data;
+using BowlingEngine.Gameplay.Core.Signals;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
@@ -14,7 +15,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin.States
         private readonly BEPinDieHandler _dieHandler;
         private readonly BEHealthData _healthData;
         private readonly BEPinRegistry _registry;
-
+        private readonly SignalBus _signalBus;
+        
         private float _dieTimer;
         private bool _ignoreAllCollisions;
 
@@ -22,18 +24,22 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin.States
             BEPinView view,
             BEPinDieHandler dieHandler,
             BEHealthData healthData,
-            BEPinRegistry registry)
+            BEPinRegistry registry,
+            SignalBus signalBus)
         {
             _view = view;
             _dieHandler = dieHandler;
             _healthData = healthData;
             _registry = registry;
+            _signalBus = signalBus;
         }
 
         public void Enter()
         {
             _dieTimer = 1;
             _ignoreAllCollisions = false;
+
+            _signalBus.Fire(new BEPinBounceSignal((int)_view.Facade.Cell.x, (int)_view.Facade.Cell.y));
         }
 
         public void Exit()

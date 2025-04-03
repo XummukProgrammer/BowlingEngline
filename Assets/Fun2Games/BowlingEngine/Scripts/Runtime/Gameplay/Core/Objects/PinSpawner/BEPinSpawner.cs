@@ -37,7 +37,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.PinSpawner
         {
             var transform = _colMatrix[y][x];
 
-            _pinFactory.Create(transform.position);
+            _pinFactory.Create(new Vector2(x, y), transform.position);
         }
     }
 }

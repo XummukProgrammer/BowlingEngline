@@ -54,6 +54,7 @@ namespace BowlingEngine.Gameplay.Core.Installers
             base.InstallSignalBus();
 
             Container.DeclareSignal<BEBallWorkedSignal>();
+            Container.DeclareSignal<BEPinBounceSignal>();
         }
 
         protected override void InstallResources()
@@ -74,8 +75,8 @@ namespace BowlingEngine.Gameplay.Core.Installers
 
         private void InstallObjectsFactories()
         {
-            Container.BindFactory<Vector3, BEPinFacade, BEPinFactory>()
-                .FromPoolableMemoryPool<Vector3, BEPinFacade, BEPinPool>(poolBinder => poolBinder
+            Container.BindFactory<Vector2, Vector3, BEPinFacade, BEPinFactory>()
+                .FromPoolableMemoryPool<Vector2, Vector3, BEPinFacade, BEPinPool>(poolBinder => poolBinder
                     .WithInitialSize(36)
                     .FromSubContainerResolve()
                     .ByNewPrefabInstaller<BEPinInstaller>(_gameplayModel.PinPrefab)

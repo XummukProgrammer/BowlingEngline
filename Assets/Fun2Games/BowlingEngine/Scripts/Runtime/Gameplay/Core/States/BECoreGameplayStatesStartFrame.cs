@@ -12,16 +12,19 @@ namespace BowlingEngine.Gameplay.Core.States
     {
         private readonly BECoreGameplayStatesService _statesService;
         private readonly BECoreGameplayFrameData _frameData;
+        private readonly BECoreGameplayPartyData _partyData;
         private readonly BECoreGameplayModel _gameplayModel;
 
         public BECoreGameplayStatesStartFrame(
             BECoreGameplayStatesService statesService,
             BECoreGameplayFrameData frameData,
-            BECoreGameplayModel gameplayModel)
+            BECoreGameplayModel gameplayModel,
+            BECoreGameplayPartyData partyData)
         {
             _statesService = statesService;
             _frameData = frameData;
             _gameplayModel = gameplayModel;
+            _partyData = partyData;
         }
 
         public void Enter()
@@ -30,6 +33,16 @@ namespace BowlingEngine.Gameplay.Core.States
 
             Debug.Log("The game frame has been launched.");
             Debug.Log($"Steps Count - {_frameData.StepsCount}");
+
+            _partyData.Pins.Clear();
+            for (int y = 0; y < 6; y++)
+            {
+                for (int x = 0; x < 6; x++)
+                {
+                    _partyData.Pins.Add((x, y));
+                    Debug.Log($"A pin with coordinates ({x}, {y}) is registered.");
+                }
+            }
 
             _statesService.EnterState<BECoreGameplayStatesStepFrame>();
         }

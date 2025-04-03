@@ -13,23 +13,20 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BECoreGameplayStatesService _statesService;
         private readonly BECoreGameplayFrameData _frameData;
         private readonly BECoreGameplayPartyData _partyData;
-        private readonly BECoreGameplayModel _gameplayModel;
 
         public BECoreGameplayStatesStartFrame(
             BECoreGameplayStatesService statesService,
             BECoreGameplayFrameData frameData,
-            BECoreGameplayModel gameplayModel,
             BECoreGameplayPartyData partyData)
         {
             _statesService = statesService;
             _frameData = frameData;
-            _gameplayModel = gameplayModel;
             _partyData = partyData;
         }
 
         public void Enter()
         {
-            _frameData.StepsCount = _gameplayModel.MaxSteps;
+            _frameData.StepsCount = _partyData.PartyModel.MaxSteps;
 
             Debug.Log("The game frame has been launched.");
             Debug.Log($"Steps Count - {_frameData.StepsCount}");

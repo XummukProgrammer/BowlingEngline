@@ -26,12 +26,12 @@ namespace BowlingEngine.Gameplay.Core.States
 
         public void Enter()
         {
-            _partyData.FramesCount = _gameplayModel.MaxFrames;
+            _partyData.PartyModel = _gameplayModel.GetParty("Default");
+            Debug.Log("The game party has been launched (ID: Default).");
+
+            _partyData.FramesCount = _partyData.PartyModel.MaxFrames;
             _partyData.Score = 0;
 
-            _partyData.PartyModel = _gameplayModel.GetParty("Default");
-
-            Debug.Log("The game party has been launched (ID: Default).");
             Debug.Log($"Frames Count - {_partyData.FramesCount}");
 
             Debug.Log("Pins:");

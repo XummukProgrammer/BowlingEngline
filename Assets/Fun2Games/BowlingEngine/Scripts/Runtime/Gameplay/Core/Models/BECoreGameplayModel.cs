@@ -9,12 +9,6 @@ namespace BowlingEngine.Gameplay.Core.Models
     public class BECoreGameplayModel : UGTGameplayModel
     {
         [SerializeField]
-        private int _maxFrames = 10;
-
-        [SerializeField]
-        private int _maxSteps = 2;
-
-        [SerializeField]
         private float _delayAfterStep = 5;
 
         [SerializeField]
@@ -29,8 +23,6 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private BEBallModel[] _balls;
 
-        public int MaxFrames => _maxFrames;
-        public int MaxSteps => _maxSteps;
         public float DelayAfterStep => _delayAfterStep;
         public GameObject PinPrefab => _pinPrefab;
         public IEnumerable<BEPinModel> Pins => _pins;

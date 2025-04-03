@@ -12,22 +12,19 @@ namespace BowlingEngine.Gameplay.Core.States
     {
         private readonly BECoreGameplayStatesService _statesService;
         private readonly BECoreGameplayPartyData _partyData;
-        private readonly BECoreGameplayModel _gameplayModel;
 
         public BECoreGameplayStatesCheckParty(
             BECoreGameplayStatesService statesService,
-            BECoreGameplayPartyData partyData,
-            BECoreGameplayModel gameplayModel)
+            BECoreGameplayPartyData partyData)
         {
             _statesService = statesService;
             _partyData = partyData;
-            _gameplayModel = gameplayModel;
         }
 
         public void Enter()
         {
-            int perfectFrames = _gameplayModel.MaxFrames - _partyData.FramesCount;
-            Debug.Log($"The game frame is completed ({perfectFrames}/{_gameplayModel.MaxFrames}).");
+            int perfectFrames = _partyData.PartyModel.MaxFrames - _partyData.FramesCount;
+            Debug.Log($"The game frame is completed ({perfectFrames}/{_partyData.PartyModel.MaxFrames}).");
 
             if (_partyData.FramesCount == 0)
             {

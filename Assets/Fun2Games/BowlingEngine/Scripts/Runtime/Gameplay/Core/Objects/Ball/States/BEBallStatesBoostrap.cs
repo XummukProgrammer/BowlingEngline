@@ -1,3 +1,5 @@
+using BowlingEngine.Gameplay.Core.Data;
+using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Objects.Spawns;
 using UnityGameTemplate.States.Interfaces;
 
@@ -9,17 +11,29 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
     {
         private BEBallView _view;
         private BEBallSpawn _spawn;
+        private BECoreGameplayModel _gameplayModel;
+        private BECoreGameplayFrameData _frameData;
 
         public BEBallStatesBoostrap(
             BEBallView view, 
-            BEBallSpawn spawn)
+            BEBallSpawn spawn,
+            BECoreGameplayModel gameplayModel,
+            BECoreGameplayFrameData frameData)
         {
             _view = view;
             _spawn = spawn;
+            _gameplayModel = gameplayModel;
+            _frameData = frameData;
         }
 
         public void Enter()
         {
+            var ballModel = _gameplayModel.GetBall(_frameData.BallID);
+            if (ballModel == null)
+            {
+                return;
+            }
+
             _view.Facade.Health = 3;
             _view.Facade.MaxHealth = 3;
 

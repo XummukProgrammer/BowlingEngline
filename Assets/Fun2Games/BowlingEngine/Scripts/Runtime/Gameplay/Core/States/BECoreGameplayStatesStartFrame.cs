@@ -44,6 +44,9 @@ namespace BowlingEngine.Gameplay.Core.States
                 }
             }
 
+            _frameData.BallID = "Default";
+            Debug.Log($"The ball has an identifier set to {_frameData.BallID}.");
+
             _statesService.EnterState<BECoreGameplayStatesStepFrame>();
         }
 

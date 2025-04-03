@@ -20,3 +20,5 @@ MonoBehaviour:
     _pins:
     - _id: Default
       _mass: 0.6
+    _balls:
+    - _id: Default

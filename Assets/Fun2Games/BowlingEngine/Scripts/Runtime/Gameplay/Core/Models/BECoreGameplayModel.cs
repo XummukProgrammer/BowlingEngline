@@ -20,14 +20,23 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private BEPinModel[] _pins;
 
+        [SerializeField]
+        private BEBallModel[] _balls;
+
         public int MaxFrames => _maxFrames;
         public int MaxSteps => _maxSteps;
         public GameObject PinPrefab => _pinPrefab;
         public IEnumerable<BEPinModel> Pins => _pins;
+        public IEnumerable<BEBallModel> Balls => _balls;
 
         public BEPinModel GetPin(string id)
         {
             return _pins.FirstOrDefault(p => p.ID == id);
+        }
+
+        public BEBallModel GetBall(string id)
+        {
+            return _balls.FirstOrDefault(p => p.ID == id);
         }
     }
 }

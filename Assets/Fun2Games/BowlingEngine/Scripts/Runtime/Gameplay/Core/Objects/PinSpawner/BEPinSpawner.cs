@@ -33,11 +33,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.PinSpawner
             }
         }
 
-        public void Spawn(int x, int y)
+        public void Spawn(string id, int x, int y)
         {
             var transform = _colMatrix[y][x];
 
-            _pinFactory.Create(new Vector2(x, y), transform.position);
+            _pinFactory.Create(id, new Vector2(x, y), transform.position);
         }
     }
 }

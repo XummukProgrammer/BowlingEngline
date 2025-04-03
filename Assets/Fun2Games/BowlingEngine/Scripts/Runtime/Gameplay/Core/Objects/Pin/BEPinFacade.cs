@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Data;
 using BowlingEngine.Gameplay.Core.Objects.Pin.States;
@@ -7,7 +8,7 @@ using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Pin
 {
-    public class BEPinFacade : MonoBehaviour, IPoolable<Vector2, Vector3, IMemoryPool>, IDisposable
+    public class BEPinFacade : MonoBehaviour, IPoolable<string, Vector2, Vector3, IMemoryPool>, IDisposable
     {
         public BEPinView View => _view;
         public BEPinStates States { get; private set; }
@@ -25,6 +26,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         private BEPinBounceHandler _bounceHandler;
         private BEBallView _ballView;
         private BEHealthData _healthData;
+        private BECoreGameplayModel _gameplayModel;
         private IMemoryPool _pool;
 
         [Inject]
@@ -34,26 +36,37 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             BEPinRegistry registry,
             BEPinBounceHandler bounceHandler,
             BEBallView ballView,
-            BEHealthData healthData)
+            BEHealthData healthData,
+            BECoreGameplayModel gameplayModel)
         {
             _view = view;
             _registry = registry;
             _bounceHandler = bounceHandler;
             _ballView = ballView;
             _healthData = healthData;
+            _gameplayModel = gameplayModel;
 
             States = states;
         }
 
-        public void OnSpawned(Vector2 cell, Vector3 position, IMemoryPool pool)
+        public void OnSpawned(string id, Vector2 cell, Vector3 position, IMemoryPool pool)
         {
             _pool = pool;
+
+            _registry.AddPin(this);
+
+            var pinModel = _gameplayModel.GetPin(id);
+            if (pinModel == null)
+            {
+                return;
+            }
 
             _healthData.Value = 4;
             _healthData.MaxValue = 4;
 
             _view.Position = position;
             _view.Quaternion = Quaternion.identity;
+            _view.Mass = pinModel.Mass;
 
             _view.AngularVelocity = Vector3.zero;
             _view.LinearVelocity = Vector3.zero;
@@ -64,8 +77,6 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             Cell = cell;
 
             States.EnterState<BEPinStatesStay>();
-
-            _registry.AddPin(this);
         }
 
         public void OnDespawned()

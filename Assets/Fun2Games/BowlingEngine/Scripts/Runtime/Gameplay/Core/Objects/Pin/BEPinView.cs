@@ -59,6 +59,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public Vector3 Up => transform.up;
         public Vector3 Down => -Up;
 
+        public float Mass
+        {
+            get => _rigidBody.mass;
+            set => _rigidBody.mass = value;
+        }
+
         private Rigidbody _rigidBody;
         private List<Collider> _ignoreColliders = new();
 

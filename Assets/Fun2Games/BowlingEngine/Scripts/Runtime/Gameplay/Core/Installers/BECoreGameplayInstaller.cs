@@ -75,8 +75,8 @@ namespace BowlingEngine.Gameplay.Core.Installers
 
         private void InstallObjectsFactories()
         {
-            Container.BindFactory<Vector2, Vector3, BEPinFacade, BEPinFactory>()
-                .FromPoolableMemoryPool<Vector2, Vector3, BEPinFacade, BEPinPool>(poolBinder => poolBinder
+            Container.BindFactory<string, Vector2, Vector3, BEPinFacade, BEPinFactory>()
+                .FromPoolableMemoryPool<string, Vector2, Vector3, BEPinFacade, BEPinPool>(poolBinder => poolBinder
                     .WithInitialSize(36)
                     .FromSubContainerResolve()
                     .ByNewPrefabInstaller<BEPinInstaller>(_gameplayModel.PinPrefab)

@@ -34,13 +34,13 @@ namespace BowlingEngine.Gameplay.Core.States
             Debug.Log("The game frame has been launched.");
             Debug.Log($"Steps Count - {_frameData.StepsCount}");
 
-            _partyData.Pins.Clear();
+            _partyData.ClearPins();
             for (int y = 0; y < 6; y++)
             {
                 for (int x = 0; x < 6; x++)
                 {
-                    _partyData.Pins.Add((x, y));
-                    Debug.Log($"A pin with coordinates ({x}, {y}) is registered.");
+                    _partyData.AddPin("Default", x, y);
+                    Debug.Log($"A pin with coordinates ({x}, {y}) is registered (ID: Default).");
                 }
             }
 

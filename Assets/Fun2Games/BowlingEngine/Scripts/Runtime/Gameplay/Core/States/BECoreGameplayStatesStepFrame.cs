@@ -72,7 +72,7 @@ namespace BowlingEngine.Gameplay.Core.States
 
             foreach (var pin in _partyData.Pins)
             {
-                _pinSpawner.Spawn(pin.Item1, pin.Item2);
+                _pinSpawner.Spawn(pin.ID, pin.X, pin.Y);
             }
         }
 
@@ -118,7 +118,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private void OnPinBounce(BEPinBounceSignal signal)
         {
             Debug.Log($"The pin with coordinates ({signal.X}, {signal.Y}) has been removed.");
-            _partyData.Pins.Remove((signal.X, signal.Y));
+            _partyData.RemovePin(signal.X, signal.Y);
         }
     }
 }

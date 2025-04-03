@@ -19,6 +19,8 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
 
             Container.Bind<BEPinBounceHandler>().AsSingle();
             Container.Bind<BEPinDieHandler>().AsSingle();
+
+            Container.Bind<BEHealthData>().AsSingle();
         }
     }
 }

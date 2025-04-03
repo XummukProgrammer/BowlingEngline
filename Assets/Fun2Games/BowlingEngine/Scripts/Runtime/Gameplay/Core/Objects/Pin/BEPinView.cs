@@ -74,6 +74,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 return;
             }
 
+            if (Collider == collider)
+            {
+                return;
+            }
+
             Physics.IgnoreCollision(collider, Collider, true);
 
             _ignoreColliders.Add(collider);

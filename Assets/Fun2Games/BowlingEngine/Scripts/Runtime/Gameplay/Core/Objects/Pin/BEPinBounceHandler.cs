@@ -88,6 +88,9 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _view.AddForce(viewForce);
             pinView.AddForce(pinViewForce);
 
+            _view.Facade.Health -= 1;
+            pinView.Facade.Health -= 1;
+
             _view.Facade.States.EnterState<BEPinStatesBounce>();
         }
     }

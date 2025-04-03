@@ -11,10 +11,17 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public BEPinView View => _view;
         public BEPinStates States { get; private set; }
 
+        public int Health
+        {
+            get => _healthData.Value;
+            set => _healthData.Value = value;
+        }
+
         private BEPinView _view;
         private BEPinRegistry _registry;
         private BEPinBounceHandler _bounceHandler;
         private BEBallView _ballView;
+        private BEHealthData _healthData;
         private IMemoryPool _pool;
 
         [Inject]
@@ -23,12 +30,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             BEPinStates states,
             BEPinRegistry registry,
             BEPinBounceHandler bounceHandler,
-            BEBallView ballView)
+            BEBallView ballView,
+            BEHealthData healthData)
         {
             _view = view;
             _registry = registry;
             _bounceHandler = bounceHandler;
             _ballView = ballView;
+            _healthData = healthData;
 
             States = states;
         }
@@ -36,6 +45,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
         public void OnSpawned(Vector3 position, IMemoryPool pool)
         {
             _pool = pool;
+
+            _healthData.Value = 4;
 
             _view.Position = position;
             _view.Quaternion = Quaternion.identity;

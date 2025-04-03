@@ -1,6 +1,7 @@
 using BowlingEngine.Gameplay.Core.Objects.Aim;
 using BowlingEngine.Gameplay.Core.Objects.Pin;
 using BowlingEngine.Gameplay.Core.Signals;
+using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
 
@@ -59,10 +60,18 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
                 _ignoreAllCollisions = true;
             }
 
-            _view.Facade.Speed = ((float)_view.Facade.Health / (float)_view.Facade.MaxHealth) * _view.Facade.MaxSpeed;
+            if (_view.Facade.Health == 0)
+            {
+                _view.Facade.Speed = 0;
+            }
+            else
+            {
+                _view.Facade.Speed = ((float)_view.Facade.Health / (float)_view.Facade.MaxHealth) * _view.Facade.MaxSpeed;
+            }
+            
             _view.FollowerSpeed = _view.Facade.Speed;
 
-            if (_view.Facade.Speed <= 0)
+            if (Mathf.Approximately(_view.Facade.Speed, 0))
             {
                 OnSplineEnded();
             }

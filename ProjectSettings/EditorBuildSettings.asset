@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BowlingEngine/Scenes/BasicScene.unity
-    guid: dda6c745235eaf04c9fae14a5144c3d4
+    path: Assets/Fun2Games/BowlingGame/Scenes/BasicScene.unity
+    guid: e981672b68e6fd14bb75aca9664b346e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c5eee93cce40c3f4298ace4f8b2fbcda, type: 2}
   m_UseUCBPForAssetBundles: 0

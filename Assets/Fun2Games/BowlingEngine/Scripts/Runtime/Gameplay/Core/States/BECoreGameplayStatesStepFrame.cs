@@ -9,7 +9,6 @@ using BowlingEngine.Gameplay.Core.Services;
 using BowlingEngine.Gameplay.Core.Services.Input;
 using BowlingEngine.Gameplay.Core.Signals;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;
@@ -19,7 +18,11 @@ namespace BowlingEngine.Gameplay.Core.States
     public class BECoreGameplayStatesStepFrame
         : UGTIExitableState
         , UGTIEnterableState
+        , ITickable
     {
+        private bool _startedChangeState;
+        private float _timeForChangeState;
+
         private readonly BECoreGameplayStatesService _statesService;
         private readonly SignalBus _signalBus;
         private readonly BECoreGameplayFrameData _frameData;
@@ -56,6 +59,9 @@ namespace BowlingEngine.Gameplay.Core.States
         {
             Debug.Log("A step is expected...");
 
+            _startedChangeState = false;
+            _timeForChangeState = 0;
+
             _signalBus.Subscribe<BEBallWorkedSignal>(OnBallWorked);
             _signalBus.Subscribe<BEPinBounceSignal>(OnPinBounce);
 
@@ -87,24 +93,32 @@ namespace BowlingEngine.Gameplay.Core.States
             }
         }
 
+        public void Tick()
+        {
+            if (_startedChangeState)
+            {
+                _timeForChangeState -= Time.deltaTime;
+
+                if (_timeForChangeState <= 0)
+                {
+                    _startedChangeState = false;
+                    _statesService.EnterState<BECoreGameplayStatesCheckFrame>();
+                }
+            }
+        }
+
         private void OnBallWorked()
         {
             _frameData.StepsCount--;
 
-            _ = DoChangeState();
+            _startedChangeState = true;
+            _timeForChangeState = 5;
         }
 
         private void OnPinBounce(BEPinBounceSignal signal)
         {
             Debug.Log($"The pin with coordinates ({signal.X}, {signal.Y}) has been removed.");
             _partyData.Pins.Remove((signal.X, signal.Y));
-        }
-
-        private async Task DoChangeState()
-        {
-            await Task.Delay(5000);
-
-            _statesService.EnterState<BECoreGameplayStatesCheckFrame>();
         }
     }
 }

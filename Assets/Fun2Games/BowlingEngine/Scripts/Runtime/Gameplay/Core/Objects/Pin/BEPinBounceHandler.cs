@@ -22,7 +22,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         public void BounceWithBall(Collider collider)
         {
-            //_view.MaterialBounce = 0.6f;
+            _view.MaterialBounce = 0.6f;
 
             _view.IgnoreCollision(collider);
 
@@ -56,7 +56,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         public void BounceWithPin(BEPinView pinView, Collider collider)
         {
-            //_view.MaterialBounce = 0.6f;
+            _view.MaterialBounce = 0.6f;
             //pinView.MaterialBounce = 0.6f;
 
             //_view.ResetPhysics();

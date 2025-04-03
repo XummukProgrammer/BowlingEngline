@@ -21,12 +21,15 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         public Vector2 Cell { get; private set; }
 
+        public float Bounce => _tunables.Bounce;
+
         private BEPinView _view;
         private BEPinRegistry _registry;
         private BEPinBounceHandler _bounceHandler;
         private BEBallView _ballView;
         private BEHealthData _healthData;
         private BECoreGameplayModel _gameplayModel;
+        private BEPinTunables _tunables;
         private IMemoryPool _pool;
 
         [Inject]
@@ -37,7 +40,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             BEPinBounceHandler bounceHandler,
             BEBallView ballView,
             BEHealthData healthData,
-            BECoreGameplayModel gameplayModel)
+            BECoreGameplayModel gameplayModel,
+            BEPinTunables tunables)
         {
             _view = view;
             _registry = registry;
@@ -45,6 +49,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _ballView = ballView;
             _healthData = healthData;
             _gameplayModel = gameplayModel;
+            _tunables = tunables;
 
             States = states;
         }
@@ -61,8 +66,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 return;
             }
 
-            _healthData.Value = 4;
-            _healthData.MaxValue = 4;
+            _healthData.Value = pinModel.Health;
+            _healthData.MaxValue = pinModel.Health;
 
             _view.Position = position;
             _view.Quaternion = Quaternion.identity;
@@ -75,6 +80,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _view.MaterialBounce = 0;
 
             Cell = cell;
+
+            _tunables.Bounce = pinModel.Bounce;
 
             States.EnterState<BEPinStatesStay>();
         }

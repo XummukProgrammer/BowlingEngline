@@ -16,9 +16,14 @@ MonoBehaviour:
     _type: 2
     _maxFrames: 10
     _maxSteps: 2
+    _delayAfterStep: 5
     _pinPrefab: {fileID: 3475042476457475746, guid: c6c64d43fe3fff14e83be029f1b3f293, type: 3}
     _pins:
     - _id: Default
-      _mass: 0.6
+      _mass: 0.4
+      _health: 4
+      _bounce: 0.6
     _balls:
     - _id: Default
+      _health: 3
+      _speed: 5

@@ -34,6 +34,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
                 return;
             }
 
+            _view.SetSkin(ballModel.SkinID);
+
             _view.Facade.Health = ballModel.Health;
             _view.Facade.MaxHealth = ballModel.Health;
 

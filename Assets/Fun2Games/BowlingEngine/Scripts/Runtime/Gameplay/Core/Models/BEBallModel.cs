@@ -23,11 +23,15 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private float _dirForceForPin = 3;
 
+        [SerializeField]
+        private string _skinID;
+
         public string ID => _id;
         public int Health => _health;
         public float Speed => _speed;
         public float UpForceForPin => _upForceForPin;
         public float ForwardForceForPin => _forwardForceForPin;
         public float DirForceForPin => _dirForceForPin;
+        public string SkinID => _skinID;
     }
 }

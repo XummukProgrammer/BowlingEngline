@@ -46,6 +46,9 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         [SerializeField]
         private SplineFollower _follower;
 
+        [SerializeField]
+        private Transform _skinsTransform;
+
         private Rigidbody _rigidBody;
 
         private void Awake()
@@ -65,6 +68,23 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         {
             _follower.spline = null;
             _follower.follow = false;
+        }
+
+        public void SetSkin(string skinID)
+        {
+            if (_skinsTransform != null)
+            {
+                for (int i = 0; i < _skinsTransform.childCount; i++)
+                {
+                    _skinsTransform.GetChild(i).gameObject.SetActive(false);
+                }
+
+                var skinTransform = _skinsTransform.Find(skinID);
+                if (skinTransform != null)
+                {
+                    skinTransform.gameObject.SetActive(true);
+                }
+            }
         }
     }
 }

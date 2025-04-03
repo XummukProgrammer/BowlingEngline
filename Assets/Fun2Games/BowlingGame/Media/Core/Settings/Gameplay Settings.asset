@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayModel:
     _type: 2
-    _maxFrames: 10
-    _maxSteps: 2
     _delayAfterStep: 5
     _pinPrefab: {fileID: 3475042476457475746, guid: c6c64d43fe3fff14e83be029f1b3f293, type: 3}
     _parties:
     - _id: Default
+      _maxFrames: 10
+      _maxSteps: 2
       _pins:
       - _id: Default
         _x: 0
@@ -73,3 +73,4 @@ MonoBehaviour:
       _upForceForPin: 1
       _forwardForceForPin: 1
       _dirForceForPin: 1.5
+      _skinID: SpikeBall

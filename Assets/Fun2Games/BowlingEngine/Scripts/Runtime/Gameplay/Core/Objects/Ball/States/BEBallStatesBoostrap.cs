@@ -45,6 +45,10 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
             _view.IsKinematic = false;
 
+            _view.Facade.UpForceForPin = ballModel.UpForceForPin;
+            _view.Facade.ForwardForceForPin = ballModel.ForwardForceForPin;
+            _view.Facade.DirForceForPin = ballModel.DirForceForPin;
+
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }
 

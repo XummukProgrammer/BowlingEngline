@@ -1,5 +1,4 @@
 using BowlingEngine.Gameplay.Core.Objects.Data;
-using BowlingEngine.Gameplay.Core.Objects.Pin;
 using System;
 using UnityEngine;
 using Zenject;
@@ -37,22 +36,43 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _speedData.MaxValue = value;
         }
 
+        public float ForwardForceForPin
+        {
+            get => _tunables.ForwardForceForPin;
+            set => _tunables.ForwardForceForPin = value;
+        }
+
+        public float UpForceForPin
+        {
+            get => _tunables.UpForceForPin;
+            set => _tunables.UpForceForPin = value;
+        }
+
+        public float DirForceForPin
+        {
+            get => _tunables.DirForceForPin;
+            set => _tunables.DirForceForPin = value;
+        }
+
         private BEBallView _view;
         private BEBallStates _states;
         private BEHealthData _healthData;
         private BESpeedData _speedData;
+        private BEBallTunables _tunables;
 
         [Inject]
         public void Construct(
             BEBallView view, 
             BEBallStates states,
             BEHealthData healthData,
-            BESpeedData speedData)
+            BESpeedData speedData,
+            BEBallTunables tunables)
         {
             _view = view;
             _states = states;
             _healthData = healthData;
             _speedData = speedData;
+            _tunables = tunables;
         }
 
         private void OnEnable()

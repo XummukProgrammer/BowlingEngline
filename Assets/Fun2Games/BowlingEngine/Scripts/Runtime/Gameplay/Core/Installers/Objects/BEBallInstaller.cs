@@ -22,6 +22,8 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
 
             Container.Bind<BEHealthData>().AsSingle();
             Container.Bind<BESpeedData>().AsSingle();
+
+            Container.Bind<BEBallTunables>().AsSingle();
         }
     }
 }

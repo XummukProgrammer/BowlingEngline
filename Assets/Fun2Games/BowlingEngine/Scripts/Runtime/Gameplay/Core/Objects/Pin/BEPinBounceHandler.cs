@@ -48,7 +48,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 dir = _view.Right;
             }
 
-            _view.AddForce(_view.Up + _view.Forward + dir * 3);
+            _view.AddForce(
+                _view.Up * _ballView.Facade.UpForceForPin 
+                + _view.Forward * _ballView.Facade.ForwardForceForPin 
+                + dir * _ballView.Facade.DirForceForPin);
+
             _view.Facade.States.EnterState<BEPinStatesBounce>();
 
             _ballView.Facade.Health -= _view.Facade.DamageForBall;

@@ -23,11 +23,19 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private int _damageForPin = 1;
 
+        [SerializeField]
+        private float _upForceForPin = 0.1f;
+
+        [SerializeField]
+        private float _dirForceForPin = 0.6f;
+
         public string ID => _id;
         public float Mass => _mass;
         public int Health => _health;
         public float Bounce => _bounce;
         public int DamageForBall => _damageForBall;
         public int DamageForPin => _damageForPin;
+        public float UpForceForPin => _upForceForPin;
+        public float DirForceForPin => _dirForceForPin;
     }
 }

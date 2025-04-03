@@ -23,17 +23,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         public float Bounce => _tunables.Bounce;
 
-        public int DamageForPin
-        {
-            get => _tunables.DamageForPin;
-            set => _tunables.DamageForPin = value;
-        }
+        public int DamageForPin => _tunables.DamageForPin;
+        public int DamageForBall => _tunables.DamageForBall;
 
-        public int DamageForBall
-        {
-            get => _tunables.DamageForBall;
-            set => _tunables.DamageForBall = value;
-        }
+        public float UpForceForPin => _tunables.UpForceForPin;
+        public float DirForceForPin => _tunables.DirForceForPin;
 
         private BEPinView _view;
         private BEPinRegistry _registry;
@@ -94,8 +88,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             Cell = cell;
 
             _tunables.Bounce = pinModel.Bounce;
+
             _tunables.DamageForBall = pinModel.DamageForBall;
             _tunables.DamageForPin = pinModel.DamageForPin;
+
+            _tunables.UpForceForPin = pinModel.UpForceForPin;
+            _tunables.DirForceForPin = pinModel.DirForceForPin;
 
             States.EnterState<BEPinStatesStay>();
         }

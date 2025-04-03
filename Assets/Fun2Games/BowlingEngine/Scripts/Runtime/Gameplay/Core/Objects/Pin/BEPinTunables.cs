@@ -6,5 +6,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
         public int DamageForBall { get; set; }
         public int DamageForPin { get; set; }
+
+        public float UpForceForPin { get; set; }
+        public float DirForceForPin { get; set; }
     }
 }

@@ -82,13 +82,19 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             if (_view.Position.x < pinView.Position.x)
             {
-                viewForce = _view.Up * 0.1f + _view.Left * 0.6f;
-                pinView.AddForce(pinView.Up * 0.1f + pinView.Right * 0.6f);
+                viewForce = _view.Up * pinView.Facade.UpForceForPin 
+                    + _view.Left * pinView.Facade.DirForceForPin;
+
+                pinViewForce = pinView.Up * _view.Facade.UpForceForPin 
+                    + pinView.Right * _view.Facade.DirForceForPin;
             }
             else if (_view.Position.x > pinView.Position.x)
             {
-                viewForce = _view.Up * 0.1f + _view.Right * 0.6f;
-                pinViewForce = pinView.Up * 0.1f + pinView.Left * 0.6f;
+                viewForce = _view.Up * pinView.Facade.UpForceForPin
+                    + _view.Right * pinView.Facade.DirForceForPin;
+
+                pinViewForce = pinView.Up * _view.Facade.UpForceForPin
+                    + pinView.Left * _view.Facade.DirForceForPin;
             }
 
             _view.AddForce(viewForce);

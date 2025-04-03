@@ -72,8 +72,6 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
         {
             _view.Unfollow();
 
-            _view.IsKinematic = false;
-
             _signalBus.Fire<BEBallWorkedSignal>();
 
             _view.Facade.States.EnterState<BEBallStatesDisable>();

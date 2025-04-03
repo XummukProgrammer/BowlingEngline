@@ -29,6 +29,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             _view.Position = _spawn.Position;
             _view.Quaternion = _spawn.Quaternion;
 
+            _view.IsKinematic = false;
+
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }
 

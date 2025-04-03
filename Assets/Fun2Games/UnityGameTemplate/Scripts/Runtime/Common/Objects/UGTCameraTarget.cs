@@ -6,9 +6,6 @@ namespace UnityGameTemplate.Common.Objects
 {
     public class UGTCameraTarget : MonoBehaviour
     {
-        [SerializeField]
-        private Transform _head;
-
         private UGTCameraService _cameraService;
 
         [Inject]
@@ -19,12 +16,12 @@ namespace UnityGameTemplate.Common.Objects
 
         private void OnEnable()
         {
-            _cameraService.Target = _head;
+            _cameraService.Target = transform;
         }
 
         private void OnDisable()
         {
-            _cameraService.Target = _head;
+            _cameraService.Target = transform;
         }
     }
 }

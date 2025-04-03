@@ -18,12 +18,58 @@ MonoBehaviour:
     _maxSteps: 2
     _delayAfterStep: 5
     _pinPrefab: {fileID: 3475042476457475746, guid: c6c64d43fe3fff14e83be029f1b3f293, type: 3}
+    _parties:
+    - _id: Default
+      _pins:
+      - _id: Default
+        _x: 0
+        _y: 0
+      - _id: Default
+        _x: 1
+        _y: 0
+      - _id: Default
+        _x: 2
+        _y: 0
+      - _id: Default
+        _x: 3
+        _y: 0
+      - _id: Default
+        _x: 4
+        _y: 0
+      - _id: Default
+        _x: 5
+        _y: 0
+      - _id: Default
+        _x: 0
+        _y: 1
+      - _id: Default
+        _x: 1
+        _y: 1
+      - _id: Default
+        _x: 2
+        _y: 1
+      - _id: Default
+        _x: 3
+        _y: 1
+      - _id: Default
+        _x: 4
+        _y: 1
+      - _id: Default
+        _x: 5
+        _y: 1
     _pins:
     - _id: Default
       _mass: 0.4
       _health: 4
-      _bounce: 0.6
+      _bounce: 0.3
+      _damageForBall: 1
+      _damageForPin: 1
+      _upForceForPin: 0.1
+      _dirForceForPin: 0.3
     _balls:
     - _id: Default
       _health: 3
       _speed: 5
+      _upForceForPin: 1
+      _forwardForceForPin: 1
+      _dirForceForPin: 1.5

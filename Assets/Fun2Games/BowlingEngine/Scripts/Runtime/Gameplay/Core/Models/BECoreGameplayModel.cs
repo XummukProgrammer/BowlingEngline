@@ -21,6 +21,9 @@ namespace BowlingEngine.Gameplay.Core.Models
         private GameObject _pinPrefab;
 
         [SerializeField]
+        private BEPartyModel[] _parties;
+
+        [SerializeField]
         private BEPinModel[] _pins;
 
         [SerializeField]
@@ -32,6 +35,7 @@ namespace BowlingEngine.Gameplay.Core.Models
         public GameObject PinPrefab => _pinPrefab;
         public IEnumerable<BEPinModel> Pins => _pins;
         public IEnumerable<BEBallModel> Balls => _balls;
+        public IEnumerable<BEPartyModel> Parties => _parties;
 
         public BEPinModel GetPin(string id)
         {
@@ -41,6 +45,11 @@ namespace BowlingEngine.Gameplay.Core.Models
         public BEBallModel GetBall(string id)
         {
             return _balls.FirstOrDefault(p => p.ID == id);
+        }
+
+        public BEPartyModel GetParty(string id)
+        {
+            return _parties.FirstOrDefault(p => p.ID == id);
         }
     }
 }

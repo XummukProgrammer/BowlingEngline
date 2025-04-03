@@ -29,8 +29,17 @@ namespace BowlingEngine.Gameplay.Core.States
             _partyData.FramesCount = _gameplayModel.MaxFrames;
             _partyData.Score = 0;
 
-            Debug.Log("The game party has been launched.");
+            _partyData.PartyModel = _gameplayModel.GetParty("Default");
+
+            Debug.Log("The game party has been launched (ID: Default).");
             Debug.Log($"Frames Count - {_partyData.FramesCount}");
+
+            Debug.Log("Pins:");
+
+            foreach (var pin in _partyData.PartyModel.Pins)
+            {
+                Debug.Log($"A pin with coordinates ({pin.X}, {pin.Y}) is registered (ID: {pin.ID}).");
+            }
 
             _statesService.EnterState<BECoreGameplayStatesStartFrame>();
         }

@@ -34,15 +34,7 @@ namespace BowlingEngine.Gameplay.Core.States
             Debug.Log("The game frame has been launched.");
             Debug.Log($"Steps Count - {_frameData.StepsCount}");
 
-            _partyData.ClearPins();
-            for (int y = 0; y < 6; y++)
-            {
-                for (int x = 0; x < 6; x++)
-                {
-                    _partyData.AddPin("Default", x, y);
-                    Debug.Log($"A pin with coordinates ({x}, {y}) is registered (ID: Default).");
-                }
-            }
+            _partyData.RemovedPins.Clear();
 
             _frameData.BallID = "Default";
             Debug.Log($"The ball has an identifier set to {_frameData.BallID}.");

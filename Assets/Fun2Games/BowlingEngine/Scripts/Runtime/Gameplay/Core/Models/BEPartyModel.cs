@@ -1,21 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BowlingEngine.Gameplay.Core.Models
 {
     [System.Serializable]
-    public class BEScenePinModel
+    public class BEPartyModel
     {
         [SerializeField]
         private string _id = "Default";
 
         [SerializeField]
-        private int _x = 0;
-
-        [SerializeField] 
-        private int _y = 0;
+        private BEScenePinModel[] _pins;
 
         public string ID => _id;
-        public int X => _x;
-        public int Y => _y;
+        public IEnumerable<BEScenePinModel> Pins => _pins;
     }
 }

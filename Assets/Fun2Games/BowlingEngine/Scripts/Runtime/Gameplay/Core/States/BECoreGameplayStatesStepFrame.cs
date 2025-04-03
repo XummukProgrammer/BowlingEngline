@@ -74,9 +74,12 @@ namespace BowlingEngine.Gameplay.Core.States
             _ballFacade.States.EnterState<BEBallStatesBoostrap>();
             _aimFacade.States.EnterState<BEAimStatesBoostrap>();
 
-            foreach (var pin in _partyData.Pins)
+            foreach (var pin in _partyData.PartyModel.Pins)
             {
-                _pinSpawner.Spawn(pin.ID, pin.X, pin.Y);
+                if (!_partyData.RemovedPins.Contains((pin.X, pin.Y)))
+                {
+                    _pinSpawner.Spawn(pin.ID, pin.X, pin.Y);
+                }
             }
         }
 
@@ -122,7 +125,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private void OnPinBounce(BEPinBounceSignal signal)
         {
             Debug.Log($"The pin with coordinates ({signal.X}, {signal.Y}) has been removed.");
-            _partyData.RemovePin(signal.X, signal.Y);
+            _partyData.RemovedPins.Add((signal.X, signal.Y));
         }
     }
 }

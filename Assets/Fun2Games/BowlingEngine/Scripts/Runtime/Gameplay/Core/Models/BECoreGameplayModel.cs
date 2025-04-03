@@ -15,6 +15,9 @@ namespace BowlingEngine.Gameplay.Core.Models
         private int _maxSteps = 2;
 
         [SerializeField]
+        private float _delayAfterStep = 5;
+
+        [SerializeField]
         private GameObject _pinPrefab;
 
         [SerializeField]
@@ -25,6 +28,7 @@ namespace BowlingEngine.Gameplay.Core.Models
 
         public int MaxFrames => _maxFrames;
         public int MaxSteps => _maxSteps;
+        public float DelayAfterStep => _delayAfterStep;
         public GameObject PinPrefab => _pinPrefab;
         public IEnumerable<BEPinModel> Pins => _pins;
         public IEnumerable<BEBallModel> Balls => _balls;

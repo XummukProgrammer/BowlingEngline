@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Data;
+using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Objects.Aim;
 using BowlingEngine.Gameplay.Core.Objects.Aim.States;
 using BowlingEngine.Gameplay.Core.Objects.Ball;
@@ -32,6 +33,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BEPinSpawner _pinSpawner;
         private readonly BEPinRegistry _pinRegistry;
         private readonly BECoreGameplayPartyData _partyData;
+        private readonly BECoreGameplayModel _gameplayModel;
 
         public BECoreGameplayStatesStepFrame(
             BECoreGameplayStatesService statesService, 
@@ -42,7 +44,8 @@ namespace BowlingEngine.Gameplay.Core.States
             BEAimFacade aimFacade,
             BEPinSpawner pinSpawner,
             BEPinRegistry pinRegistry,
-            BECoreGameplayPartyData partyData)
+            BECoreGameplayPartyData partyData,
+            BECoreGameplayModel gameplayModel)
         {
             _statesService = statesService;
             _signalBus = signalBus;
@@ -53,6 +56,7 @@ namespace BowlingEngine.Gameplay.Core.States
             _pinSpawner = pinSpawner;
             _pinRegistry = pinRegistry;
             _partyData = partyData;
+            _gameplayModel = gameplayModel;
         }
 
         public void Enter()
@@ -112,7 +116,7 @@ namespace BowlingEngine.Gameplay.Core.States
             _frameData.StepsCount--;
 
             _startedChangeState = true;
-            _timeForChangeState = 5;
+            _timeForChangeState = _gameplayModel.DelayAfterStep;
         }
 
         private void OnPinBounce(BEPinBounceSignal signal)

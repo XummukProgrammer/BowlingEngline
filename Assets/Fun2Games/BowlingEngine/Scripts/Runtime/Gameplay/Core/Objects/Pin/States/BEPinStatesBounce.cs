@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using BowlingEngine.Gameplay.Core.Objects.Data;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;
 using Zenject;

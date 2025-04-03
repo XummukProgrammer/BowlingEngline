@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Objects.Data;
 using BowlingEngine.Gameplay.Core.Objects.Pin;
 using BowlingEngine.Gameplay.Core.Objects.Pin.States;
 using UnityGameTemplate.States.Factories;

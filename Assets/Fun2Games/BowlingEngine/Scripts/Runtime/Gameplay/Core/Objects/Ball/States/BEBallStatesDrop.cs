@@ -33,6 +33,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
         public void Enter()
         {
             _view.SetFollow(_aimView.Spline);
+            _view.FollowerSpeed = _view.Facade.Speed;
 
             _view.Facade.SplineEnded += OnSplineEnded;
 
@@ -57,6 +58,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
                 _ignoreAllCollisions = true;
             }
+
+            _view.Facade.Speed = ((float)_view.Facade.Health / (float)_view.Facade.MaxHealth) * _view.Facade.MaxSpeed;
+            _view.FollowerSpeed = _view.Facade.Speed;
+
+            if (_view.Facade.Speed <= 0)
+            {
+                OnSplineEnded();
+            }
         }
 
         private void OnSplineEnded()
@@ -66,6 +75,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             _view.IsKinematic = false;
 
             _signalBus.Fire<BEBallWorkedSignal>();
+
+            _view.Facade.States.EnterState<BEBallStatesDisable>();
         }
     }
 }

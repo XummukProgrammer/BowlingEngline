@@ -37,6 +37,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
         public SplineFollower Follower => _follower;
 
+        public float FollowerSpeed
+        {
+            get => _follower.followSpeed;
+            set => _follower.followSpeed = value;
+        }
+
         [SerializeField]
         private SplineFollower _follower;
 
@@ -53,7 +59,6 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
             _follower.spline = spline;
             _follower.follow = true;
-            _follower.followSpeed = 5;
         }
 
         public void Unfollow()

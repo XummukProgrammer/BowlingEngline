@@ -21,6 +21,10 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
         public void Enter()
         {
             _view.Facade.Health = 3;
+            _view.Facade.MaxHealth = 3;
+
+            _view.Facade.Speed = 5;
+            _view.Facade.MaxSpeed = 5;
 
             _view.Position = _spawn.Position;
             _view.Quaternion = _spawn.Quaternion;

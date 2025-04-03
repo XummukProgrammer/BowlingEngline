@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Objects.Data;
 using BowlingEngine.Gameplay.Core.Objects.Pin;
 using System;
 using UnityEngine;
@@ -18,19 +19,40 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _healthData.Value = value;
         }
 
+        public int MaxHealth
+        {
+            get => _healthData.MaxValue;
+            set => _healthData.MaxValue = value;
+        }
+
+        public float Speed
+        {
+            get => _speedData.Value;
+            set => _speedData.Value = value;
+        }
+
+        public float MaxSpeed
+        {
+            get => _speedData.MaxValue;
+            set => _speedData.MaxValue = value;
+        }
+
         private BEBallView _view;
         private BEBallStates _states;
         private BEHealthData _healthData;
+        private BESpeedData _speedData;
 
         [Inject]
         public void Construct(
             BEBallView view, 
             BEBallStates states,
-            BEHealthData healthData)
+            BEHealthData healthData,
+            BESpeedData speedData)
         {
             _view = view;
             _states = states;
             _healthData = healthData;
+            _speedData = speedData;
         }
 
         private void OnEnable()

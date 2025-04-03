@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
+using BowlingEngine.Gameplay.Core.Objects.Data;
 using BowlingEngine.Gameplay.Core.Objects.Pin.States;
 using System;
 using UnityEngine;
@@ -47,6 +48,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
             _pool = pool;
 
             _healthData.Value = 4;
+            _healthData.MaxValue = 4;
 
             _view.Position = position;
             _view.Quaternion = Quaternion.identity;

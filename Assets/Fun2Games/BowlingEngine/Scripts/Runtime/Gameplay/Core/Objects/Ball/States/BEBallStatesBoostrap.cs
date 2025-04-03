@@ -34,11 +34,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
                 return;
             }
 
-            _view.Facade.Health = 3;
-            _view.Facade.MaxHealth = 3;
+            _view.Facade.Health = ballModel.Health;
+            _view.Facade.MaxHealth = ballModel.Health;
 
-            _view.Facade.Speed = 5;
-            _view.Facade.MaxSpeed = 5;
+            _view.Facade.Speed = ballModel.Speed;
+            _view.Facade.MaxSpeed = ballModel.Speed;
 
             _view.Position = _spawn.Position;
             _view.Quaternion = _spawn.Quaternion;

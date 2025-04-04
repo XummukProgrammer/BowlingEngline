@@ -67,17 +67,8 @@ MonoBehaviour:
       _upForceForPin: 0.1
       _dirForceForPin: 0.3
     _balls:
-    - _id: AtomBall
-      _skinID: AtomBall
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: BombBall
       _skinID: BombBall
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: BuckyBall
-      _skinID: BuckyBall
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: EyeBall
-      _skinID: EyeBall
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: SpikeBall
       _skinID: SpikeBall
@@ -85,38 +76,14 @@ MonoBehaviour:
     - _id: SplitMetalBall
       _skinID: SplitMetalBall
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: WheelBall
-      _skinID: WheelBall
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: WoodenBall
-      _skinID: WoodenBall
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_49
       _skinID: M_YFMM_49
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_47
-      _skinID: M_YFMM_47
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_46
-      _skinID: M_YFMM_46
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_42
       _skinID: M_YFMM_42
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_41
       _skinID: M_YFMM_41
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_37
-      _skinID: M_YFMM_37
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_34
-      _skinID: M_YFMM_34
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_33
-      _skinID: M_YFMM_33
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_26
-      _skinID: M_YFMM_26
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_16
       _skinID: M_YFMM_16
@@ -127,9 +94,6 @@ MonoBehaviour:
     - _id: M_YFMM_12
       _skinID: M_YFMM_12
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_11
-      _skinID: M_YFMM_11
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_09
       _skinID: M_YFMM_09
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
@@ -138,9 +102,6 @@ MonoBehaviour:
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_05
       _skinID: M_YFMM_05
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_04
-      _skinID: M_YFMM_04
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Dirt 5
       _skinID: Dirt 5
@@ -151,13 +112,7 @@ MonoBehaviour:
     - _id: Glass 2
       _skinID: Glass 2
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Glass 3
-      _skinID: Glass 3
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Metal 3
       _skinID: Metal 3
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Wooden Boards 1
-      _skinID: Wooden Boards 1
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    _defaultBallID: AtomBall
+    _defaultBallID: M_YFMM_16

@@ -20,6 +20,7 @@ namespace BowlingEngine.Gameplay.Core.Services
             Factory.Create<BECoreGameplayStatesLoad>(),
             Factory.Create<BECoreGameplayStatesStartParty>(),
             Factory.Create<BECoreGameplayStatesStartFrame>(),
+            Factory.Create<BECoreGameplayStatesSelectBall>(),
             Factory.Create<BECoreGameplayStatesStepFrame>(),
             Factory.Create<BECoreGameplayStatesCheckFrame>(),
             Factory.Create<BECoreGameplayStatesFinishFrame>(),

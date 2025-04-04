@@ -9,5 +9,8 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
         public Vector3 Velocity { get; }
 
         public bool Drop { get; }
+        public bool LeftArrow { get; }
+        public bool RightArrow { get; }
+        public bool Select { get; }
     }
 }

@@ -34,7 +34,7 @@ namespace BowlingEngine.Gameplay.Core.States
             }
             else
             {
-                _statesService.EnterState<BECoreGameplayStatesStepFrame>();
+                _statesService.EnterState<BECoreGameplayStatesSelectBall>();
             }
         }
 

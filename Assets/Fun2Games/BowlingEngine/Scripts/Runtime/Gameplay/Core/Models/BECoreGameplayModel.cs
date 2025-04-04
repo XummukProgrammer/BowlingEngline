@@ -23,11 +23,15 @@ namespace BowlingEngine.Gameplay.Core.Models
         [SerializeField]
         private BEBallModel[] _balls;
 
+        [SerializeField]
+        private string _defaultBallID;
+
         public float DelayAfterStep => _delayAfterStep;
         public GameObject PinPrefab => _pinPrefab;
         public IEnumerable<BEPinModel> Pins => _pins;
         public IEnumerable<BEBallModel> Balls => _balls;
         public IEnumerable<BEPartyModel> Parties => _parties;
+        public string DefaultBallID => _defaultBallID;
 
         public BEPinModel GetPin(string id)
         {
@@ -37,6 +41,27 @@ namespace BowlingEngine.Gameplay.Core.Models
         public BEBallModel GetBall(string id)
         {
             return _balls.FirstOrDefault(p => p.ID == id);
+        }
+
+        public BEBallModel GetBall(int id)
+        {
+            if (id >= 0 && id < _balls.Length)
+            {
+                return _balls[id];
+            }
+            return null;
+        }
+
+        public int GetBallID(string id)
+        {
+            for (int i = 0; i < _balls.Length; i++)
+            {
+                if (_balls[i].ID == id)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public BEPartyModel GetParty(string id)

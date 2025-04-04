@@ -17,6 +17,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         {
             Factory.Create<BEBallStatesDisable>(),
             Factory.Create<BEBallStatesBoostrap>(),
+            Factory.Create<BEBallStatesPreview>(),
             Factory.Create<BEBallStatesMove>(),
             Factory.Create<BEBallStatesDrop>()
         };

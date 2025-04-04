@@ -67,6 +67,13 @@ MonoBehaviour:
       _upForceForPin: 0.1
       _dirForceForPin: 0.3
     _balls:
-    - _id: Default
-      _skinID: M_YFMM_49
+    - _id: AtomBall
+      _skinID: AtomBall
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
+    - _id: BombBall
+      _skinID: BombBall
+      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
+    - _id: BuckyBall
+      _skinID: BuckyBall
+      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
+    _defaultBallID: AtomBall

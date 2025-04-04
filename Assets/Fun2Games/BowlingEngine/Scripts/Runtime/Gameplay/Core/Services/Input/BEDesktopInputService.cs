@@ -12,6 +12,9 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
         public Vector3 Velocity { get; private set; }
 
         public bool Drop { get; private set; }
+        public bool LeftArrow { get; private set; }
+        public bool RightArrow { get; private set; }
+        public bool Select { get; private set; }
 
         public void Tick()
         {
@@ -23,6 +26,9 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
             Velocity = new Vector3(UnityEngine.Input.GetAxisRaw("Horizontal"), 0);
 
             Drop = UnityEngine.Input.GetKeyDown(KeyCode.Return);
+            LeftArrow = UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow);
+            RightArrow = UnityEngine.Input.GetKeyDown(KeyCode.RightArrow);
+            Select = Drop;
         }
     }
 }

@@ -38,6 +38,7 @@ namespace BowlingEngine.Gameplay.Core.Installers
             Container.Bind<BECoreGameplayStatesLoad>().AsSingle();
             Container.Bind<BECoreGameplayStatesStartParty>().AsSingle();
             Container.Bind<BECoreGameplayStatesStartFrame>().AsSingle();
+            Container.Bind<BECoreGameplayStatesSelectBall>().AsSingle();
             Container.Bind<BECoreGameplayStatesStepFrame>().AsSingle();
             Container.Bind<BECoreGameplayStatesCheckFrame>().AsSingle();
             Container.Bind<BECoreGameplayStatesFinishFrame>().AsSingle();
@@ -55,6 +56,7 @@ namespace BowlingEngine.Gameplay.Core.Installers
 
             Container.DeclareSignal<BEBallWorkedSignal>();
             Container.DeclareSignal<BEPinBounceSignal>();
+            Container.DeclareSignal<BEBallSelectSignal>();
         }
 
         protected override void InstallResources()

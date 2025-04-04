@@ -72,12 +72,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
                 return;
             }
 
-            _healthData.Value = pinModel.Health;
-            _healthData.MaxValue = pinModel.Health;
+            _healthData.Value = pinModel.Class.Health;
+            _healthData.MaxValue = pinModel.Class.Health;
 
             _view.Position = position;
             _view.Quaternion = Quaternion.identity;
-            _view.Mass = pinModel.Mass;
+            _view.Mass = pinModel.Class.Mass;
 
             _view.AngularVelocity = Vector3.zero;
             _view.LinearVelocity = Vector3.zero;
@@ -87,13 +87,13 @@ namespace BowlingEngine.Gameplay.Core.Objects.Pin
 
             Cell = cell;
 
-            _tunables.Bounce = pinModel.Bounce;
+            _tunables.Bounce = pinModel.Class.Bounce;
 
-            _tunables.DamageForBall = pinModel.DamageForBall;
-            _tunables.DamageForPin = pinModel.DamageForPin;
+            _tunables.DamageForBall = pinModel.Class.DamageForBall;
+            _tunables.DamageForPin = pinModel.Class.DamageForPin;
 
-            _tunables.UpForceForPin = pinModel.UpForceForPin;
-            _tunables.DirForceForPin = pinModel.DirForceForPin;
+            _tunables.UpForceForPin = pinModel.Class.UpForceForPin;
+            _tunables.DirForceForPin = pinModel.Class.DirForceForPin;
 
             States.EnterState<BEPinStatesStay>();
         }

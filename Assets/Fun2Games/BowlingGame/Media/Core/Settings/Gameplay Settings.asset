@@ -59,13 +59,7 @@ MonoBehaviour:
         _y: 1
     _pins:
     - _id: Default
-      _mass: 0.4
-      _health: 4
-      _bounce: 0.3
-      _damageForBall: 1
-      _damageForPin: 1
-      _upForceForPin: 0.1
-      _dirForceForPin: 0.3
+      _class: {fileID: 11400000, guid: feef16061b6e61f489b9503e2a638781, type: 2}
     _balls:
     - _id: BombBall
       _skinID: BombBall

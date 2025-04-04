@@ -91,9 +91,6 @@ MonoBehaviour:
     - _id: WoodenBall
       _skinID: WoodenBall
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Prisom Ball
-      _skinID: Prisom Ball
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_49
       _skinID: M_YFMM_49
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
@@ -127,9 +124,6 @@ MonoBehaviour:
     - _id: M_YFMM_31
       _skinID: M_YFMM_31
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_30
-      _skinID: M_YFMM_30
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_26
       _skinID: M_YFMM_26
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
@@ -160,26 +154,14 @@ MonoBehaviour:
     - _id: M_YFMM_07
       _skinID: M_YFMM_07
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_06
-      _skinID: M_YFMM_06
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_05
       _skinID: M_YFMM_05
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_04
       _skinID: M_YFMM_04
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Asphalt 1
-      _skinID: Asphalt 1
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Bark 2
       _skinID: Bark 2
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Brick 5
-      _skinID: Brick 5
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Concrete 1
-      _skinID: Concrete 1
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Dirt 5
       _skinID: Dirt 5
@@ -201,15 +183,6 @@ MonoBehaviour:
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Grass 3
       _skinID: Grass 3
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: hexlattice08
-      _skinID: hexlattice08
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: hexlattice14
-      _skinID: hexlattice14
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: hexlattice16
-      _skinID: hexlattice16
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Metal 3
       _skinID: Metal 3

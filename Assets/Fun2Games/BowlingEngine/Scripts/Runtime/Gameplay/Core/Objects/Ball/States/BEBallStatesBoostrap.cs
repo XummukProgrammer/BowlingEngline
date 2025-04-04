@@ -34,22 +34,24 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
                 return;
             }
 
+            _view.Facade.ClassID = ballModel.Class.name;
+
             _view.SetSkin(ballModel.SkinID);
 
-            _view.Facade.Health = ballModel.Health;
-            _view.Facade.MaxHealth = ballModel.Health;
+            _view.Facade.Health = ballModel.Class.Health;
+            _view.Facade.MaxHealth = ballModel.Class.Health;
 
-            _view.Facade.Speed = ballModel.Speed;
-            _view.Facade.MaxSpeed = ballModel.Speed;
+            _view.Facade.Speed = ballModel.Class.Speed;
+            _view.Facade.MaxSpeed = ballModel.Class.Speed;
 
             _view.Position = _spawn.Position;
             _view.Quaternion = _spawn.Quaternion;
 
             _view.IsKinematic = false;
 
-            _view.Facade.UpForceForPin = ballModel.UpForceForPin;
-            _view.Facade.ForwardForceForPin = ballModel.ForwardForceForPin;
-            _view.Facade.DirForceForPin = ballModel.DirForceForPin;
+            _view.Facade.UpForceForPin = ballModel.Class.UpForceForPin;
+            _view.Facade.ForwardForceForPin = ballModel.Class.ForwardForceForPin;
+            _view.Facade.DirForceForPin = ballModel.Class.DirForceForPin;
 
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }

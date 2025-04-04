@@ -12,6 +12,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
         public BEBallStates States => _states;
 
+        public string ClassID { get; set; }
+
         public int Health
         {
             get => _healthData.Value;

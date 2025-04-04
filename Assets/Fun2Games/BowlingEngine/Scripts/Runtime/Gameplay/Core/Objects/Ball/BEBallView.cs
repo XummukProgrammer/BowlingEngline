@@ -43,6 +43,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _follower.followSpeed = value;
         }
 
+        public Transform SkinTransform { get; private set; }
+
+        public Quaternion SkinQuaternion
+        {
+            get => SkinTransform.rotation;
+            set => SkinTransform.rotation = value;
+        }
+
         [SerializeField]
         private SplineFollower _follower;
 
@@ -72,6 +80,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
         public void SetSkin(string skinID)
         {
+            if (SkinTransform != null)
+            {
+                SkinTransform.rotation = Quaternion.identity;
+            }
+
             if (_skinsTransform != null)
             {
                 for (int i = 0; i < _skinsTransform.childCount; i++)
@@ -79,10 +92,10 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
                     _skinsTransform.GetChild(i).gameObject.SetActive(false);
                 }
 
-                var skinTransform = _skinsTransform.Find(skinID);
-                if (skinTransform != null)
+                SkinTransform = _skinsTransform.Find(skinID);
+                if (SkinTransform != null)
                 {
-                    skinTransform.gameObject.SetActive(true);
+                    SkinTransform.gameObject.SetActive(true);
                 }
             }
         }

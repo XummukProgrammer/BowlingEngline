@@ -50,6 +50,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
 
         public void Tick()
         {
+            _view.SkinTransform.Rotate(new Vector3(120f, 0, 0) * Time.deltaTime, Space.Self);
+
             if (!_ignoreAllCollisions && _view.Facade.Health <= 0)
             {
                 foreach (var pinFacade in _pinRegistry.Pins)

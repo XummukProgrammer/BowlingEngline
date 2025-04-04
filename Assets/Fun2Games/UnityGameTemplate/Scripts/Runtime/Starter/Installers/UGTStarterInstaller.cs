@@ -1,4 +1,5 @@
 using UnityGameTemplate.Camera.Services;
+using UnityGameTemplate.Localizations.Services;
 using UnityGameTemplate.Resources.Factories;
 using UnityGameTemplate.Resources.Services;
 using UnityGameTemplate.Starter.Services;
@@ -18,16 +19,15 @@ namespace UnityGameTemplate.Starter.Installers
             InstallResources();
             InstallStates();
             InstallData();
-
-            Container.BindInterfacesAndSelfTo<UGTCameraService>().AsSingle();
-
+            InstallObjects();
             InstallUI();
+            InstallLocalizations();
         }
 
         private void InstallFactories()
         {
             Container.Bind<UGTStateFactory>().AsSingle();
-            Container.Bind<UGTResourcesFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<UGTResourcesFactory>().AsSingle();
         }
 
         private void InstallStates()
@@ -55,6 +55,11 @@ namespace UnityGameTemplate.Starter.Installers
             Container.Bind<UGTGameplayData>().AsSingle();
         }
 
+        private void InstallObjects()
+        {
+            Container.BindInterfacesAndSelfTo<UGTCameraService>().AsSingle();
+        }
+
         private void InstallUI()
         {
             InstallWindows();
@@ -65,6 +70,11 @@ namespace UnityGameTemplate.Starter.Installers
             Container.BindInterfacesAndSelfTo<UGTWindowContainerService>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<UGTLoadWindowService>().AsSingle();
+        }
+
+        private void InstallLocalizations()
+        {
+            Container.Bind<UGTLocalizationsService>().AsSingle();
         }
     }
 }

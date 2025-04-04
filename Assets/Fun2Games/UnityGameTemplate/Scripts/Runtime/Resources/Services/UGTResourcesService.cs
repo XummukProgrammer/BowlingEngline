@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityGameTemplate.Resources.Factories;
+using UnityGameTemplate.Resources.Implementation;
 using UnityGameTemplate.Resources.Interfaces;
 using UnityGameTemplate.Resources.Models;
 
@@ -72,6 +73,25 @@ namespace UnityGameTemplate.Resources.Services
             }
 
             return false;
+        }
+
+        public UGTIResource Find(string id)
+        {
+            if (_resources.TryGetValue(id, out var resource))
+            {
+                return resource;
+            }
+            return null;
+        }
+
+        public UGTCommonResource<T> FindCommon<T>(string id)
+        {
+            var resource = Find(id);
+            if (resource != null)
+            {
+                return resource as UGTCommonResource<T>;
+            }
+            return null;
         }
     }
 }

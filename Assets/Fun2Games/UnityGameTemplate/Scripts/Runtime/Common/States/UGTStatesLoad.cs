@@ -13,7 +13,8 @@ namespace UnityGameTemplate.Common.States
         where TLoader : UGTResourcesLoaderService
         where TNextState : UGTIExitableState
     {
-        private readonly TMachine _statesService;
+        protected readonly TMachine _statesService;
+
         private readonly TLoader _resourcesLoaderService;
         private readonly UGTWindowContainerService _windowContainerService;
 
@@ -43,8 +44,7 @@ namespace UnityGameTemplate.Common.States
             await _resourcesLoaderService.Load();
 
             OnAfterLoad();
-
-            _statesService.EnterState<TNextState>();
+            OnChangeState();
         }
 
         protected virtual void OnBeforeLoad()
@@ -55,6 +55,11 @@ namespace UnityGameTemplate.Common.States
         protected virtual void OnAfterLoad()
         {
             _windowContainerService.CloseWindow("LoadWindow");
+        }
+
+        protected virtual void OnChangeState()
+        {
+            _statesService.EnterState<TNextState>();
         }
     }
 }

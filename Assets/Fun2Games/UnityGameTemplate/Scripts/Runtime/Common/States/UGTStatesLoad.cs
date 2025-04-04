@@ -41,7 +41,6 @@ namespace UnityGameTemplate.Common.States
             OnBeforeLoad();
 
             await _resourcesLoaderService.Load();
-            await Task.Delay(3000);
 
             OnAfterLoad();
 

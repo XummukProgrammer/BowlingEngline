@@ -4,6 +4,7 @@ using UnityGameTemplate.Starter.Installers;
 using UnityGameTemplate.Starter.Models;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.States.Interfaces;
+using UnityGameTemplate.UI.Windows.Services;
 
 namespace UnityGameTemplate.Starter.States
 {
@@ -15,17 +16,20 @@ namespace UnityGameTemplate.Starter.States
         private readonly UGTProjectModel _projectModel;
         private readonly UGTGameplayData _gameplayData;
         private readonly UGTGameplaySceneModel _gameplaySceneModel;
+        private readonly UGTWindowContainerService _windowContainerService;
 
         public UGTStarterStatesBoostrap(
             UGTStarterStatesService statesService, 
             UGTProjectModel projectModel,
             UGTGameplayData gameplayData,
-            UGTGameplaySceneModel gameplaySceneModel)
+            UGTGameplaySceneModel gameplaySceneModel,
+            UGTWindowContainerService windowContainerService)
         {
             _statesService = statesService;
             _projectModel = projectModel;
             _gameplayData = gameplayData;
             _gameplaySceneModel = gameplaySceneModel;
+            _windowContainerService = windowContainerService;
         }
 
         public void Enter()

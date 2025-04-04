@@ -1,6 +1,7 @@
 using BowlingEngine.Gameplay.Core.Services;
 using UnityGameTemplate.Common.States;
 using UnityGameTemplate.UI.Windows.Services;
+using YG;
 
 namespace BowlingEngine.Gameplay.Core.States
 {
@@ -15,6 +16,13 @@ namespace BowlingEngine.Gameplay.Core.States
                   resourcesLoaderService, 
                   windowContainerService)
         {
+        }
+
+        protected override void OnAfterLoad()
+        {
+            YG2.GameReadyAPI();
+
+            base.OnAfterLoad();
         }
     }
 }

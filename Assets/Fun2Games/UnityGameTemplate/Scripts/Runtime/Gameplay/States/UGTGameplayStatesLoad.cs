@@ -1,6 +1,7 @@
 using UnityGameTemplate.Common.States;
 using UnityGameTemplate.Gameplay.Services;
 using UnityGameTemplate.UI.Windows.Services;
+using YG;
 
 namespace UnityGameTemplate.Gameplay.States
 {
@@ -15,6 +16,13 @@ namespace UnityGameTemplate.Gameplay.States
                   resourcesLoaderService, 
                   windowContainerService)
         {
+        }
+
+        protected override void OnAfterLoad()
+        {
+            YG2.GameReadyAPI();
+
+            base.OnAfterLoad();
         }
     }
 }

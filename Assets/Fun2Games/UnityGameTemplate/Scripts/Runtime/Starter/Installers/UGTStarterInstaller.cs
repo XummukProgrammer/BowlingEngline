@@ -4,6 +4,8 @@ using UnityGameTemplate.Resources.Services;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.Starter.States;
 using UnityGameTemplate.States.Factories;
+using UnityGameTemplate.UI.Windows.Common.LoadWindow;
+using UnityGameTemplate.UI.Windows.Services;
 using Zenject;
 
 namespace UnityGameTemplate.Starter.Installers
@@ -18,6 +20,8 @@ namespace UnityGameTemplate.Starter.Installers
             InstallData();
 
             Container.BindInterfacesAndSelfTo<UGTCameraService>().AsSingle();
+
+            InstallUI();
         }
 
         private void InstallFactories()
@@ -49,6 +53,18 @@ namespace UnityGameTemplate.Starter.Installers
         private void InstallData()
         {
             Container.Bind<UGTGameplayData>().AsSingle();
+        }
+
+        private void InstallUI()
+        {
+            InstallWindows();
+        }
+
+        private void InstallWindows()
+        {
+            Container.BindInterfacesAndSelfTo<UGTWindowContainerService>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<UGTLoadWindowService>().AsSingle();
         }
     }
 }

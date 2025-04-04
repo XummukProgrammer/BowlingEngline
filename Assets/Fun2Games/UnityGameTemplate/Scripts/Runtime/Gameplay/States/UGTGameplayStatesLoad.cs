@@ -1,5 +1,6 @@
 using UnityGameTemplate.Common.States;
 using UnityGameTemplate.Gameplay.Services;
+using UnityGameTemplate.UI.Windows.Services;
 
 namespace UnityGameTemplate.Gameplay.States
 {
@@ -8,9 +9,11 @@ namespace UnityGameTemplate.Gameplay.States
     {
         public UGTGameplayStatesLoad(
             UGTGameplayStatesService statesService, 
-            UGTGameplayResourcesLoaderService resourcesLoaderService) 
+            UGTGameplayResourcesLoaderService resourcesLoaderService, 
+            UGTWindowContainerService windowContainerService) 
             : base(statesService, 
-                  resourcesLoaderService)
+                  resourcesLoaderService, 
+                  windowContainerService)
         {
         }
     }

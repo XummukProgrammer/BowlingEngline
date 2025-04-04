@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using UnityGameTemplate.Resources.Services;
 using UnityGameTemplate.States.Interfaces;
 using UnityGameTemplate.States.Services;
+using UnityGameTemplate.UI.Windows.Services;
 
 namespace UnityGameTemplate.Common.States
 {
@@ -14,13 +15,16 @@ namespace UnityGameTemplate.Common.States
     {
         private readonly TMachine _statesService;
         private readonly TLoader _resourcesLoaderService;
+        private readonly UGTWindowContainerService _windowContainerService;
 
         public UGTStatesLoad(
             TMachine statesService,
-            TLoader resourcesLoaderService)
+            TLoader resourcesLoaderService,
+            UGTWindowContainerService windowContainerService)
         {
             _statesService = statesService;
             _resourcesLoaderService = resourcesLoaderService;
+            _windowContainerService = windowContainerService;
         }
 
         public void Enter()
@@ -34,9 +38,24 @@ namespace UnityGameTemplate.Common.States
 
         private async Task LoadResources()
         {
+            OnBeforeLoad();
+
             await _resourcesLoaderService.Load();
+            await Task.Delay(3000);
+
+            OnAfterLoad();
 
             _statesService.EnterState<TNextState>();
+        }
+
+        protected virtual void OnBeforeLoad()
+        {
+            _windowContainerService.ShowWindow("LoadWindow");
+        }
+
+        protected virtual void OnAfterLoad()
+        {
+            _windowContainerService.CloseWindow("LoadWindow");
         }
     }
 }

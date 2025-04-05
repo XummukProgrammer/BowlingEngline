@@ -15,7 +15,6 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
 
         public void Enter()
         {
-            _view.EnableRenderer = false;
         }
 
         public void Exit()

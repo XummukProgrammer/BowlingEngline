@@ -56,6 +56,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _tunables.DirForceForPin = value;
         }
 
+        public float TorsionFactor
+        {
+            get; set;
+        } = 5;
+
         private BEBallView _view;
         private BEBallStates _states;
         private BEHealthData _healthData;

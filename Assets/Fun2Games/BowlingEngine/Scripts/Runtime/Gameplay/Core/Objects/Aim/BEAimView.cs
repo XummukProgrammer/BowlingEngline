@@ -26,6 +26,32 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim
             set => _meshRenderer.gameObject.SetActive(value);
         }
 
+        public (SplinePoint, int) LastPoint
+        {
+            get
+            {
+                var points = _spline.GetPoints();
+                if (points != null && points.Length > 0)
+                {
+                    int index = points.Length - 1;
+                    return (points[index], index);
+                }
+                return (new SplinePoint(), -1);
+            }
+        }
+
+        public float LastPointXPosition
+        {
+            set
+            {
+                var (point, index) = LastPoint;
+                if (index != -1)
+                {
+                    _spline.SetPointPosition(index, new Vector3(value, 0, point.position.z), SplineComputer.Space.Local);
+                }
+            }
+        }
+
         public SplineComputer Spline => _spline;
 
         [SerializeField]

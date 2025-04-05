@@ -73,12 +73,6 @@ MonoBehaviour:
     - _id: M_YFMM_49
       _skinID: M_YFMM_49
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_42
-      _skinID: M_YFMM_42
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: M_YFMM_41
-      _skinID: M_YFMM_41
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_16
       _skinID: M_YFMM_16
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
@@ -96,9 +90,6 @@ MonoBehaviour:
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: M_YFMM_05
       _skinID: M_YFMM_05
-      _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
-    - _id: Dirt 5
-      _skinID: Dirt 5
       _class: {fileID: 11400000, guid: d1e71c5405141684681cb5078a10a06b, type: 2}
     - _id: Food 1
       _skinID: Food 1

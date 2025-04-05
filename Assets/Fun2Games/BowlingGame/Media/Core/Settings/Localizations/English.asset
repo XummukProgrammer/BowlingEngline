@@ -18,4 +18,5 @@ MonoBehaviour:
       ball.\n[Enter Key] - Select a ball.'
   - _key: info.frame_step
     _value: '[A key] - The ball moves to the left.\n[D key] - The ball moves to the
+      right.\n[Q key] - Turn the ball to the left.\n[E key] - Turn the ball to the
       right.\n[Enter Key] - Drop the ball.'

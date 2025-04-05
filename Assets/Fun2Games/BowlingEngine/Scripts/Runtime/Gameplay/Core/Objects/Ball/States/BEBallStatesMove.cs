@@ -38,6 +38,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             }
 
             _view.LinearVelocity = _input.Velocity;
+            _view.transform.Rotate(_input.Rotate * Time.deltaTime, Space.Self);
         }
     }
 }

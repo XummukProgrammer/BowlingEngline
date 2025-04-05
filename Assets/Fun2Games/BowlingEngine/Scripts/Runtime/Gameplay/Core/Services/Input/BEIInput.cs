@@ -7,6 +7,7 @@ namespace BowlingEngine.Gameplay.Core.Services.Input
         public bool Enable { get; set; }
 
         public Vector3 Velocity { get; }
+        public Vector3 Rotate { get; }
 
         public bool Drop { get; }
         public bool LeftArrow { get; }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e3f8e00522faa4fa352aaf0a5da9c2, type: 3}
-  m_Name: English
+  m_Script: {fileID: 11500000, guid: 8ed4a43790c3d6d46afdc56bfc7242a5, type: 3}
+  m_Name: Info Window Settings
   m_EditorClassIdentifier: 
-  _texts:
-  - _key: info.select_ball
-    _value: '[Left Arrow] - Show the previous ball.\n[Right Arrow] - Show the next
-      ball.\n[Enter] - Select a ball.'
+  _model:
+    _id: InfoWindow
+    _prefab: {fileID: 8969409914978626778, guid: c60af64c57e7024489037febc8079cf8, type: 3}
+    _selectBallLocalizationID: info.select_ball

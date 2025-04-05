@@ -1,3 +1,4 @@
+using BowlingEngine.Common.UI.Windows.InfoWindow;
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Ball.States;
@@ -19,19 +20,22 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly SignalBus _signalBus;
         private readonly BECoreGameplayStatesService _statesService;
         private readonly BECoreGameplayFrameData _frameData;
+        private readonly BEInfoWindowService _infoWindowService;
 
         public BECoreGameplayStatesSelectBall(
             BEIInput input,
             BEBallView ballView,
             SignalBus signalBus,
             BECoreGameplayStatesService statesService,
-            BECoreGameplayFrameData frameData)
+            BECoreGameplayFrameData frameData,
+            BEInfoWindowService infoWindowService)
         {
             _input = input;
             _ballView = ballView;
             _signalBus = signalBus;
             _statesService = statesService;
             _frameData = frameData;
+            _infoWindowService = infoWindowService;
         }
 
         public void Enter()
@@ -41,6 +45,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _ballView.Facade.States.EnterState<BEBallStatesPreview>();
 
             _signalBus.Subscribe<BEBallSelectSignal>(OnBallSelected);
+
+            _infoWindowService.TextType = BEInfoWindowTextType.SelectBall;
         }
 
         public void Exit()
@@ -50,6 +56,8 @@ namespace BowlingEngine.Gameplay.Core.States
             _ballView.Facade.States.EnterState<BEBallStatesDisable>();
 
             _signalBus.Unsubscribe<BEBallSelectSignal>(OnBallSelected);
+
+            _infoWindowService.TextType = BEInfoWindowTextType.None;
         }
 
         private void OnBallSelected(BEBallSelectSignal signal)

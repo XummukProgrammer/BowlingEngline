@@ -22,6 +22,8 @@ namespace BowlingEngine.Gameplay.Core.States
         {
             YG2.GameReadyAPI();
 
+            _windowContainerService.ShowWindow("InfoWindow");
+
             base.OnAfterLoad();
         }
     }

@@ -17,10 +17,9 @@ namespace UnityGameTemplate.Common.States
     {
         private bool _isLoadStarted = false;
 
-        protected readonly TMachine _statesService;
-
         private readonly TLoader _resourcesLoaderService;
-        private readonly UGTWindowContainerService _windowContainerService;
+        protected readonly TMachine _statesService;
+        protected readonly UGTWindowContainerService _windowContainerService;
 
         public UGTStatesLoad(
             TMachine statesService,

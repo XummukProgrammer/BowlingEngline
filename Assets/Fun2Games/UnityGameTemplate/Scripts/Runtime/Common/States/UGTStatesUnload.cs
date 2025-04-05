@@ -36,7 +36,11 @@ namespace UnityGameTemplate.Common.States
         {
             await _resourcesLoaderService.Unload();
 
+            OnAfterUnload();
+
             _statesService.EnterState<TNextState>();
         }
+
+        protected virtual void OnAfterUnload() { }
     }
 }

@@ -20,6 +20,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
         public void Enter()
         {
             _view.LastPointXPosition = 0;
+            _view.SecondPointYPosition = 0;
 
             _states.EnterState<BEAimStatesIdentifyDir>();
         }

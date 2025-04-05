@@ -52,6 +52,19 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim
             }
         }
 
+        public float SecondPointYPosition
+        {
+            set
+            {
+                var points = _spline.GetPoints();
+                if (points.Length >= 2)
+                {
+                    var point = points[1];
+                    _spline.SetPointPosition(1, new Vector3(0, value, point.position.z), SplineComputer.Space.Local);
+                }
+            }
+        }
+
         public SplineComputer Spline => _spline;
 
         [SerializeField]

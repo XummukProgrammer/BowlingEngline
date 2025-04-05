@@ -24,6 +24,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim.States
         public void Enter()
         {
             _view.LastPointXPosition = _ballView.Facade.TorsionFactor;
+            _view.SecondPointYPosition = 2;
 
             _states.EnterState<BEAimStatesStay>();
         }

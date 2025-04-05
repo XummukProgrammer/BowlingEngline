@@ -55,6 +55,9 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         private SplineFollower _follower;
 
         [SerializeField]
+        private SplineUser _splineUser;
+
+        [SerializeField]
         private Transform _skinsTransform;
 
         private Rigidbody _rigidBody;
@@ -70,12 +73,16 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 
             _follower.spline = spline;
             _follower.follow = true;
+
+            _splineUser.spline = spline;
         }
 
         public void Unfollow()
         {
             _follower.spline = null;
             _follower.follow = false;
+
+            _splineUser.spline = null;
         }
 
         public void SetSkin(string skinID)

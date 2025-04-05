@@ -1,3 +1,4 @@
+using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim
         public void Construct(BEAimStates states)
         {
             States = states;
+        }
+
+        public void OnTrigger1Activated(SplineUser user)
+        {
+            Debug.Log("OnTrigger1Activated");
         }
     }
 }

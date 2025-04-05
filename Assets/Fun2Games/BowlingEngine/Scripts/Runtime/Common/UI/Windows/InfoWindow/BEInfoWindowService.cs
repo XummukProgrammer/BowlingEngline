@@ -75,6 +75,10 @@ namespace BowlingEngine.Common.UI.Windows.InfoWindow
                     _view.Info = _localizationsService.GetLocalizeText(_model.SelectBallLocalizationID);
                     break;
 
+                case BEInfoWindowTextType.FrameStep:
+                    _view.Info = _localizationsService.GetLocalizeText(_model.FrameStepLocalizationID);
+                    break;
+
                 default:
                     _view.Info = "";
                     break;

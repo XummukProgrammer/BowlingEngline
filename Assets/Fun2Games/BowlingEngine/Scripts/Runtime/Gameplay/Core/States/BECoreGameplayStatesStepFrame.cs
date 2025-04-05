@@ -1,3 +1,4 @@
+using BowlingEngine.Common.UI.Windows.InfoWindow;
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Objects.Aim;
@@ -34,6 +35,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly BEPinRegistry _pinRegistry;
         private readonly BECoreGameplayPartyData _partyData;
         private readonly BECoreGameplayModel _gameplayModel;
+        private readonly BEInfoWindowService _infoWindowService;
 
         public BECoreGameplayStatesStepFrame(
             BECoreGameplayStatesService statesService, 
@@ -45,7 +47,8 @@ namespace BowlingEngine.Gameplay.Core.States
             BEPinSpawner pinSpawner,
             BEPinRegistry pinRegistry,
             BECoreGameplayPartyData partyData,
-            BECoreGameplayModel gameplayModel)
+            BECoreGameplayModel gameplayModel,
+            BEInfoWindowService infoWindowService)
         {
             _statesService = statesService;
             _signalBus = signalBus;
@@ -57,6 +60,7 @@ namespace BowlingEngine.Gameplay.Core.States
             _pinRegistry = pinRegistry;
             _partyData = partyData;
             _gameplayModel = gameplayModel;
+            _infoWindowService = infoWindowService;
         }
 
         public void Enter()
@@ -81,6 +85,8 @@ namespace BowlingEngine.Gameplay.Core.States
                     _pinSpawner.Spawn(pin.ID, pin.X, pin.Y);
                 }
             }
+
+            _infoWindowService.TextType = BEInfoWindowTextType.FrameStep;
         }
 
         public void Exit()
@@ -98,6 +104,8 @@ namespace BowlingEngine.Gameplay.Core.States
             {
                 pinFacade.Dispose();
             }
+
+            _infoWindowService.TextType = BEInfoWindowTextType.None;
         }
 
         public void Tick()

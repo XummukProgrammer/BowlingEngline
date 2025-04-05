@@ -9,6 +9,10 @@ namespace BowlingEngine.Common.UI.Windows.InfoWindow
         [SerializeField]
         private string _selectBallLocalizationID = "info.select_ball";
 
+        [SerializeField]
+        private string _frameStepLocalizationID = "info.frame_step";
+
         public string SelectBallLocalizationID => _selectBallLocalizationID;
+        public string FrameStepLocalizationID => _frameStepLocalizationID;
     }
 }

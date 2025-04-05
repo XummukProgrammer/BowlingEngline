@@ -15,4 +15,7 @@ MonoBehaviour:
   _texts:
   - _key: info.select_ball
     _value: '[Left Arrow] - Show the previous ball.\n[Right Arrow] - Show the next
-      ball.\n[Enter] - Select a ball.'
+      ball.\n[Enter Key] - Select a ball.'
+  - _key: info.frame_step
+    _value: '[A key] - The ball moves to the left.\n[D key] - The ball moves to the
+      right.\n[Enter Key] - Drop the ball.'

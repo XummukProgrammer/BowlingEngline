@@ -20,8 +20,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dda79f073caa7442b2d2fcc5b64fd98
+    m_Address: Assets/Fun2Games/BowlingGame/Media/Starter/Settings/Localizations/Russian.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27ade95a9e8c8fe4dbde31422194fdfc
     m_Address: Assets/Fun2Games/BowlingGame/Scenes/MetaScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 702f22be1a1b17140920bf5948602128
+    m_Address: Assets/Fun2Games/BowlingGame/Media/Starter/Settings/Localizations/English.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,6 +47,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9dbc0e9cfa9b08d4e830bbffe697fa50
     m_Address: Assets/Fun2Games/BowlingGame/Media/Core/Settings/Localizations/English.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4cf884fbc9d6f045b486e4010a59d6a
+    m_Address: Assets/Fun2Games/BowlingGame/Media/Starter/Settings/Localizations/Resource.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

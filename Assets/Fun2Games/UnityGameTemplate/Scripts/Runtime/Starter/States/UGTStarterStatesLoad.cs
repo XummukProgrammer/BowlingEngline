@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using UnityGameTemplate.Common.States;
 using UnityGameTemplate.Localizations.Models;
 using UnityGameTemplate.Localizations.Services;
@@ -11,8 +10,6 @@ namespace UnityGameTemplate.Starter.States
     public class UGTStarterStatesLoad
         : UGTStatesLoad<UGTStarterStatesService, UGTStarterResourcesLoaderService, UGTStarterStatesGameplayLoad>
     {
-        private bool _asyncLoadEnabled = false;
-
         private readonly UGTLocalizationsService _localizationsService;
 
         public UGTStarterStatesLoad(
@@ -27,36 +24,20 @@ namespace UnityGameTemplate.Starter.States
             _localizationsService = localizationsService;
         }
 
-        protected override void OnAfterLoad()
+        protected override bool CanStartLoad()
         {
+            return YG2.isSDKEnabled;
         }
 
-        protected override void OnChangeState()
+        protected override void OnBeforeLoad()
         {
-            if (YG2.isSDKEnabled)
-            {
-                ChangeState();
-            }
-            else
-            {
-                _asyncLoadEnabled = true;
-
-                YG2.onGetSDKData += ChangeState;
-            }
-        }
-
-        private void ChangeState()
-        {
-            if (_asyncLoadEnabled)
-            {
-                _asyncLoadEnabled = false;
-
-                YG2.onGetSDKData -= ChangeState;
-            }
+            base.OnBeforeLoad();
 
             _localizationsService.LanguageType = UGTLanguageTypeExtension.FromStr(YG2.envir.language);
+        }
 
-            _statesService.EnterState<UGTStarterStatesGameplayLoad>();
+        protected override void OnAfterLoad()
+        {
         }
     }
 }

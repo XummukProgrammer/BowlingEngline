@@ -3,16 +3,20 @@ using UnityGameTemplate.Resources.Services;
 using UnityGameTemplate.States.Interfaces;
 using UnityGameTemplate.States.Services;
 using UnityGameTemplate.UI.Windows.Services;
+using Zenject;
 
 namespace UnityGameTemplate.Common.States
 {
     public class UGTStatesLoad<TMachine, TLoader, TNextState>
         : UGTIExitableState
         , UGTIEnterableState
+        , ITickable
         where TMachine : UGTBaseStatesService
         where TLoader : UGTResourcesLoaderService
         where TNextState : UGTIExitableState
     {
+        private bool _isLoadStarted = false;
+
         protected readonly TMachine _statesService;
 
         private readonly TLoader _resourcesLoaderService;
@@ -30,21 +34,32 @@ namespace UnityGameTemplate.Common.States
 
         public void Enter()
         {
-            _ = LoadResources();
+            TryStartLoad();
         }
 
         public void Exit()
         {
         }
 
+        public void Tick()
+        {
+            if (!_isLoadStarted)
+            {
+                TryStartLoad();
+            }
+        }
+
         private async Task LoadResources()
         {
+            _isLoadStarted = true;
+
             OnBeforeLoad();
 
             await _resourcesLoaderService.Load();
 
             OnAfterLoad();
-            OnChangeState();
+
+            _statesService.EnterState<TNextState>();
         }
 
         protected virtual void OnBeforeLoad()
@@ -52,14 +67,22 @@ namespace UnityGameTemplate.Common.States
             _windowContainerService.ShowWindow("LoadWindow");
         }
 
+        protected virtual bool CanStartLoad()
+        {
+            return true;
+        }
+
         protected virtual void OnAfterLoad()
         {
             _windowContainerService.CloseWindow("LoadWindow");
         }
 
-        protected virtual void OnChangeState()
+        private void TryStartLoad()
         {
-            _statesService.EnterState<TNextState>();
+            if (CanStartLoad())
+            {
+                _ = LoadResources();
+            }
         }
     }
 }

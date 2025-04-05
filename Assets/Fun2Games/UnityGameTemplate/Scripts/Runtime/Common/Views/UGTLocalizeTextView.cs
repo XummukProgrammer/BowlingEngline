@@ -9,6 +9,9 @@ namespace UnityGameTemplate.Common.Views
         [SerializeField]
         private string _key = "Undefined";
 
+        [SerializeField]
+        private bool _isDefaultBaseText = false;
+
         private UGTLocalizationsService _localizationsService;
         private TMPro.TMP_Text _text;
 
@@ -27,6 +30,11 @@ namespace UnityGameTemplate.Common.Views
             }
         }
 
+        public void Dispose()
+        {
+            _localizationsService.LocalizeTextsUpdated -= UpdateText;
+        }
+
         private void OnEnable()
         {
             _localizationsService.LocalizeTextsUpdated += UpdateText;
@@ -41,7 +49,9 @@ namespace UnityGameTemplate.Common.Views
         {
             if (_text != null)
             {
-                _text.text = _localizationsService.GetLocalizeText(_key);
+                _text.text = _localizationsService.GetLocalizeText(
+                    _key,
+                    _isDefaultBaseText ? _text.text : null);
             }
         }
     }

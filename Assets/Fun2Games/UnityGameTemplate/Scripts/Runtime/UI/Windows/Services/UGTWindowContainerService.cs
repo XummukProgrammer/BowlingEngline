@@ -63,7 +63,7 @@ namespace UnityGameTemplate.UI.Windows.Services
         public void CloseWindow(string id)
         {
             var window = GetWindow(id);
-            window?.Close();
+            window?.OnClose();
         }
     }
 }

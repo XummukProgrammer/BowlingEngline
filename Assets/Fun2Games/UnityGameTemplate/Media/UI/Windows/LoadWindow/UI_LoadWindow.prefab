@@ -222,9 +222,8 @@ GameObject:
   - component: {fileID: 2103147167011502822}
   - component: {fileID: 204094147031548489}
   - component: {fileID: 8955749726941557320}
-  - component: {fileID: 1967355793097659229}
   m_Layer: 5
-  m_Name: LoadText
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,20 +347,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1967355793097659229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4731997093734957208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a806abdae43785a42873b6f68ed79fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _key: resources.load
-  _isDefaultBaseText: 1
 --- !u!1 &5097686248232512151
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,9 +911,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4249536378014005622}
   - component: {fileID: 6771075499587129271}
-  - component: {fileID: 2950568537453885030}
-  - component: {fileID: 7191822916456531828}
-  - component: {fileID: 3319928705300837576}
   m_Layer: 5
   m_Name: UI_LoadWindow
   m_TagString: Untagged
@@ -971,52 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _closeButton: {fileID: 0}
+  _descriptionText: {fileID: 8955749726941557320}
   _gameNameText: {fileID: 8759055260165193103}
   _versionText: {fileID: 6963819342961016127}
   _companyNameText: {fileID: 4162697041823543109}
---- !u!114 &2950568537453885030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8838052236306695789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &7191822916456531828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8838052236306695789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components: []
-  _identifier: 
-  _useSceneContext: 1
-  _context: {fileID: 0}
-  _bindType: 0
---- !u!114 &3319928705300837576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8838052236306695789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c47912ae4e51a84d92f1acf689997c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -24,6 +24,8 @@ namespace UnityGameTemplate.UI.Windows.Services
         public void Initialize()
         {
             _containerService.AddWindow(this);
+
+            OnCreate();
         }
 
         public void Dispose()
@@ -36,24 +38,28 @@ namespace UnityGameTemplate.UI.Windows.Services
             _containerService.CreateView(this);
         }
 
-        public virtual void Close()
+        public virtual void OnCreate()
+        {
+        }
+
+        public virtual void OnClose()
         {
             _containerService.RemoveView(this);
         }
 
         public virtual void OnViewInstantiate() 
         {
-            View.CloseClicked += OnWindowClose;
+            View.CloseClicked += OnCloseClicked;
         }
 
         public virtual void OnViewRemove() 
         {
-            View.CloseClicked -= OnWindowClose;
+            View.CloseClicked -= OnCloseClicked;
         }
 
-        protected virtual void OnWindowClose()
+        protected virtual void OnCloseClicked()
         {
-            Close();
+            OnClose();
         }
     }
 }

@@ -5,6 +5,12 @@ namespace UnityGameTemplate.UI.Windows.Common.LoadWindow
 {
     public class UGTLoadWindowView : UGTWindowView
     {
+        public string Description
+        {
+            get => _descriptionText.text;
+            set => _descriptionText.text = value;
+        }
+
         public string GameName
         {
             get => _gameNameText.text;
@@ -22,6 +28,9 @@ namespace UnityGameTemplate.UI.Windows.Common.LoadWindow
             get => _companyNameText.text;
             set => _companyNameText.text = value;
         }
+
+        [SerializeField]
+        private TMPro.TMP_Text _descriptionText;
 
         [SerializeField]
         private TMPro.TMP_Text _gameNameText;

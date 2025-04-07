@@ -16,9 +16,13 @@ namespace UnityGameTemplate.Starter.Models
         [SerializeField]
         private UGTGameplayType _defaultGameplayType;
 
+        [SerializeField]
+        private AudioSource _audioSourcePrefab;
+
         public UGTResourceModel CoreSceneResource => _coreSceneResource;
         public UGTResourceModel MetaSceneResource => _metaSceneResource;
         public UGTGameplayType DefaultGameplayType => _defaultGameplayType;
+        public AudioSource AudioSourcePrefab => _audioSourcePrefab;
 
         public UGTResourceModel GetSceneResource(UGTGameplayType gameplayType)
         {

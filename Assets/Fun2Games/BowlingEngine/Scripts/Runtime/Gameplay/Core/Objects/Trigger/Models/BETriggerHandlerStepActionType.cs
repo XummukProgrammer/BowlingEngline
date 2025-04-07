@@ -4,6 +4,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Models
     {
         None = 0,
         Speed,
-        CameraOffset
+        CameraOffset,
+        Sound
     }
 }

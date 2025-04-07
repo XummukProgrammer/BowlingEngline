@@ -17,3 +17,6 @@ MonoBehaviour:
     - _id: BECoreLocalizations
       _path: Assets/Fun2Games/BowlingGame/Media/Core/Settings/Localizations/Resource.asset
       _type: 1
+    - _id: ball.drop
+      _path: Assets/Fun2Games/BowlingGame/Media/Core/Sounds/bowling_ball_drop01.mp3
+      _type: 2

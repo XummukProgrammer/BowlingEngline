@@ -2,6 +2,7 @@ using UnityGameTemplate.Localizations.Services;
 using UnityGameTemplate.Resources.Implementation;
 using UnityGameTemplate.Resources.Interfaces;
 using UnityGameTemplate.Resources.Models;
+using UnityGameTemplate.Sounds.Services;
 using Zenject;
 
 namespace UnityGameTemplate.Resources.Factories
@@ -9,6 +10,7 @@ namespace UnityGameTemplate.Resources.Factories
     public class UGTResourcesFactory : IInitializable
     {
         private UGTLocalizationsService _localizationsService;
+        private UGTSoundsService _soundsService;
 
         private readonly DiContainer _diContainer;
 
@@ -20,6 +22,7 @@ namespace UnityGameTemplate.Resources.Factories
         public void Initialize()
         {
             _localizationsService = _diContainer.Resolve<UGTLocalizationsService>();
+            _soundsService = _diContainer.Resolve<UGTSoundsService>();
         }
 
         public UGTIResource Create(UGTResourceModel resourceModel)
@@ -31,6 +34,9 @@ namespace UnityGameTemplate.Resources.Factories
 
                 case UGTResourceType.LocalizeText:
                     return new UGTLocalizationsResource(resourceModel.ID, resourceModel.Path, _localizationsService);
+
+                case UGTResourceType.Sound:
+                    return new UGTSoundResource(resourceModel.ID, resourceModel.Path, _soundsService);
             }
             return null;
         }

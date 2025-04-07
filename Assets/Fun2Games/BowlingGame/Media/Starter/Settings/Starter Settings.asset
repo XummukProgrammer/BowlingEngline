@@ -31,3 +31,4 @@ MonoBehaviour:
       _path: Assets/Fun2Games/BowlingGame/Scenes/MetaScene.unity
       _type: 0
     _defaultGameplayType: 2
+    _audioSourcePrefab: {fileID: 1015972397870319346, guid: bee84817af17ffb4bb14449080caff1f, type: 3}

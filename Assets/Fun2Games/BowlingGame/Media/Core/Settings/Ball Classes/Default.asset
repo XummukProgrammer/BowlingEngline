@@ -26,6 +26,12 @@ MonoBehaviour:
         _floatValue: 7
         _stringValue: 
         _vector3Value: {x: 0, y: 0, z: 0}
+      - _type: 3
+        _boolValue: 0
+        _intValue: 0
+        _floatValue: 0
+        _stringValue: ball.drop
+        _vector3Value: {x: 0, y: 0, z: 0}
     - _actions:
       - _type: 1
         _boolValue: 0

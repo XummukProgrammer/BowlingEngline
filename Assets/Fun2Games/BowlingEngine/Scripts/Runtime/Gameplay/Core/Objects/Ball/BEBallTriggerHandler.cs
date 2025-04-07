@@ -4,6 +4,7 @@ using BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers;
 using BowlingEngine.Gameplay.Core.Objects.Trigger.Models;
 using Dreamteck.Splines;
 using UnityGameTemplate.Camera.Services;
+using UnityGameTemplate.Sounds.Services;
 using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Ball
@@ -20,10 +21,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             SignalBus signalBus,
             BEBallView view,
             BESpeedData speedData,
-            UGTCameraService cameraService) 
+            UGTCameraService cameraService,
+            UGTSoundsService soundsService) 
             : base(data, 
                   signalBus,
-                  cameraService)
+                  cameraService,
+                  soundsService)
         {
             _view = view;
             _speedData = speedData;

@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d7e5202a5b34f345a49f6ed27ec887f
+    m_Address: Assets/Fun2Games/BowlingGame/Media/Core/Sounds/bowling_ball_drop01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dda79f073caa7442b2d2fcc5b64fd98
     m_Address: Assets/Fun2Games/BowlingGame/Media/Starter/Settings/Localizations/Russian.asset
     m_ReadOnly: 0

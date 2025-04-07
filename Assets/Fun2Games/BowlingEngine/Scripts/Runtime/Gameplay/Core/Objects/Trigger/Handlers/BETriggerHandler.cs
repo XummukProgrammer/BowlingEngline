@@ -5,6 +5,7 @@ using Dreamteck.Splines;
 using System;
 using UnityEngine;
 using UnityGameTemplate.Camera.Services;
+using UnityGameTemplate.Sounds.Services;
 using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
@@ -18,15 +19,18 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
         private readonly BETriggerData _data;
         private readonly SignalBus _signalBus;
         private readonly UGTCameraService _cameraService;
+        private readonly UGTSoundsService _soundsService;
 
         public BETriggerHandler(
             BETriggerData data, 
             SignalBus signalBus,
-            UGTCameraService cameraService)
+            UGTCameraService cameraService,
+            UGTSoundsService soundsService)
         {
             _data = data;
             _signalBus = signalBus;
             _cameraService = cameraService;
+            _soundsService = soundsService;
         }
 
         public void Initialize()
@@ -68,6 +72,10 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
                 case BETriggerHandlerStepActionType.CameraOffset:
                     ChangeCameraOffset(stepActionModel.Vector3Value);
                     break;
+
+                case BETriggerHandlerStepActionType.Sound:
+                    PlaySound(stepActionModel.StringValue);
+                    break;
             }
         }
 
@@ -78,6 +86,11 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
         protected virtual void ChangeCameraOffset(Vector3 offset)
         {
             _cameraService.FollowOffset = offset;
+        }
+
+        private void PlaySound(string soundID)
+        {
+            _soundsService.PlaySound(soundID);
         }
     }
 }

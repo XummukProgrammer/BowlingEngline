@@ -2,6 +2,7 @@ using UnityGameTemplate.Camera.Services;
 using UnityGameTemplate.Localizations.Services;
 using UnityGameTemplate.Resources.Factories;
 using UnityGameTemplate.Resources.Services;
+using UnityGameTemplate.Sounds.Services;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.Starter.States;
 using UnityGameTemplate.States.Factories;
@@ -22,6 +23,7 @@ namespace UnityGameTemplate.Starter.Installers
             InstallObjects();
             InstallUI();
             InstallLocalizations();
+            InstallSounds();
         }
 
         private void InstallFactories()
@@ -41,7 +43,7 @@ namespace UnityGameTemplate.Starter.Installers
             Container.Bind<UGTStarterStatesUnload>().AsSingle();
             Container.Bind<UGTStarterStatesDisable>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<UGTStarterStatesService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<UGTStarterStatesService>().AsSingle();
         }
 
         private void InstallResources()
@@ -75,6 +77,11 @@ namespace UnityGameTemplate.Starter.Installers
         private void InstallLocalizations()
         {
             Container.Bind<UGTLocalizationsService>().AsSingle();
+        }
+
+        private void InstallSounds()
+        {
+            Container.BindInterfacesAndSelfTo<UGTSoundsService>().AsSingle();
         }
     }
 }

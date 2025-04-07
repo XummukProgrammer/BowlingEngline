@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   _mass: 0.6
-  _health: 4
+  _health: 3
   _bounce: 0.6
   _damageForBall: 1
   _damageForPin: 1
   _upForceForPin: 0.1
-  _dirForceForPin: 0.6
+  _dirForceForPin: 0.4

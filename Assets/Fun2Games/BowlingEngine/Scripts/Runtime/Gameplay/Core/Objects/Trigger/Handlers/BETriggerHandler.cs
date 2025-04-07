@@ -44,17 +44,20 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
 
                 if (stepModel != null)
                 {
-                    ApplyStep(stepModel);
+                    foreach (var stepActionModel in stepModel.Actions)
+                    {
+                        ApplyStepAction(stepActionModel);
+                    }
                 }
             }
         }
 
-        private void ApplyStep(BETriggerHandlerStepModel stepModel)
+        private void ApplyStepAction(BETriggerHandlerStepActionModel stepActionModel)
         {
-            switch (stepModel.Type)
+            switch (stepActionModel.Type)
             {
-                case BETriggerHandlerType.Speed:
-                    ChangeSpeed(stepModel.FloatValue);
+                case BETriggerHandlerStepActionType.Speed:
+                    ChangeSpeed(stepActionModel.FloatValue);
                     break;
             }
         }

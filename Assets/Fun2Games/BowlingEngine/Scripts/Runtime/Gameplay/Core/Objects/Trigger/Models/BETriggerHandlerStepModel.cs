@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Models
@@ -6,24 +7,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Models
     public class BETriggerHandlerStepModel
     {
         [SerializeField]
-        private BETriggerHandlerType _type;
+        private BETriggerHandlerStepActionModel[] _actions;
 
-        [SerializeField]
-        private bool _boolValue;
-
-        [SerializeField]
-        private int _intValue;
-
-        [SerializeField]
-        private float _floatValue;
-
-        [SerializeField]
-        private string _stringValue;
-
-        public BETriggerHandlerType Type => _type;
-        public bool BoolValue => _boolValue;
-        public int IntValue => _intValue;
-        public float FloatValue => _floatValue;
-        public string StringValue => _stringValue;
+        public IEnumerable<BETriggerHandlerStepActionModel> Actions => _actions;
     }
 }

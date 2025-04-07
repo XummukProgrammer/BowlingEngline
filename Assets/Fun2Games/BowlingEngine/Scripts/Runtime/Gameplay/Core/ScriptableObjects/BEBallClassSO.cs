@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Objects.Trigger.Models;
 using UnityEngine;
 
 namespace BowlingEngine.Gameplay.Core.ScriptableObjects
@@ -20,10 +21,14 @@ namespace BowlingEngine.Gameplay.Core.ScriptableObjects
         [SerializeField]
         private float _dirForceForPin = 3;
 
+        [SerializeField]
+        private BETriggerHandlerStepsModel _stepsModel;
+
         public int Health => _health;
         public float Speed => _speed;
         public float UpForceForPin => _upForceForPin;
         public float ForwardForceForPin => _forwardForceForPin;
         public float DirForceForPin => _dirForceForPin;
+        public BETriggerHandlerStepsModel StepsModel => _stepsModel;
     }
 }

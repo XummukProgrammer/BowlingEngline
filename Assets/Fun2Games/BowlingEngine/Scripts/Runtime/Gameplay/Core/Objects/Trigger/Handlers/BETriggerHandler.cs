@@ -11,17 +11,16 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
         : IInitializable
         , IDisposable
     {
+        protected abstract BETriggerHandlerStepsModel StepsModel { get; }
+
         private readonly BETriggerData _data;
-        private readonly BETriggerHandlerStepsModel _stepsModel;
         private readonly SignalBus _signalBus;
 
         public BETriggerHandler(
             BETriggerData data, 
-            BETriggerHandlerStepsModel stepsModel, 
             SignalBus signalBus)
         {
             _data = data;
-            _stepsModel = stepsModel;
             _signalBus = signalBus;
         }
 
@@ -37,13 +36,16 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Handlers
 
         private void OnUserTriggered(BEUserTriggeredSignal signal)
         {
-            if (IsNecessaryUser(signal.User))
+            if (StepsModel != null && IsNecessaryUser(signal.User))
             {
                 _data.Step++;
 
-                var stepModel = _stepsModel.GetStep(_data.Step);
+                var stepModel = StepsModel.GetStep(_data.Step);
 
-                ApplyStep(stepModel);
+                if (stepModel != null)
+                {
+                    ApplyStep(stepModel);
+                }
             }
         }
 

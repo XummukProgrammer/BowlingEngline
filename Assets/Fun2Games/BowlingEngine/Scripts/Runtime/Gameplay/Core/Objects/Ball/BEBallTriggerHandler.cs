@@ -9,17 +9,17 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
 {
     public class BEBallTriggerHandler : BETriggerHandler
     {
+        protected override BETriggerHandlerStepsModel StepsModel => _view.Facade.StepsModel;
+
         private readonly BEBallView _view;
         private readonly BESpeedData _speedData;
 
         public BEBallTriggerHandler(
             BETriggerData data, 
-            BETriggerHandlerStepsModel stepsModel, 
             SignalBus signalBus,
             BEBallView view,
             BESpeedData speedData) 
             : base(data, 
-                  stepsModel, 
                   signalBus)
         {
             _view = view;

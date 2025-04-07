@@ -58,6 +58,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             _view.Facade.DirForceForPin = ballModel.Class.DirForceForPin;
 
             _triggerData.Step = -1;
+            _view.Facade.StepsModel = ballModel.Class.StepsModel;
 
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }

@@ -1,3 +1,5 @@
+using BowlingEngine.Gameplay.Core.Objects.Trigger.Models;
+
 namespace BowlingEngine.Gameplay.Core.Objects.Ball
 {
     public class BEBallTunables
@@ -5,5 +7,7 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         public float UpForceForPin { get; set; }
         public float ForwardForceForPin { get; set; }
         public float DirForceForPin { get; set; }
+        
+        public BETriggerHandlerStepsModel StepsModel { get; set; }
     }
 }

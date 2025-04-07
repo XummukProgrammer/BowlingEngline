@@ -1,4 +1,5 @@
 using BowlingEngine.Gameplay.Core.Objects.Data;
+using BowlingEngine.Gameplay.Core.Objects.Trigger.Models;
 using System;
 using UnityEngine;
 using Zenject;
@@ -60,6 +61,12 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
         {
             get; set;
         } = 5;
+
+        public BETriggerHandlerStepsModel StepsModel
+        {
+            get => _tunables.StepsModel;
+            set => _tunables.StepsModel = value;
+        }
 
         private BEBallView _view;
         private BEBallStates _states;

@@ -1,6 +1,7 @@
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Objects.Spawns;
+using BowlingEngine.Gameplay.Core.Objects.Trigger.Data;
 using UnityGameTemplate.States.Interfaces;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
@@ -13,17 +14,20 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
         private BEBallSpawn _spawn;
         private BECoreGameplayModel _gameplayModel;
         private BECoreGameplayFrameData _frameData;
+        private readonly BETriggerData _triggerData;
 
         public BEBallStatesBoostrap(
             BEBallView view, 
             BEBallSpawn spawn,
             BECoreGameplayModel gameplayModel,
-            BECoreGameplayFrameData frameData)
+            BECoreGameplayFrameData frameData,
+            BETriggerData triggerData)
         {
             _view = view;
             _spawn = spawn;
             _gameplayModel = gameplayModel;
             _frameData = frameData;
+            _triggerData = triggerData;
         }
 
         public void Enter()
@@ -52,6 +56,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             _view.Facade.UpForceForPin = ballModel.Class.UpForceForPin;
             _view.Facade.ForwardForceForPin = ballModel.Class.ForwardForceForPin;
             _view.Facade.DirForceForPin = ballModel.Class.DirForceForPin;
+
+            _triggerData.Step = -1;
 
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }

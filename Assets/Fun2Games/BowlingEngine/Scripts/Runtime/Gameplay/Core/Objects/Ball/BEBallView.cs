@@ -51,6 +51,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => SkinTransform.rotation = value;
         }
 
+        public SplineUser SplineUser => _splineUser;
+
         [SerializeField]
         private SplineFollower _follower;
 

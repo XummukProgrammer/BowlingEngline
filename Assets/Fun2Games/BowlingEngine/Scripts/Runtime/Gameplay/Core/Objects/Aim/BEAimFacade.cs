@@ -1,3 +1,4 @@
+using BowlingEngine.Gameplay.Core.Signals;
 using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
@@ -6,17 +7,23 @@ namespace BowlingEngine.Gameplay.Core.Objects.Aim
 {
     public class BEAimFacade : MonoBehaviour
     {
+        private SignalBus _signalBus;
+
         public BEAimStates States { get; private set; }
 
         [Inject]
-        public void Construct(BEAimStates states)
+        public void Construct(
+            BEAimStates states,
+            SignalBus signalBus)
         {
             States = states;
+
+            _signalBus = signalBus;
         }
 
-        public void OnTrigger1Activated(SplineUser user)
+        public void OnTriggerActivated(SplineUser user)
         {
-            Debug.Log("OnTrigger1Activated");
+            _signalBus.Fire(new BEUserTriggeredSignal(user));
         }
     }
 }

@@ -1,7 +1,7 @@
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Ball.States;
 using BowlingEngine.Gameplay.Core.Objects.Data;
-using BowlingEngine.Gameplay.Core.Objects.Pin;
+using BowlingEngine.Gameplay.Core.Objects.Trigger.Data;
 using UnityGameTemplate.States.Factories;
 using Zenject;
 
@@ -23,8 +23,11 @@ namespace BowlingEngine.Gameplay.Core.Installers.Objects
 
             Container.Bind<BEHealthData>().AsSingle();
             Container.Bind<BESpeedData>().AsSingle();
+            Container.Bind<BETriggerData>().AsSingle();
 
             Container.Bind<BEBallTunables>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<BEBallTriggerHandler>().AsSingle();
         }
     }
 }

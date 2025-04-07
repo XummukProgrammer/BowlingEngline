@@ -71,7 +71,7 @@ MonoBehaviour:
           - m_Target: {fileID: 6836393840988879535}
             m_TargetAssemblyTypeName: BowlingEngine.Gameplay.Core.Objects.Aim.BEAimFacade,
               Assembly-CSharp
-            m_MethodName: OnTrigger1Activated
+            m_MethodName: OnTriggerActivated
             m_Mode: 0
             m_Arguments:
               m_ObjectArgument: {fileID: 0}

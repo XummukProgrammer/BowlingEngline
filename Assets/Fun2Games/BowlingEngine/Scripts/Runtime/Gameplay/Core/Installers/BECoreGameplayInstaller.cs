@@ -59,6 +59,7 @@ namespace BowlingEngine.Gameplay.Core.Installers
             Container.DeclareSignal<BEBallWorkedSignal>();
             Container.DeclareSignal<BEPinBounceSignal>();
             Container.DeclareSignal<BEBallSelectSignal>();
+            Container.DeclareSignal<BEUserTriggeredSignal>();
         }
 
         protected override void InstallResources()

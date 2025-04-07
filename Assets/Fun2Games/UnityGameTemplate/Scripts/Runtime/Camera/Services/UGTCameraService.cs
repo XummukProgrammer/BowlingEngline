@@ -12,5 +12,11 @@ namespace UnityGameTemplate.Camera.Services
             get => CameraFacade.Target;
             set => CameraFacade.Target = value;
         }
+
+        public Vector3 FollowOffset
+        {
+            get => CameraFacade.FollowOffset;
+            set => CameraFacade.FollowOffset = value;
+        }
     }
 }

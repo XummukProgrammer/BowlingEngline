@@ -13,8 +13,15 @@ namespace UnityGameTemplate.Camera.Objects
             set => _cinemachineCamera.Target.TrackingTarget = value;
         }
 
+        public Vector3 FollowOffset
+        {
+            get => _cinemachineFollow.FollowOffset;
+            set => _cinemachineFollow.FollowOffset = value;
+        }
+
         private UGTCameraService _cameraService;
         private CinemachineCamera _cinemachineCamera;
+        private CinemachineFollow _cinemachineFollow;
 
         [Inject]
         public void Construct(
@@ -28,6 +35,7 @@ namespace UnityGameTemplate.Camera.Objects
         private void Awake()
         {
             _cameraService.CameraFacade = this;
+            _cinemachineFollow = _cinemachineCamera.GetComponent<CinemachineFollow>();
         }
     }
 }

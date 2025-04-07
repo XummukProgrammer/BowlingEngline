@@ -6,6 +6,12 @@ namespace UnityGameTemplate.Common.Objects
 {
     public class UGTCameraTarget : MonoBehaviour
     {
+        public Vector3 FollowOffset
+        {
+            get => _cameraService.FollowOffset;
+            set => _cameraService.FollowOffset = value;
+        }
+
         private UGTCameraService _cameraService;
 
         [Inject]

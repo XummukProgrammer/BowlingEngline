@@ -20,10 +20,14 @@ namespace BowlingEngine.Gameplay.Core.Objects.Trigger.Models
         [SerializeField]
         private string _stringValue;
 
+        [SerializeField]
+        private Vector3 _vector3Value;
+
         public BETriggerHandlerStepActionType Type => _type;
         public bool BoolValue => _boolValue;
         public int IntValue => _intValue;
         public float FloatValue => _floatValue;
         public string StringValue => _stringValue;
+        public Vector3 Vector3Value => _vector3Value;
     }
 }

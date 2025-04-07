@@ -60,6 +60,8 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball.States
             _triggerData.Step = -1;
             _view.Facade.StepsModel = ballModel.Class.StepsModel;
 
+            _view.Facade.CameraFollowOffset = new UnityEngine.Vector3(0, 2, -6);
+
             _view.Facade.States.EnterState<BEBallStatesMove>();
         }
 

@@ -25,15 +25,24 @@ MonoBehaviour:
         _intValue: 0
         _floatValue: 7
         _stringValue: 
+        _vector3Value: {x: 0, y: 0, z: 0}
     - _actions:
       - _type: 1
         _boolValue: 0
         _intValue: 0
         _floatValue: 8
         _stringValue: 
+        _vector3Value: {x: 0, y: 0, z: 0}
     - _actions:
       - _type: 1
         _boolValue: 0
         _intValue: 0
         _floatValue: 10
         _stringValue: 
+        _vector3Value: {x: 0, y: 0, z: 0}
+      - _type: 2
+        _boolValue: 0
+        _intValue: 0
+        _floatValue: 0
+        _stringValue: 
+        _vector3Value: {x: 0, y: 2, z: -12}

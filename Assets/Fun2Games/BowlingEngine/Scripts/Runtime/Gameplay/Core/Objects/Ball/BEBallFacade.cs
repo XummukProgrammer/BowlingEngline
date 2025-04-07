@@ -2,6 +2,7 @@ using BowlingEngine.Gameplay.Core.Objects.Data;
 using BowlingEngine.Gameplay.Core.Objects.Trigger.Models;
 using System;
 using UnityEngine;
+using UnityGameTemplate.Common.Objects;
 using Zenject;
 
 namespace BowlingEngine.Gameplay.Core.Objects.Ball
@@ -68,11 +69,18 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             set => _tunables.StepsModel = value;
         }
 
+        public Vector3 CameraFollowOffset
+        {
+            get => _cameraTarget.FollowOffset;
+            set => _cameraTarget.FollowOffset = value;
+        }
+
         private BEBallView _view;
         private BEBallStates _states;
         private BEHealthData _healthData;
         private BESpeedData _speedData;
         private BEBallTunables _tunables;
+        private UGTCameraTarget _cameraTarget;
 
         [Inject]
         public void Construct(
@@ -80,13 +88,15 @@ namespace BowlingEngine.Gameplay.Core.Objects.Ball
             BEBallStates states,
             BEHealthData healthData,
             BESpeedData speedData,
-            BEBallTunables tunables)
+            BEBallTunables tunables,
+            UGTCameraTarget cameraTarget)
         {
             _view = view;
             _states = states;
             _healthData = healthData;
             _speedData = speedData;
             _tunables = tunables;
+            _cameraTarget = cameraTarget;
         }
 
         private void OnEnable()

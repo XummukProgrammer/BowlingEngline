@@ -23,5 +23,17 @@ MonoBehaviour:
       - _type: 1
         _boolValue: 0
         _intValue: 0
+        _floatValue: 7
+        _stringValue: 
+    - _actions:
+      - _type: 1
+        _boolValue: 0
+        _intValue: 0
+        _floatValue: 8
+        _stringValue: 
+    - _actions:
+      - _type: 1
+        _boolValue: 0
+        _intValue: 0
         _floatValue: 10
         _stringValue: 

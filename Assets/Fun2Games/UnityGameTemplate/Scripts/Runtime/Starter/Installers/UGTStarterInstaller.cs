@@ -6,6 +6,7 @@ using UnityGameTemplate.Sounds.Services;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.Starter.States;
 using UnityGameTemplate.States.Factories;
+using UnityGameTemplate.UI.HUD.Services;
 using UnityGameTemplate.UI.Windows.Common.LoadWindow;
 using UnityGameTemplate.UI.Windows.Services;
 using Zenject;
@@ -65,6 +66,7 @@ namespace UnityGameTemplate.Starter.Installers
         private void InstallUI()
         {
             InstallWindows();
+            InstallHUD();
         }
 
         private void InstallWindows()
@@ -72,6 +74,11 @@ namespace UnityGameTemplate.Starter.Installers
             Container.BindInterfacesAndSelfTo<UGTWindowContainerService>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<UGTLoadWindowService>().AsSingle();
+        }
+
+        private void InstallHUD()
+        {
+            Container.BindInterfacesAndSelfTo<UGTHUDContainerService>().AsSingle();
         }
 
         private void InstallLocalizations()

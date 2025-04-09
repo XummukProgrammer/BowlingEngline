@@ -1,4 +1,4 @@
-using BowlingEngine.Common.UI.Windows.InfoWindow;
+using BowlingEngine.Common.UI.HUD.InfoHUD;
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Installers.Objects;
 using BowlingEngine.Gameplay.Core.Models;
@@ -93,11 +93,16 @@ namespace BowlingEngine.Gameplay.Core.Installers
         private void InstallUI()
         {
             InstallWindows();
+            InstallHUD();
         }
 
         private void InstallWindows()
         {
-            Container.BindInterfacesAndSelfTo<BEInfoWindowService>().AsSingle();
+        }
+
+        private void InstallHUD()
+        {
+            Container.BindInterfacesAndSelfTo<BEInfoHUDService>().AsSingle();
         }
     }
 }

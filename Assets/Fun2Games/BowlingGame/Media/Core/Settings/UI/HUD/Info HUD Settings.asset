@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed4a43790c3d6d46afdc56bfc7242a5, type: 3}
-  m_Name: Info Window Settings
+  m_Script: {fileID: 11500000, guid: 5a580a9f736bf7442b0007fe13182f21, type: 3}
+  m_Name: Info HUD Settings
   m_EditorClassIdentifier: 
-  _model:
-    _id: InfoWindow
-    _prefab: {fileID: 8969409914978626778, guid: c60af64c57e7024489037febc8079cf8, type: 3}
-    _selectBallLocalizationID: info.select_ball

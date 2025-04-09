@@ -1,4 +1,4 @@
-using BowlingEngine.Common.UI.Windows.InfoWindow;
+using BowlingEngine.Common.UI.HUD.InfoHUD;
 using BowlingEngine.Gameplay.Core.Data;
 using BowlingEngine.Gameplay.Core.Objects.Ball;
 using BowlingEngine.Gameplay.Core.Objects.Ball.States;
@@ -21,7 +21,7 @@ namespace BowlingEngine.Gameplay.Core.States
         private readonly SignalBus _signalBus;
         private readonly BECoreGameplayStatesService _statesService;
         private readonly BECoreGameplayFrameData _frameData;
-        private readonly BEInfoWindowService _infoWindowService;
+        private readonly BEInfoHUDService _infoHUDService;
         private readonly UGTMessageHUDService _messageHUDService;
 
         public BECoreGameplayStatesSelectBall(
@@ -30,7 +30,7 @@ namespace BowlingEngine.Gameplay.Core.States
             SignalBus signalBus,
             BECoreGameplayStatesService statesService,
             BECoreGameplayFrameData frameData,
-            BEInfoWindowService infoWindowService,
+            BEInfoHUDService infoHUDService,
             UGTMessageHUDService messageHUDService)
         {
             _input = input;
@@ -38,7 +38,7 @@ namespace BowlingEngine.Gameplay.Core.States
             _signalBus = signalBus;
             _statesService = statesService;
             _frameData = frameData;
-            _infoWindowService = infoWindowService;
+            _infoHUDService = infoHUDService;
             _messageHUDService = messageHUDService;
         }
 
@@ -50,9 +50,7 @@ namespace BowlingEngine.Gameplay.Core.States
 
             _signalBus.Subscribe<BEBallSelectSignal>(OnBallSelected);
 
-            _infoWindowService.TextType = BEInfoWindowTextType.SelectBall;
-
-            _messageHUDService.ShowText(UGTMessageHUDPlaceType.TopHint, "Hello, World!");
+            _infoHUDService.CurrentTextType = BEInfoHUDTextType.SelectBall;
         }
 
         public void Exit()
@@ -63,7 +61,7 @@ namespace BowlingEngine.Gameplay.Core.States
 
             _signalBus.Unsubscribe<BEBallSelectSignal>(OnBallSelected);
 
-            _infoWindowService.TextType = BEInfoWindowTextType.None;
+            _infoHUDService.CurrentTextType = BEInfoHUDTextType.None;
         }
 
         private void OnBallSelected(BEBallSelectSignal signal)

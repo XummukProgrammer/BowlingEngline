@@ -8,23 +8,25 @@ namespace UnityGameTemplate.UI.HUD.Common.Message
 
         private bool _isShowed;
         private float _time;
+        private bool _isUnlimitedTime;
 
         public UGTMessageHUDPlaceTextController(UGTMessageHUDPlaceTextModel model)
         {
             _model = model;
         }
 
-        public void ShowText(string text, float time)
+        public void ShowText(string text, float time, bool isUnlimitedTime)
         {
             _model.Text.text = text;
             
             _time = time;
+            _isUnlimitedTime = isUnlimitedTime;
             _isShowed = true;
         }
 
         public void OnUpdate()
         {
-            if (_isShowed)
+            if (_isShowed && !_isUnlimitedTime)
             {
                 _time -= Time.deltaTime;
 

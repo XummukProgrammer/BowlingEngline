@@ -1,6 +1,4 @@
-using BowlingEngine.Common.UI.Windows.InfoWindow;
 using BowlingEngine.Gameplay.Core.Data;
-using BowlingEngine.Gameplay.Core.Models;
 using BowlingEngine.Gameplay.Core.Services;
 using UnityEngine;
 using UnityGameTemplate.States.Interfaces;

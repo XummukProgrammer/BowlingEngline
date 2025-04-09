@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityGameTemplate.UI.Windows.Models;
 
-namespace BowlingEngine.Common.UI.Windows.InfoWindow
+namespace BowlingEngine.Common.UI.HUD.InfoHUD
 {
     [System.Serializable]
-    public class BEInfoWindowModel : UGTWindowModel
+    public class BEInfoHUDModel
     {
         [SerializeField]
         private string _selectBallLocalizationID = "info.select_ball";

@@ -23,7 +23,9 @@ namespace UnityGameTemplate.UI.HUD.Common.Message
         {
             if (_view != null)
             {
-                _view.ShowText(placeType, text, time);
+                bool isUnlimitedTime = placeType == UGTMessageHUDPlaceType.Info;
+
+                _view.ShowText(placeType, text, time, isUnlimitedTime);
             }
         }
 

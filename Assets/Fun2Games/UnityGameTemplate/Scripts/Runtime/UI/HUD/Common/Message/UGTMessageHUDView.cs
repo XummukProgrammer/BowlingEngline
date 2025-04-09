@@ -32,11 +32,11 @@ namespace UnityGameTemplate.UI.HUD.Common.Message
             }
         }
 
-        public void ShowText(UGTMessageHUDPlaceType placeType, string text, float time)
+        public void ShowText(UGTMessageHUDPlaceType placeType, string text, float time, bool isUnlimitedTime)
         {
             if (_controllers.TryGetValue(placeType, out var controller))
             {
-                controller.ShowText(text, time);
+                controller.ShowText(text, time, isUnlimitedTime);
             }
         }
     }

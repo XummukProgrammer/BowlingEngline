@@ -8,11 +8,13 @@ namespace UnityGameTemplate.UI.HUD.Services
     public abstract class UGTHUDService 
         : IInitializable
         , IDisposable
+        , ITickable
     {
         public abstract UGTHUDModel Model { get; }
         public UGTHUDView View { get; set; }
 
         private readonly UGTHUDContainerService _hudContainerService;
+        private bool _isShowed;
 
         public UGTHUDService(UGTHUDContainerService hudContainerService)
         {
@@ -29,16 +31,37 @@ namespace UnityGameTemplate.UI.HUD.Services
             _hudContainerService.UnregisterService(this);
         }
 
+        public void Tick()
+        {
+            if (!_isShowed && IsActive())
+            {
+                Show();
+            }
+            else if (_isShowed && !IsActive())
+            {
+                Close();
+            }
+        }
+
         public void Show()
         {
+            _isShowed = true;
+
             _hudContainerService.CreateView(this);
             OnCreate();
         }
 
         public void Close()
         {
+            _isShowed = false;
+
             _hudContainerService.RemoveView(this);
             OnClose();
+        }
+
+        protected virtual bool IsActive()
+        {
+            return true;
         }
 
         public virtual void OnViewInstantiate() 

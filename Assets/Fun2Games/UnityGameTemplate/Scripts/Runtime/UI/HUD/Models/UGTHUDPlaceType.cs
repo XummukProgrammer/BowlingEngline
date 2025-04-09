@@ -9,6 +9,8 @@ namespace UnityGameTemplate.UI.HUD.Models
         CenterSideRight,
 
         DownSideLeft,
-        DownSideRight
+        DownSideRight,
+
+        Custom
     }
 }

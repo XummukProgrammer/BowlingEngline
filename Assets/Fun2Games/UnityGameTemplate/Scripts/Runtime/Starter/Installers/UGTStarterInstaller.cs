@@ -6,6 +6,7 @@ using UnityGameTemplate.Sounds.Services;
 using UnityGameTemplate.Starter.Services;
 using UnityGameTemplate.Starter.States;
 using UnityGameTemplate.States.Factories;
+using UnityGameTemplate.UI.HUD.Common.Message;
 using UnityGameTemplate.UI.HUD.Services;
 using UnityGameTemplate.UI.Windows.Common.LoadWindow;
 using UnityGameTemplate.UI.Windows.Services;
@@ -79,6 +80,8 @@ namespace UnityGameTemplate.Starter.Installers
         private void InstallHUD()
         {
             Container.BindInterfacesAndSelfTo<UGTHUDContainerService>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<UGTMessageHUDService>().AsSingle().NonLazy();
         }
 
         private void InstallLocalizations()
